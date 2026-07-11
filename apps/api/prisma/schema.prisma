@@ -1,0 +1,115 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+enum SituacaoMilitar {
+  ATIVO
+  AFASTADO
+  TRANSFERIDO
+  RESERVA
+}
+
+enum CodigoPerfil {
+  MILITAR
+  FURRIEL
+  APROVISIONAMENTO
+  SARGENTEANTE
+  ADMINISTRADOR
+}
+
+model Subunidade {
+  id        Int      @id @default(autoincrement())
+  sigla     String   @unique @db.VarChar(20)
+  nome      String   @db.VarChar(120)
+  ativa     Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  militares Militar[]
+
+  @@map("subunidades")
+}
+
+model Militar {
+  id                Int             @id @default(autoincrement())
+  identidadeMilitar String          @unique @map("identidade_militar") @db.VarChar(30)
+  nomeCompleto      String          @map("nome_completo") @db.VarChar(160)
+  nomeGuerra        String          @map("nome_guerra") @db.VarChar(80)
+  postoGraduacao    String          @map("posto_graduacao") @db.VarChar(50)
+  situacao          SituacaoMilitar @default(ATIVO)
+  subunidadeId      Int             @map("subunidade_id")
+  createdAt         DateTime        @default(now()) @map("created_at")
+  updatedAt         DateTime        @updatedAt @map("updated_at")
+
+  subunidade Subunidade @relation(fields: [subunidadeId], references: [id])
+  usuario    Usuario?
+
+  @@index([subunidadeId])
+  @@map("militares")
+}
+
+model Usuario {
+  id             Int       @id @default(autoincrement())
+  militarId      Int       @unique @map("militar_id")
+  email          String?   @unique @db.VarChar(160)
+  senhaHash      String    @map("senha_hash") @db.VarChar(255)
+  ativo          Boolean   @default(true)
+  primeiroAcesso Boolean   @default(true) @map("primeiro_acesso")
+  ultimoLogin    DateTime? @map("ultimo_login")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+
+  militar Militar         @relation(fields: [militarId], references: [id])
+  perfis  UsuarioPerfil[]
+
+  @@map("usuarios")
+}
+
+model Perfil {
+  id        Int          @id @default(autoincrement())
+  codigo    CodigoPerfil @unique
+  nome      String       @db.VarChar(80)
+  descricao String?      @db.VarChar(255)
+
+  usuarios   UsuarioPerfil[]
+  permissoes PerfilPermissao[]
+
+  @@map("perfis")
+}
+
+model Permissao {
+  id        Int     @id @default(autoincrement())
+  codigo    String  @unique @db.VarChar(100)
+  descricao String? @db.VarChar(255)
+
+  perfis PerfilPermissao[]
+
+  @@map("permissoes")
+}
+
+model UsuarioPerfil {
+  usuarioId Int @map("usuario_id")
+  perfilId  Int @map("perfil_id")
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  perfil  Perfil  @relation(fields: [perfilId], references: [id], onDelete: Cascade)
+
+  @@id([usuarioId, perfilId])
+  @@map("usuario_perfis")
+}
+
+model PerfilPermissao {
+  perfilId    Int @map("perfil_id")
+  permissaoId Int @map("permissao_id")
+
+  perfil    Perfil    @relation(fields: [perfilId], references: [id], onDelete: Cascade)
+  permissao Permissao @relation(fields: [permissaoId], references: [id], onDelete: Cascade)
+
+  @@id([perfilId, permissaoId])
+  @@map("perfil_permissoes")
+}

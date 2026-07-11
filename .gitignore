@@ -22,3 +22,6 @@ npm-debug.log*
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Prisma Client gerado
+apps/api/generated/
