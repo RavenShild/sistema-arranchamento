@@ -1,6 +1,7 @@
 import cors from 'cors'
 import express from 'express'
 import helmet from 'helmet'
+import { prisma } from './lib/prisma.js'
 
 export const app = express()
 
@@ -17,10 +18,20 @@ app.use(
 
 app.use(express.json({ limit: '1mb' }))
 
-app.get('/health', (_request, response) => {
-  return response.status(200).json({
-    status: 'ok',
-    service: 'arranchamento-api',
-    timestamp: new Date().toISOString(),
-  })
+app.get('/health/database', async (_request, response) => {
+  try {
+    await prisma.$queryRaw`SELECT 1`
+
+    return response.status(200).json({
+      status: 'ok',
+      database: 'connected',
+      timestamp: new Date().toISOString(),
+    })
+  } catch {
+    return response.status(503).json({
+      status: 'error',
+      database: 'unavailable',
+      timestamp: new Date().toISOString(),
+    })
+  }
 })

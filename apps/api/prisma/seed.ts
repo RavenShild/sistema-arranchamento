@@ -3,7 +3,7 @@ import { PrismaMariaDb } from '@prisma/adapter-mariadb'
 import {
   CodigoPerfil,
   PrismaClient,
-} from '../generated/prisma/client.js'
+} from '../src/generated/prisma/client.js'
 
 function requiredEnv(name: string): string {
   const value = process.env[name]
