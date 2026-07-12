@@ -2,7 +2,10 @@ import * as argon2 from 'argon2'
 import { SignJWT } from 'jose'
 import { jwtConfig, jwtSecret } from '../../config/jwt.js'
 import { prisma } from '../../lib/prisma.js'
-import type { LoginInput } from './auth.schema.js'
+import type {
+  AlterarSenhaInput,
+  LoginInput,
+} from './auth.schema.js'
 
 export async function realizarLogin({ login, senha }: LoginInput) {
   const usuario = await prisma.usuario.findFirst({
@@ -147,4 +150,69 @@ export async function obterUsuarioAtual(usuarioId: number) {
       },
     },
   })
+}
+
+export async function alterarSenha(
+  usuarioId: number,
+  dados: AlterarSenhaInput,
+) {
+  const usuario = await prisma.usuario.findFirst({
+    where: {
+      id: usuarioId,
+      ativo: true,
+    },
+    select: {
+      id: true,
+      senhaHash: true,
+    },
+  })
+
+  if (!usuario) {
+    return {
+      sucesso: false,
+      motivo: 'USUARIO_INVALIDO',
+    } as const
+  }
+
+  const senhaAtualValida = await argon2.verify(
+    usuario.senhaHash,
+    dados.senhaAtual,
+  )
+
+  if (!senhaAtualValida) {
+    return {
+      sucesso: false,
+      motivo: 'SENHA_ATUAL_INVALIDA',
+    } as const
+  }
+
+  const senhaReutilizada = await argon2.verify(
+    usuario.senhaHash,
+    dados.novaSenha,
+  )
+
+  if (senhaReutilizada) {
+    return {
+      sucesso: false,
+      motivo: 'SENHA_REUTILIZADA',
+    } as const
+  }
+
+  const novaSenhaHash = await argon2.hash(dados.novaSenha, {
+    type: argon2.argon2id,
+  })
+
+  await prisma.usuario.update({
+    where: {
+      id: usuario.id,
+    },
+    data: {
+      senhaHash: novaSenhaHash,
+      primeiroAcesso: false,
+    },
+  })
+
+  return {
+    sucesso: true,
+  } as const
 }

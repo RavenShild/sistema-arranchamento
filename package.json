@@ -2,7 +2,14 @@
   "name": "sistema-arranchamento",
   "version": "1.0.0",
   "description": "",
-  "scripts": {},
+  "scripts": {
+    "dev:api": "npm run dev --workspace apps/api",
+    "dev:web": "npm run dev --workspace apps/web",
+    "typecheck:api": "npm run typecheck --workspace apps/api",
+    "build:api": "npm run build --workspace apps/api",
+    "build:web": "npm run build --workspace apps/web",
+    "lint:web": "npm run lint --workspace apps/web"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

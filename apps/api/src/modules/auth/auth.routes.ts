@@ -1,8 +1,12 @@
 import { Router } from 'express'
 import { rateLimit } from 'express-rate-limit'
-import { loginSchema } from './auth.schema.js'
+import {
+  alterarSenhaSchema,
+  loginSchema,
+} from './auth.schema.js'
 import { authenticate } from '../../middlewares/authenticate.js'
 import {
+  alterarSenha,
   obterUsuarioAtual,
   realizarLogin,
 } from './auth.service.js'
@@ -70,3 +74,48 @@ authRouter.get('/me', authenticate, async (request, response) => {
     usuario,
   })
 })
+
+authRouter.patch(
+  '/password',
+  authenticate,
+  async (request, response) => {
+    const usuarioId = request.auth?.usuarioId
+
+    if (!usuarioId) {
+      return response.status(401).json({
+        erro: 'Usuário não autenticado.',
+      })
+    }
+
+    const validacao = alterarSenhaSchema.safeParse(request.body)
+
+    if (!validacao.success) {
+      return response.status(400).json({
+        erro: 'Dados inválidos.',
+        detalhes: validacao.error.flatten().fieldErrors,
+      })
+    }
+
+    const resultado = await alterarSenha(
+      usuarioId,
+      validacao.data,
+    )
+
+    if (!resultado.sucesso) {
+      const mensagens = {
+        USUARIO_INVALIDO: 'Usuário não encontrado ou inativo.',
+        SENHA_ATUAL_INVALIDA: 'A senha atual está incorreta.',
+        SENHA_REUTILIZADA:
+          'A nova senha deve ser diferente da senha atual.',
+      }
+
+      return response.status(400).json({
+        erro: mensagens[resultado.motivo],
+      })
+    }
+
+    return response.status(200).json({
+      mensagem: 'Senha alterada com sucesso.',
+    })
+  },
+)
