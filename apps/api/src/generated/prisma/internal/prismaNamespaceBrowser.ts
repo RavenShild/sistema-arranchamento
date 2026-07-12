@@ -57,7 +57,8 @@ export const ModelName = {
   Perfil: 'Perfil',
   Permissao: 'Permissao',
   UsuarioPerfil: 'UsuarioPerfil',
-  PerfilPermissao: 'PerfilPermissao'
+  PerfilPermissao: 'PerfilPermissao',
+  Sessao: 'Sessao'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -153,6 +154,20 @@ export const PerfilPermissaoScalarFieldEnum = {
 export type PerfilPermissaoScalarFieldEnum = (typeof PerfilPermissaoScalarFieldEnum)[keyof typeof PerfilPermissaoScalarFieldEnum]
 
 
+export const SessaoScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  refreshTokenHash: 'refreshTokenHash',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt',
+  ip: 'ip',
+  userAgent: 'userAgent',
+  createdAt: 'createdAt'
+} as const
+
+export type SessaoScalarFieldEnum = (typeof SessaoScalarFieldEnum)[keyof typeof SessaoScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -209,4 +224,13 @@ export const PermissaoOrderByRelevanceFieldEnum = {
 } as const
 
 export type PermissaoOrderByRelevanceFieldEnum = (typeof PermissaoOrderByRelevanceFieldEnum)[keyof typeof PermissaoOrderByRelevanceFieldEnum]
+
+
+export const SessaoOrderByRelevanceFieldEnum = {
+  refreshTokenHash: 'refreshTokenHash',
+  ip: 'ip',
+  userAgent: 'userAgent'
+} as const
+
+export type SessaoOrderByRelevanceFieldEnum = (typeof SessaoOrderByRelevanceFieldEnum)[keyof typeof SessaoOrderByRelevanceFieldEnum]
 

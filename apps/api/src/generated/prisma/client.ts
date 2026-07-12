@@ -76,3 +76,8 @@ export type UsuarioPerfil = Prisma.UsuarioPerfilModel
  * 
  */
 export type PerfilPermissao = Prisma.PerfilPermissaoModel
+/**
+ * Model Sessao
+ * 
+ */
+export type Sessao = Prisma.SessaoModel

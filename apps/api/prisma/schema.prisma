@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client"
-  output = "../src/generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -66,6 +66,7 @@ model Usuario {
 
   militar Militar         @relation(fields: [militarId], references: [id])
   perfis  UsuarioPerfil[]
+  sessoes Sessao[]
 
   @@map("usuarios")
 }
@@ -112,4 +113,21 @@ model PerfilPermissao {
 
   @@id([perfilId, permissaoId])
   @@map("perfil_permissoes")
+}
+
+model Sessao {
+  id               Int       @id @default(autoincrement())
+  usuarioId        Int       @map("usuario_id")
+  refreshTokenHash String    @unique @map("refresh_token_hash") @db.Char(64)
+  expiresAt        DateTime  @map("expires_at")
+  revokedAt        DateTime? @map("revoked_at")
+  ip               String?   @db.VarChar(45)
+  userAgent        String?   @map("user_agent") @db.VarChar(500)
+  createdAt        DateTime  @default(now()) @map("created_at")
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@index([usuarioId])
+  @@index([expiresAt])
+  @@map("sessoes")
 }

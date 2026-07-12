@@ -390,7 +390,8 @@ export const ModelName = {
   Perfil: 'Perfil',
   Permissao: 'Permissao',
   UsuarioPerfil: 'UsuarioPerfil',
-  PerfilPermissao: 'PerfilPermissao'
+  PerfilPermissao: 'PerfilPermissao',
+  Sessao: 'Sessao'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -406,7 +407,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "subunidade" | "militar" | "usuario" | "perfil" | "permissao" | "usuarioPerfil" | "perfilPermissao"
+    modelProps: "subunidade" | "militar" | "usuario" | "perfil" | "permissao" | "usuarioPerfil" | "perfilPermissao" | "sessao"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -872,6 +873,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Sessao: {
+      payload: Prisma.$SessaoPayload<ExtArgs>
+      fields: Prisma.SessaoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SessaoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessaoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SessaoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessaoPayload>
+        }
+        findFirst: {
+          args: Prisma.SessaoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessaoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SessaoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessaoPayload>
+        }
+        findMany: {
+          args: Prisma.SessaoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessaoPayload>[]
+        }
+        create: {
+          args: Prisma.SessaoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessaoPayload>
+        }
+        createMany: {
+          args: Prisma.SessaoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.SessaoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessaoPayload>
+        }
+        update: {
+          args: Prisma.SessaoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessaoPayload>
+        }
+        deleteMany: {
+          args: Prisma.SessaoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SessaoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.SessaoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessaoPayload>
+        }
+        aggregate: {
+          args: Prisma.SessaoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSessao>
+        }
+        groupBy: {
+          args: Prisma.SessaoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SessaoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SessaoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SessaoCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -988,6 +1055,20 @@ export const PerfilPermissaoScalarFieldEnum = {
 export type PerfilPermissaoScalarFieldEnum = (typeof PerfilPermissaoScalarFieldEnum)[keyof typeof PerfilPermissaoScalarFieldEnum]
 
 
+export const SessaoScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  refreshTokenHash: 'refreshTokenHash',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt',
+  ip: 'ip',
+  userAgent: 'userAgent',
+  createdAt: 'createdAt'
+} as const
+
+export type SessaoScalarFieldEnum = (typeof SessaoScalarFieldEnum)[keyof typeof SessaoScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1044,6 +1125,15 @@ export const PermissaoOrderByRelevanceFieldEnum = {
 } as const
 
 export type PermissaoOrderByRelevanceFieldEnum = (typeof PermissaoOrderByRelevanceFieldEnum)[keyof typeof PermissaoOrderByRelevanceFieldEnum]
+
+
+export const SessaoOrderByRelevanceFieldEnum = {
+  refreshTokenHash: 'refreshTokenHash',
+  ip: 'ip',
+  userAgent: 'userAgent'
+} as const
+
+export type SessaoOrderByRelevanceFieldEnum = (typeof SessaoOrderByRelevanceFieldEnum)[keyof typeof SessaoOrderByRelevanceFieldEnum]
 
 
 
@@ -1217,6 +1307,7 @@ export type GlobalOmitConfig = {
   permissao?: Prisma.PermissaoOmit
   usuarioPerfil?: Prisma.UsuarioPerfilOmit
   perfilPermissao?: Prisma.PerfilPermissaoOmit
+  sessao?: Prisma.SessaoOmit
 }
 
 /* Types for Logging */

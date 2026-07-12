@@ -254,6 +254,7 @@ export type UsuarioWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Usuario"> | Date | string
   militar?: Prisma.XOR<Prisma.MilitarScalarRelationFilter, Prisma.MilitarWhereInput>
   perfis?: Prisma.UsuarioPerfilListRelationFilter
+  sessoes?: Prisma.SessaoListRelationFilter
 }
 
 export type UsuarioOrderByWithRelationInput = {
@@ -268,6 +269,7 @@ export type UsuarioOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   militar?: Prisma.MilitarOrderByWithRelationInput
   perfis?: Prisma.UsuarioPerfilOrderByRelationAggregateInput
+  sessoes?: Prisma.SessaoOrderByRelationAggregateInput
   _relevance?: Prisma.UsuarioOrderByRelevanceInput
 }
 
@@ -286,6 +288,7 @@ export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Usuario"> | Date | string
   militar?: Prisma.XOR<Prisma.MilitarScalarRelationFilter, Prisma.MilitarWhereInput>
   perfis?: Prisma.UsuarioPerfilListRelationFilter
+  sessoes?: Prisma.SessaoListRelationFilter
 }, "id" | "militarId" | "email">
 
 export type UsuarioOrderByWithAggregationInput = {
@@ -330,6 +333,7 @@ export type UsuarioCreateInput = {
   updatedAt?: Date | string
   militar: Prisma.MilitarCreateNestedOneWithoutUsuarioInput
   perfis?: Prisma.UsuarioPerfilCreateNestedManyWithoutUsuarioInput
+  sessoes?: Prisma.SessaoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateInput = {
@@ -343,6 +347,7 @@ export type UsuarioUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   perfis?: Prisma.UsuarioPerfilUncheckedCreateNestedManyWithoutUsuarioInput
+  sessoes?: Prisma.SessaoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUpdateInput = {
@@ -355,6 +360,7 @@ export type UsuarioUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   militar?: Prisma.MilitarUpdateOneRequiredWithoutUsuarioNestedInput
   perfis?: Prisma.UsuarioPerfilUpdateManyWithoutUsuarioNestedInput
+  sessoes?: Prisma.SessaoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateInput = {
@@ -368,6 +374,7 @@ export type UsuarioUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   perfis?: Prisma.UsuarioPerfilUncheckedUpdateManyWithoutUsuarioNestedInput
+  sessoes?: Prisma.SessaoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateManyInput = {
@@ -520,6 +527,20 @@ export type UsuarioUpdateOneRequiredWithoutPerfisNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutPerfisInput, Prisma.UsuarioUpdateWithoutPerfisInput>, Prisma.UsuarioUncheckedUpdateWithoutPerfisInput>
 }
 
+export type UsuarioCreateNestedOneWithoutSessoesInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutSessoesInput, Prisma.UsuarioUncheckedCreateWithoutSessoesInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutSessoesInput
+  connect?: Prisma.UsuarioWhereUniqueInput
+}
+
+export type UsuarioUpdateOneRequiredWithoutSessoesNestedInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutSessoesInput, Prisma.UsuarioUncheckedCreateWithoutSessoesInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutSessoesInput
+  upsert?: Prisma.UsuarioUpsertWithoutSessoesInput
+  connect?: Prisma.UsuarioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutSessoesInput, Prisma.UsuarioUpdateWithoutSessoesInput>, Prisma.UsuarioUncheckedUpdateWithoutSessoesInput>
+}
+
 export type UsuarioCreateWithoutMilitarInput = {
   email?: string | null
   senhaHash: string
@@ -529,6 +550,7 @@ export type UsuarioCreateWithoutMilitarInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   perfis?: Prisma.UsuarioPerfilCreateNestedManyWithoutUsuarioInput
+  sessoes?: Prisma.SessaoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutMilitarInput = {
@@ -541,6 +563,7 @@ export type UsuarioUncheckedCreateWithoutMilitarInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   perfis?: Prisma.UsuarioPerfilUncheckedCreateNestedManyWithoutUsuarioInput
+  sessoes?: Prisma.SessaoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutMilitarInput = {
@@ -568,6 +591,7 @@ export type UsuarioUpdateWithoutMilitarInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   perfis?: Prisma.UsuarioPerfilUpdateManyWithoutUsuarioNestedInput
+  sessoes?: Prisma.SessaoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutMilitarInput = {
@@ -580,6 +604,7 @@ export type UsuarioUncheckedUpdateWithoutMilitarInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   perfis?: Prisma.UsuarioPerfilUncheckedUpdateManyWithoutUsuarioNestedInput
+  sessoes?: Prisma.SessaoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutPerfisInput = {
@@ -591,6 +616,7 @@ export type UsuarioCreateWithoutPerfisInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   militar: Prisma.MilitarCreateNestedOneWithoutUsuarioInput
+  sessoes?: Prisma.SessaoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutPerfisInput = {
@@ -603,6 +629,7 @@ export type UsuarioUncheckedCreateWithoutPerfisInput = {
   ultimoLogin?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  sessoes?: Prisma.SessaoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutPerfisInput = {
@@ -630,6 +657,7 @@ export type UsuarioUpdateWithoutPerfisInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   militar?: Prisma.MilitarUpdateOneRequiredWithoutUsuarioNestedInput
+  sessoes?: Prisma.SessaoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutPerfisInput = {
@@ -642,6 +670,73 @@ export type UsuarioUncheckedUpdateWithoutPerfisInput = {
   ultimoLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessoes?: Prisma.SessaoUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UsuarioCreateWithoutSessoesInput = {
+  email?: string | null
+  senhaHash: string
+  ativo?: boolean
+  primeiroAcesso?: boolean
+  ultimoLogin?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  militar: Prisma.MilitarCreateNestedOneWithoutUsuarioInput
+  perfis?: Prisma.UsuarioPerfilCreateNestedManyWithoutUsuarioInput
+}
+
+export type UsuarioUncheckedCreateWithoutSessoesInput = {
+  id?: number
+  militarId: number
+  email?: string | null
+  senhaHash: string
+  ativo?: boolean
+  primeiroAcesso?: boolean
+  ultimoLogin?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  perfis?: Prisma.UsuarioPerfilUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UsuarioCreateOrConnectWithoutSessoesInput = {
+  where: Prisma.UsuarioWhereUniqueInput
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutSessoesInput, Prisma.UsuarioUncheckedCreateWithoutSessoesInput>
+}
+
+export type UsuarioUpsertWithoutSessoesInput = {
+  update: Prisma.XOR<Prisma.UsuarioUpdateWithoutSessoesInput, Prisma.UsuarioUncheckedUpdateWithoutSessoesInput>
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutSessoesInput, Prisma.UsuarioUncheckedCreateWithoutSessoesInput>
+  where?: Prisma.UsuarioWhereInput
+}
+
+export type UsuarioUpdateToOneWithWhereWithoutSessoesInput = {
+  where?: Prisma.UsuarioWhereInput
+  data: Prisma.XOR<Prisma.UsuarioUpdateWithoutSessoesInput, Prisma.UsuarioUncheckedUpdateWithoutSessoesInput>
+}
+
+export type UsuarioUpdateWithoutSessoesInput = {
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  senhaHash?: Prisma.StringFieldUpdateOperationsInput | string
+  ativo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primeiroAcesso?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ultimoLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  militar?: Prisma.MilitarUpdateOneRequiredWithoutUsuarioNestedInput
+  perfis?: Prisma.UsuarioPerfilUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UsuarioUncheckedUpdateWithoutSessoesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  militarId?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  senhaHash?: Prisma.StringFieldUpdateOperationsInput | string
+  ativo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primeiroAcesso?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ultimoLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  perfis?: Prisma.UsuarioPerfilUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 
@@ -651,10 +746,12 @@ export type UsuarioUncheckedUpdateWithoutPerfisInput = {
 
 export type UsuarioCountOutputType = {
   perfis: number
+  sessoes: number
 }
 
 export type UsuarioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   perfis?: boolean | UsuarioCountOutputTypeCountPerfisArgs
+  sessoes?: boolean | UsuarioCountOutputTypeCountSessoesArgs
 }
 
 /**
@@ -674,6 +771,13 @@ export type UsuarioCountOutputTypeCountPerfisArgs<ExtArgs extends runtime.Types.
   where?: Prisma.UsuarioPerfilWhereInput
 }
 
+/**
+ * UsuarioCountOutputType without action
+ */
+export type UsuarioCountOutputTypeCountSessoesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SessaoWhereInput
+}
+
 
 export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -687,6 +791,7 @@ export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   updatedAt?: boolean
   militar?: boolean | Prisma.MilitarDefaultArgs<ExtArgs>
   perfis?: boolean | Prisma.Usuario$perfisArgs<ExtArgs>
+  sessoes?: boolean | Prisma.Usuario$sessoesArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["usuario"]>
 
@@ -708,6 +813,7 @@ export type UsuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type UsuarioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   militar?: boolean | Prisma.MilitarDefaultArgs<ExtArgs>
   perfis?: boolean | Prisma.Usuario$perfisArgs<ExtArgs>
+  sessoes?: boolean | Prisma.Usuario$sessoesArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -716,6 +822,7 @@ export type $UsuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   objects: {
     militar: Prisma.$MilitarPayload<ExtArgs>
     perfis: Prisma.$UsuarioPerfilPayload<ExtArgs>[]
+    sessoes: Prisma.$SessaoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1069,6 +1176,7 @@ export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends runtime.
   readonly [Symbol.toStringTag]: "PrismaPromise"
   militar<T extends Prisma.MilitarDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MilitarDefaultArgs<ExtArgs>>): Prisma.Prisma__MilitarClient<runtime.Types.Result.GetResult<Prisma.$MilitarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   perfis<T extends Prisma.Usuario$perfisArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$perfisArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UsuarioPerfilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sessoes<T extends Prisma.Usuario$sessoesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$sessoesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1476,6 +1584,30 @@ export type Usuario$perfisArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.UsuarioPerfilScalarFieldEnum | Prisma.UsuarioPerfilScalarFieldEnum[]
+}
+
+/**
+ * Usuario.sessoes
+ */
+export type Usuario$sessoesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Sessao
+   */
+  select?: Prisma.SessaoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Sessao
+   */
+  omit?: Prisma.SessaoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessaoInclude<ExtArgs> | null
+  where?: Prisma.SessaoWhereInput
+  orderBy?: Prisma.SessaoOrderByWithRelationInput | Prisma.SessaoOrderByWithRelationInput[]
+  cursor?: Prisma.SessaoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SessaoScalarFieldEnum | Prisma.SessaoScalarFieldEnum[]
 }
 
 /**
