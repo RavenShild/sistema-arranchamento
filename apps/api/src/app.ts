@@ -1,14 +1,14 @@
+import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import express from 'express'
 import helmet from 'helmet'
 import { prisma } from './lib/prisma.js'
-import { authRouter } from './modules/auth/auth.routes.js'
 import { adminRouter } from './modules/admin/admin.routes.js'
-import cookieParser from 'cookie-parser'
+import { authRouter } from './modules/auth/auth.routes.js'
+import { militarRouter } from './modules/militares/militar.routes.js'
 import { subunidadeRouter } from './modules/subunidades/subunidade.routes.js'
 
 export const app = express()
-
 
 app.disable('x-powered-by')
 
@@ -25,6 +25,7 @@ app.use(
 app.use(express.json({ limit: '1mb' }))
 app.use('/auth', authRouter)
 app.use('/subunidades', subunidadeRouter)
+app.use('/militares', militarRouter)
 app.use('/admin', adminRouter)
 
 app.get('/health/database', async (_request, response) => {
