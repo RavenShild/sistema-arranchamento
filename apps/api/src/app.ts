@@ -4,12 +4,15 @@ import helmet from 'helmet'
 import { prisma } from './lib/prisma.js'
 import { authRouter } from './modules/auth/auth.routes.js'
 import { adminRouter } from './modules/admin/admin.routes.js'
+import cookieParser from 'cookie-parser'
 
 export const app = express()
+
 
 app.disable('x-powered-by')
 
 app.use(helmet())
+app.use(cookieParser())
 
 app.use(
   cors({
