@@ -6,6 +6,7 @@ import {
 import './App.css'
 import { useAuth } from './auth/auth.context'
 import { DashboardPage } from './pages/DashboardPage'
+import { FeriasPage } from './pages/FeriasPage'
 import { LoginPage } from './pages/LoginPage'
 import { MilitaresPage } from './pages/MilitaresPage'
 import { SubunidadesPage } from './pages/SubunidadesPage'
@@ -49,6 +50,17 @@ function App() {
           <Route
             path="/admin/militares"
             element={<MilitaresPage />}
+          />
+        </Route>
+
+        <Route
+          element={
+            <ProtectedRoute permissao="ferias:gerenciar" />
+          }
+        >
+          <Route
+            path="/efetivo/ferias"
+            element={<FeriasPage />}
           />
         </Route>
       </Route>

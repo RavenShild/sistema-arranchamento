@@ -10,6 +10,8 @@ export function DashboardPage() {
 
   const podeGerenciarMilitares =
     usuario.permissoes.includes('militar:gerenciar')
+  const podeGerenciarFerias =
+    usuario.permissoes.includes('ferias:gerenciar')
 
   return (
     <main className="dashboard">
@@ -63,41 +65,65 @@ export function DashboardPage() {
         </dl>
       </section>
 
-      {podeGerenciarMilitares && (
+      {(podeGerenciarMilitares || podeGerenciarFerias) && (
         <div className="module-grid">
-          <section className="user-card module-card">
-            <div>
-              <p className="eyebrow">Administração</p>
-              <h2>Subunidades</h2>
-              <p>
-                Cadastre e gerencie as subunidades da OM.
-              </p>
-            </div>
+          {podeGerenciarMilitares && (
+            <>
+              <section className="user-card module-card">
+                <div>
+                  <p className="eyebrow">Administração</p>
+                  <h2>Subunidades</h2>
+                  <p>
+                    Cadastre e gerencie as subunidades da OM.
+                  </p>
+                </div>
 
-            <Link
-              className="primary-link"
-              to="/admin/subunidades"
-            >
-              Acessar
-            </Link>
-          </section>
+                <Link
+                  className="primary-link"
+                  to="/admin/subunidades"
+                >
+                  Acessar
+                </Link>
+              </section>
 
-          <section className="user-card module-card">
-            <div>
-              <p className="eyebrow">Administração</p>
-              <h2>Militares</h2>
-              <p>
-                Cadastre e mantenha os dados dos militares.
-              </p>
-            </div>
+              <section className="user-card module-card">
+                <div>
+                  <p className="eyebrow">Administração</p>
+                  <h2>Militares</h2>
+                  <p>
+                    Cadastre e mantenha os dados dos militares.
+                  </p>
+                </div>
 
-            <Link
-              className="primary-link"
-              to="/admin/militares"
-            >
-              Acessar
-            </Link>
-          </section>
+                <Link
+                  className="primary-link"
+                  to="/admin/militares"
+                >
+                  Acessar
+                </Link>
+              </section>
+            </>
+          )}
+
+          {podeGerenciarFerias && (
+            <section className="user-card module-card">
+              <div>
+                <p className="eyebrow">Controle de efetivo</p>
+                <h2>Férias</h2>
+                <p>
+                  Gerencie períodos de férias e militares
+                  laranjeiras.
+                </p>
+              </div>
+
+              <Link
+                className="primary-link"
+                to="/efetivo/ferias"
+              >
+                Acessar
+              </Link>
+            </section>
+          )}
         </div>
       )}
     </main>

@@ -12,6 +12,7 @@ import {
   criarFerias,
   excluirFerias,
   listarFerias,
+  listarMilitaresParaFerias,
 } from './ferias.service.js'
 
 export const feriasRouter = Router()
@@ -20,6 +21,14 @@ feriasRouter.use(
   authenticate,
   authorize('ferias:gerenciar'),
 )
+
+feriasRouter.get('/militares', async (_request, response) => {
+  const militares = await listarMilitaresParaFerias()
+
+  return response.status(200).json({
+    militares,
+  })
+})
 
 feriasRouter.get('/', async (request, response) => {
   const validacao = listarFeriasSchema.safeParse(
@@ -109,7 +118,8 @@ feriasRouter.patch('/:id', async (request, response) => {
 
     if (resultado.motivo === 'PERIODO_INVALIDO') {
       return response.status(400).json({
-        erro: 'A data final deve ser igual ou posterior à inicial.',
+        erro:
+          'A data final deve ser igual ou posterior à inicial.',
       })
     }
 
@@ -142,7 +152,8 @@ feriasRouter.delete('/:id', async (request, response) => {
     }
 
     return response.status(409).json({
-      erro: 'Férias iniciadas ou encerradas não podem ser excluídas.',
+      erro:
+        'Férias iniciadas ou encerradas não podem ser excluídas.',
     })
   }
 

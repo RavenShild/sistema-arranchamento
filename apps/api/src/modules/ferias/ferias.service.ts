@@ -259,3 +259,25 @@ export async function excluirFerias(id: number) {
     sucesso: true,
   } as const
 }
+
+export async function listarMilitaresParaFerias() {
+  return prisma.militar.findMany({
+    select: {
+      id: true,
+      identidadeMilitar: true,
+      nomeGuerra: true,
+      nomeCompleto: true,
+      postoGraduacao: true,
+      subunidade: {
+        select: {
+          id: true,
+          sigla: true,
+          nome: true,
+        },
+      },
+    },
+    orderBy: {
+      nomeGuerra: 'asc',
+    },
+  })
+}
