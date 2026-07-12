@@ -5,6 +5,7 @@ import { prisma } from './lib/prisma.js'
 import { authRouter } from './modules/auth/auth.routes.js'
 import { adminRouter } from './modules/admin/admin.routes.js'
 import cookieParser from 'cookie-parser'
+import { subunidadeRouter } from './modules/subunidades/subunidade.routes.js'
 
 export const app = express()
 
@@ -23,6 +24,7 @@ app.use(
 
 app.use(express.json({ limit: '1mb' }))
 app.use('/auth', authRouter)
+app.use('/subunidades', subunidadeRouter)
 app.use('/admin', adminRouter)
 
 app.get('/health/database', async (_request, response) => {
