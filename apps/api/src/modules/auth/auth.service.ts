@@ -6,8 +6,38 @@ import type {
   AlterarSenhaInput,
   LoginInput,
 } from './auth.schema.js'
+import {
+  criarSessao,
+  rotacionarSessao,
+  revogarSessao,
+  type SessionMetadata,
+} from './session.service.js'
 
-export async function realizarLogin({ login, senha }: LoginInput) {
+async function gerarAccessToken(
+  usuarioId: number,
+  perfis: string[],
+  permissoes: string[],
+) {
+  return new SignJWT({
+    perfis,
+    permissoes,
+  })
+    .setProtectedHeader({
+      alg: 'HS256',
+      typ: 'JWT',
+    })
+    .setSubject(String(usuarioId))
+    .setIssuer(jwtConfig.issuer)
+    .setAudience(jwtConfig.audience)
+    .setIssuedAt()
+    .setExpirationTime('15m')
+    .sign(jwtSecret)
+}
+
+export async function realizarLogin(
+  { login, senha }: LoginInput,
+  metadata: SessionMetadata,
+) {
   const usuario = await prisma.usuario.findFirst({
     where: {
       ativo: true,
@@ -72,20 +102,16 @@ export async function realizarLogin({ login, senha }: LoginInput) {
     ),
   ]
 
-  const accessToken = await new SignJWT({
+  const accessToken = await gerarAccessToken(
+    usuario.id,
     perfis,
     permissoes,
-  })
-    .setProtectedHeader({
-      alg: 'HS256',
-      typ: 'JWT',
-    })
-    .setSubject(String(usuario.id))
-    .setIssuer(jwtConfig.issuer)
-    .setAudience(jwtConfig.audience)
-    .setIssuedAt()
-    .setExpirationTime('15m')
-    .sign(jwtSecret)
+  )
+
+  const refreshToken = await criarSessao(
+    usuario.id,
+    metadata,
+  )
 
   await prisma.usuario.update({
     where: {
@@ -98,6 +124,90 @@ export async function realizarLogin({ login, senha }: LoginInput) {
 
   return {
     accessToken,
+    refreshToken,
+    expiresIn: 900,
+    usuario: {
+      id: usuario.id,
+      nomeCompleto: usuario.militar.nomeCompleto,
+      nomeGuerra: usuario.militar.nomeGuerra,
+      postoGraduacao: usuario.militar.postoGraduacao,
+      subunidade: usuario.militar.subunidade.sigla,
+      primeiroAcesso: usuario.primeiroAcesso,
+      perfis,
+      permissoes,
+    },
+  }
+}
+
+export async function renovarLogin(
+  refreshTokenAtual: string,
+  metadata: SessionMetadata,
+) {
+  const rotacao = await rotacionarSessao(
+    refreshTokenAtual,
+    metadata,
+  )
+
+  if (!rotacao) {
+    return null
+  }
+
+  const usuario = await prisma.usuario.findFirst({
+    where: {
+      id: rotacao.usuarioId,
+      ativo: true,
+    },
+    include: {
+      militar: {
+        include: {
+          subunidade: true,
+        },
+      },
+      perfis: {
+        include: {
+          perfil: {
+            include: {
+              permissoes: {
+                include: {
+                  permissao: true,
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  })
+
+  if (!usuario) {
+    await revogarSessao(rotacao.refreshToken)
+    return null
+  }
+
+  const perfis = usuario.perfis.map(
+    (item) => item.perfil.codigo,
+  )
+
+  const permissoes = [
+    ...new Set(
+      usuario.perfis.flatMap((item) =>
+        item.perfil.permissoes.map(
+          (perfilPermissao) =>
+            perfilPermissao.permissao.codigo,
+        ),
+      ),
+    ),
+  ]
+
+  const accessToken = await gerarAccessToken(
+    usuario.id,
+    perfis,
+    permissoes,
+  )
+
+  return {
+    accessToken,
+    refreshToken: rotacao.refreshToken,
     expiresIn: 900,
     usuario: {
       id: usuario.id,
@@ -198,9 +308,12 @@ export async function alterarSenha(
     } as const
   }
 
-  const novaSenhaHash = await argon2.hash(dados.novaSenha, {
-    type: argon2.argon2id,
-  })
+  const novaSenhaHash = await argon2.hash(
+    dados.novaSenha,
+    {
+      type: argon2.argon2id,
+    },
+  )
 
   await prisma.usuario.update({
     where: {

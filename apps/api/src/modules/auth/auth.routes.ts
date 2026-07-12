@@ -1,16 +1,22 @@
 import { Router } from 'express'
 import { rateLimit } from 'express-rate-limit'
 import {
+  refreshCookieClearOptions,
+  refreshCookieName,
+  refreshCookieOptions,
+} from '../../config/cookies.js'
+import { authenticate } from '../../middlewares/authenticate.js'
+import {
   alterarSenhaSchema,
   loginSchema,
 } from './auth.schema.js'
-import { authenticate } from '../../middlewares/authenticate.js'
 import {
   alterarSenha,
   obterUsuarioAtual,
   realizarLogin,
+  renovarLogin,
 } from './auth.service.js'
-
+import { revogarSessao } from './session.service.js'
 
 export const authRouter = Router()
 
@@ -35,7 +41,13 @@ authRouter.post('/login', loginLimiter, async (request, response) => {
   }
 
   try {
-    const resultado = await realizarLogin(resultadoValidacao.data)
+    const resultado = await realizarLogin(
+      resultadoValidacao.data,
+      {
+        ip: request.ip,
+        userAgent: request.get('user-agent'),
+      },
+    )
 
     if (!resultado) {
       return response.status(401).json({
@@ -43,7 +55,18 @@ authRouter.post('/login', loginLimiter, async (request, response) => {
       })
     }
 
-    return response.status(200).json(resultado)
+    const {
+      refreshToken,
+      ...resposta
+    } = resultado
+
+    response.cookie(
+      refreshCookieName,
+      refreshToken,
+      refreshCookieOptions,
+    )
+
+    return response.status(200).json(resposta)
   } catch (error) {
     console.error('Erro interno no login:', error)
 
@@ -51,6 +74,64 @@ authRouter.post('/login', loginLimiter, async (request, response) => {
       erro: 'Não foi possível realizar o login.',
     })
   }
+})
+
+authRouter.post('/refresh', async (request, response) => {
+  const refreshToken = request.cookies[
+    refreshCookieName
+  ] as string | undefined
+
+  if (!refreshToken) {
+    return response.status(401).json({
+      erro: 'Sessão não encontrada.',
+    })
+  }
+
+  const resultado = await renovarLogin(refreshToken, {
+    ip: request.ip,
+    userAgent: request.get('user-agent'),
+  })
+
+  if (!resultado) {
+    response.clearCookie(
+      refreshCookieName,
+      refreshCookieClearOptions,
+    )
+
+    return response.status(401).json({
+      erro: 'Sessão inválida ou expirada.',
+    })
+  }
+
+  const {
+    refreshToken: novoRefreshToken,
+    ...resposta
+  } = resultado
+
+  response.cookie(
+    refreshCookieName,
+    novoRefreshToken,
+    refreshCookieOptions,
+  )
+
+  return response.status(200).json(resposta)
+})
+
+authRouter.post('/logout', async (request, response) => {
+  const refreshToken = request.cookies[
+    refreshCookieName
+  ] as string | undefined
+
+  if (refreshToken) {
+    await revogarSessao(refreshToken)
+  }
+
+  response.clearCookie(
+    refreshCookieName,
+    refreshCookieClearOptions,
+  )
+
+  return response.status(204).send()
 })
 
 authRouter.get('/me', authenticate, async (request, response) => {

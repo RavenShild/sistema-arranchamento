@@ -20,3 +20,10 @@ export const refreshCookieOptions: CookieOptions = {
   path: '/auth',
   maxAge: refreshTokenDays * 24 * 60 * 60 * 1000,
 }
+
+export const refreshCookieClearOptions: CookieOptions = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: 'lax',
+  path: '/auth',
+}

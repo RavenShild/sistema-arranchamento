@@ -1,10 +1,7 @@
-import {
-  createHash,
-  randomBytes,
-} from 'node:crypto'
+import { createHash, randomBytes } from 'node:crypto'
 import { prisma } from '../../lib/prisma.js'
 
-type SessionMetadata = {
+export type SessionMetadata = {
   ip?: string | null
   userAgent?: string | null
 }
@@ -13,14 +10,21 @@ const refreshTokenDays = Number(
   process.env.REFRESH_TOKEN_DAYS ?? 7,
 )
 
+if (
+  !Number.isInteger(refreshTokenDays) ||
+  refreshTokenDays <= 0
+) {
+  throw new Error(
+    'REFRESH_TOKEN_DAYS deve ser um número inteiro positivo.',
+  )
+}
+
 function gerarRefreshToken() {
   return randomBytes(48).toString('base64url')
 }
 
 function gerarTokenHash(token: string) {
-  return createHash('sha256')
-    .update(token)
-    .digest('hex')
+  return createHash('sha256').update(token).digest('hex')
 }
 
 function calcularExpiracao() {
@@ -81,43 +85,40 @@ export async function rotacionarSessao(
   const novoRefreshToken = gerarRefreshToken()
   const novosDados = normalizarMetadata(metadata)
 
-  const rotacao = await prisma.$transaction(
-    async (transaction) => {
-      const revogacao = await transaction.sessao.updateMany({
-        where: {
-          id: sessaoAtual.id,
-          revokedAt: null,
-          expiresAt: {
-            gt: agora,
-          },
+  return prisma.$transaction(async (transaction) => {
+    const revogacao = await transaction.sessao.updateMany({
+      where: {
+        id: sessaoAtual.id,
+        revokedAt: null,
+        expiresAt: {
+          gt: agora,
         },
-        data: {
-          revokedAt: agora,
-        },
-      })
+      },
+      data: {
+        revokedAt: agora,
+      },
+    })
 
-      if (revogacao.count !== 1) {
-        return null
-      }
+    if (revogacao.count !== 1) {
+      return null
+    }
 
-      await transaction.sessao.create({
-        data: {
-          usuarioId: sessaoAtual.usuarioId,
-          refreshTokenHash:
-            gerarTokenHash(novoRefreshToken),
-          expiresAt: calcularExpiracao(),
-          ...novosDados,
-        },
-      })
-
-      return {
+    await transaction.sessao.create({
+      data: {
         usuarioId: sessaoAtual.usuarioId,
-        refreshToken: novoRefreshToken,
-      }
-    },
-  )
+        refreshTokenHash: gerarTokenHash(
+          novoRefreshToken,
+        ),
+        expiresAt: calcularExpiracao(),
+        ...novosDados,
+      },
+    })
 
-  return rotacao
+    return {
+      usuarioId: sessaoAtual.usuarioId,
+      refreshToken: novoRefreshToken,
+    }
+  })
 }
 
 export async function revogarSessao(
