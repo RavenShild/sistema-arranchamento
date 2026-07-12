@@ -1,7 +1,14 @@
+import {
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router'
 import './App.css'
 import { useAuth } from './auth/auth.context'
 import { DashboardPage } from './pages/DashboardPage'
 import { LoginPage } from './pages/LoginPage'
+import { SubunidadesPage } from './pages/SubunidadesPage'
+import { ProtectedRoute } from './routes/ProtectedRoute'
 
 function App() {
   const { usuario, carregando } = useAuth()
@@ -15,7 +22,35 @@ function App() {
     )
   }
 
-  return usuario ? <DashboardPage /> : <LoginPage />
+  return (
+    <Routes>
+      <Route
+        path="/login"
+        element={
+          usuario
+            ? <Navigate to="/" replace />
+            : <LoginPage />
+        }
+      />
+
+      <Route element={<ProtectedRoute />}>
+        <Route path="/" element={<DashboardPage />} />
+
+        <Route
+          element={
+            <ProtectedRoute permissao="militar:gerenciar" />
+          }
+        >
+          <Route
+            path="/admin/subunidades"
+            element={<SubunidadesPage />}
+          />
+        </Route>
+      </Route>
+
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  )
 }
 
 export default App

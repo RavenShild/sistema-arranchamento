@@ -206,3 +206,39 @@
     transform: rotate(360deg);
   }
 }
+
+.module-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.module-card p {
+  margin-bottom: 0;
+  color: #68716a;
+}
+
+.primary-link,
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.primary-link {
+  padding: 11px 18px;
+  border-radius: 9px;
+  color: #ffffff;
+  background: #294f32;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .module-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

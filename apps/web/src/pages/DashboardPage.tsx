@@ -1,4 +1,5 @@
 import { useAuth } from '../auth/auth.context'
+import { Link } from 'react-router'
 
 export function DashboardPage() {
   const { usuario, logout } = useAuth()
@@ -51,6 +52,25 @@ export function DashboardPage() {
           </div>
         </dl>
       </section>
+          {usuario.permissoes.includes('militar:gerenciar') && (
+      <section className="user-card module-card">
+        <div>
+          <p className="eyebrow">Administração</p>
+          <h2>Subunidades</h2>
+          <p>
+            Cadastre e gerencie as subunidades da OM.
+          </p>
+        </div>
+
+        <Link
+          className="primary-link"
+          to="/admin/subunidades"
+        >
+          Acessar
+        </Link>
+      </section>
+    )}
     </main>
+
   )
 }
