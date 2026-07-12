@@ -2,6 +2,7 @@ import cors from 'cors'
 import express from 'express'
 import helmet from 'helmet'
 import { prisma } from './lib/prisma.js'
+import { authRouter } from './modules/auth/auth.routes.js'
 
 export const app = express()
 
@@ -17,6 +18,7 @@ app.use(
 )
 
 app.use(express.json({ limit: '1mb' }))
+app.use('/auth', authRouter)
 
 app.get('/health/database', async (_request, response) => {
   try {
