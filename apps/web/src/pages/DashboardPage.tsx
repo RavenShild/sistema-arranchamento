@@ -1,4 +1,4 @@
-import { useAuth } from '../auth/AuthContext'
+import { useAuth } from '../auth/auth.context'
 
 export function DashboardPage() {
   const { usuario, logout } = useAuth()
@@ -15,7 +15,7 @@ export function DashboardPage() {
           <h1>Olá, {usuario.postoGraduacao} {usuario.nomeGuerra}</h1>
         </div>
 
-        <button type="button" className="secondary" onClick={logout}>
+        <button type="button" className="secondary" onClick={() => void logout()}>
           Sair
         </button>
       </header>
