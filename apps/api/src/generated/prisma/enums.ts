@@ -19,6 +19,24 @@ export const SituacaoMilitar = {
 export type SituacaoMilitar = (typeof SituacaoMilitar)[keyof typeof SituacaoMilitar]
 
 
+export const TipoRefeicao = {
+  CAFE: 'CAFE',
+  ALMOCO: 'ALMOCO',
+  JANTA: 'JANTA',
+  CEIA: 'CEIA'
+} as const
+
+export type TipoRefeicao = (typeof TipoRefeicao)[keyof typeof TipoRefeicao]
+
+
+export const StatusPeriodoArranchamento = {
+  ABERTO: 'ABERTO',
+  FECHADO: 'FECHADO'
+} as const
+
+export type StatusPeriodoArranchamento = (typeof StatusPeriodoArranchamento)[keyof typeof StatusPeriodoArranchamento]
+
+
 export const CodigoPerfil = {
   MILITAR: 'MILITAR',
   FURRIEL: 'FURRIEL',

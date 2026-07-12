@@ -225,6 +225,8 @@ export type SubunidadeWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Subunidade"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Subunidade"> | Date | string
   militares?: Prisma.MilitarListRelationFilter
+  arranchamentos?: Prisma.ArranchamentoListRelationFilter
+  escalasServico?: Prisma.EscalaServicoListRelationFilter
 }
 
 export type SubunidadeOrderByWithRelationInput = {
@@ -235,6 +237,8 @@ export type SubunidadeOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   militares?: Prisma.MilitarOrderByRelationAggregateInput
+  arranchamentos?: Prisma.ArranchamentoOrderByRelationAggregateInput
+  escalasServico?: Prisma.EscalaServicoOrderByRelationAggregateInput
   _relevance?: Prisma.SubunidadeOrderByRelevanceInput
 }
 
@@ -249,6 +253,8 @@ export type SubunidadeWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Subunidade"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Subunidade"> | Date | string
   militares?: Prisma.MilitarListRelationFilter
+  arranchamentos?: Prisma.ArranchamentoListRelationFilter
+  escalasServico?: Prisma.EscalaServicoListRelationFilter
 }, "id" | "sigla">
 
 export type SubunidadeOrderByWithAggregationInput = {
@@ -284,6 +290,8 @@ export type SubunidadeCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   militares?: Prisma.MilitarCreateNestedManyWithoutSubunidadeInput
+  arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutSubunidadeInput
+  escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutSubunidadeInput
 }
 
 export type SubunidadeUncheckedCreateInput = {
@@ -294,6 +302,8 @@ export type SubunidadeUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   militares?: Prisma.MilitarUncheckedCreateNestedManyWithoutSubunidadeInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutSubunidadeInput
+  escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutSubunidadeInput
 }
 
 export type SubunidadeUpdateInput = {
@@ -303,6 +313,8 @@ export type SubunidadeUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   militares?: Prisma.MilitarUpdateManyWithoutSubunidadeNestedInput
+  arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutSubunidadeNestedInput
+  escalasServico?: Prisma.EscalaServicoUpdateManyWithoutSubunidadeNestedInput
 }
 
 export type SubunidadeUncheckedUpdateInput = {
@@ -313,6 +325,8 @@ export type SubunidadeUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   militares?: Prisma.MilitarUncheckedUpdateManyWithoutSubunidadeNestedInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutSubunidadeNestedInput
+  escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutSubunidadeNestedInput
 }
 
 export type SubunidadeCreateManyInput = {
@@ -421,12 +435,42 @@ export type SubunidadeUpdateOneRequiredWithoutMilitaresNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SubunidadeUpdateToOneWithWhereWithoutMilitaresInput, Prisma.SubunidadeUpdateWithoutMilitaresInput>, Prisma.SubunidadeUncheckedUpdateWithoutMilitaresInput>
 }
 
+export type SubunidadeCreateNestedOneWithoutArranchamentosInput = {
+  create?: Prisma.XOR<Prisma.SubunidadeCreateWithoutArranchamentosInput, Prisma.SubunidadeUncheckedCreateWithoutArranchamentosInput>
+  connectOrCreate?: Prisma.SubunidadeCreateOrConnectWithoutArranchamentosInput
+  connect?: Prisma.SubunidadeWhereUniqueInput
+}
+
+export type SubunidadeUpdateOneRequiredWithoutArranchamentosNestedInput = {
+  create?: Prisma.XOR<Prisma.SubunidadeCreateWithoutArranchamentosInput, Prisma.SubunidadeUncheckedCreateWithoutArranchamentosInput>
+  connectOrCreate?: Prisma.SubunidadeCreateOrConnectWithoutArranchamentosInput
+  upsert?: Prisma.SubunidadeUpsertWithoutArranchamentosInput
+  connect?: Prisma.SubunidadeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SubunidadeUpdateToOneWithWhereWithoutArranchamentosInput, Prisma.SubunidadeUpdateWithoutArranchamentosInput>, Prisma.SubunidadeUncheckedUpdateWithoutArranchamentosInput>
+}
+
+export type SubunidadeCreateNestedOneWithoutEscalasServicoInput = {
+  create?: Prisma.XOR<Prisma.SubunidadeCreateWithoutEscalasServicoInput, Prisma.SubunidadeUncheckedCreateWithoutEscalasServicoInput>
+  connectOrCreate?: Prisma.SubunidadeCreateOrConnectWithoutEscalasServicoInput
+  connect?: Prisma.SubunidadeWhereUniqueInput
+}
+
+export type SubunidadeUpdateOneRequiredWithoutEscalasServicoNestedInput = {
+  create?: Prisma.XOR<Prisma.SubunidadeCreateWithoutEscalasServicoInput, Prisma.SubunidadeUncheckedCreateWithoutEscalasServicoInput>
+  connectOrCreate?: Prisma.SubunidadeCreateOrConnectWithoutEscalasServicoInput
+  upsert?: Prisma.SubunidadeUpsertWithoutEscalasServicoInput
+  connect?: Prisma.SubunidadeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SubunidadeUpdateToOneWithWhereWithoutEscalasServicoInput, Prisma.SubunidadeUpdateWithoutEscalasServicoInput>, Prisma.SubunidadeUncheckedUpdateWithoutEscalasServicoInput>
+}
+
 export type SubunidadeCreateWithoutMilitaresInput = {
   sigla: string
   nome: string
   ativa?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutSubunidadeInput
+  escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutSubunidadeInput
 }
 
 export type SubunidadeUncheckedCreateWithoutMilitaresInput = {
@@ -436,6 +480,8 @@ export type SubunidadeUncheckedCreateWithoutMilitaresInput = {
   ativa?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutSubunidadeInput
+  escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutSubunidadeInput
 }
 
 export type SubunidadeCreateOrConnectWithoutMilitaresInput = {
@@ -460,6 +506,8 @@ export type SubunidadeUpdateWithoutMilitaresInput = {
   ativa?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutSubunidadeNestedInput
+  escalasServico?: Prisma.EscalaServicoUpdateManyWithoutSubunidadeNestedInput
 }
 
 export type SubunidadeUncheckedUpdateWithoutMilitaresInput = {
@@ -469,6 +517,124 @@ export type SubunidadeUncheckedUpdateWithoutMilitaresInput = {
   ativa?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutSubunidadeNestedInput
+  escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutSubunidadeNestedInput
+}
+
+export type SubunidadeCreateWithoutArranchamentosInput = {
+  sigla: string
+  nome: string
+  ativa?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  militares?: Prisma.MilitarCreateNestedManyWithoutSubunidadeInput
+  escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutSubunidadeInput
+}
+
+export type SubunidadeUncheckedCreateWithoutArranchamentosInput = {
+  id?: number
+  sigla: string
+  nome: string
+  ativa?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  militares?: Prisma.MilitarUncheckedCreateNestedManyWithoutSubunidadeInput
+  escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutSubunidadeInput
+}
+
+export type SubunidadeCreateOrConnectWithoutArranchamentosInput = {
+  where: Prisma.SubunidadeWhereUniqueInput
+  create: Prisma.XOR<Prisma.SubunidadeCreateWithoutArranchamentosInput, Prisma.SubunidadeUncheckedCreateWithoutArranchamentosInput>
+}
+
+export type SubunidadeUpsertWithoutArranchamentosInput = {
+  update: Prisma.XOR<Prisma.SubunidadeUpdateWithoutArranchamentosInput, Prisma.SubunidadeUncheckedUpdateWithoutArranchamentosInput>
+  create: Prisma.XOR<Prisma.SubunidadeCreateWithoutArranchamentosInput, Prisma.SubunidadeUncheckedCreateWithoutArranchamentosInput>
+  where?: Prisma.SubunidadeWhereInput
+}
+
+export type SubunidadeUpdateToOneWithWhereWithoutArranchamentosInput = {
+  where?: Prisma.SubunidadeWhereInput
+  data: Prisma.XOR<Prisma.SubunidadeUpdateWithoutArranchamentosInput, Prisma.SubunidadeUncheckedUpdateWithoutArranchamentosInput>
+}
+
+export type SubunidadeUpdateWithoutArranchamentosInput = {
+  sigla?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  ativa?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  militares?: Prisma.MilitarUpdateManyWithoutSubunidadeNestedInput
+  escalasServico?: Prisma.EscalaServicoUpdateManyWithoutSubunidadeNestedInput
+}
+
+export type SubunidadeUncheckedUpdateWithoutArranchamentosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  sigla?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  ativa?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  militares?: Prisma.MilitarUncheckedUpdateManyWithoutSubunidadeNestedInput
+  escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutSubunidadeNestedInput
+}
+
+export type SubunidadeCreateWithoutEscalasServicoInput = {
+  sigla: string
+  nome: string
+  ativa?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  militares?: Prisma.MilitarCreateNestedManyWithoutSubunidadeInput
+  arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutSubunidadeInput
+}
+
+export type SubunidadeUncheckedCreateWithoutEscalasServicoInput = {
+  id?: number
+  sigla: string
+  nome: string
+  ativa?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  militares?: Prisma.MilitarUncheckedCreateNestedManyWithoutSubunidadeInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutSubunidadeInput
+}
+
+export type SubunidadeCreateOrConnectWithoutEscalasServicoInput = {
+  where: Prisma.SubunidadeWhereUniqueInput
+  create: Prisma.XOR<Prisma.SubunidadeCreateWithoutEscalasServicoInput, Prisma.SubunidadeUncheckedCreateWithoutEscalasServicoInput>
+}
+
+export type SubunidadeUpsertWithoutEscalasServicoInput = {
+  update: Prisma.XOR<Prisma.SubunidadeUpdateWithoutEscalasServicoInput, Prisma.SubunidadeUncheckedUpdateWithoutEscalasServicoInput>
+  create: Prisma.XOR<Prisma.SubunidadeCreateWithoutEscalasServicoInput, Prisma.SubunidadeUncheckedCreateWithoutEscalasServicoInput>
+  where?: Prisma.SubunidadeWhereInput
+}
+
+export type SubunidadeUpdateToOneWithWhereWithoutEscalasServicoInput = {
+  where?: Prisma.SubunidadeWhereInput
+  data: Prisma.XOR<Prisma.SubunidadeUpdateWithoutEscalasServicoInput, Prisma.SubunidadeUncheckedUpdateWithoutEscalasServicoInput>
+}
+
+export type SubunidadeUpdateWithoutEscalasServicoInput = {
+  sigla?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  ativa?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  militares?: Prisma.MilitarUpdateManyWithoutSubunidadeNestedInput
+  arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutSubunidadeNestedInput
+}
+
+export type SubunidadeUncheckedUpdateWithoutEscalasServicoInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  sigla?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  ativa?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  militares?: Prisma.MilitarUncheckedUpdateManyWithoutSubunidadeNestedInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutSubunidadeNestedInput
 }
 
 
@@ -478,10 +644,14 @@ export type SubunidadeUncheckedUpdateWithoutMilitaresInput = {
 
 export type SubunidadeCountOutputType = {
   militares: number
+  arranchamentos: number
+  escalasServico: number
 }
 
 export type SubunidadeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   militares?: boolean | SubunidadeCountOutputTypeCountMilitaresArgs
+  arranchamentos?: boolean | SubunidadeCountOutputTypeCountArranchamentosArgs
+  escalasServico?: boolean | SubunidadeCountOutputTypeCountEscalasServicoArgs
 }
 
 /**
@@ -501,6 +671,20 @@ export type SubunidadeCountOutputTypeCountMilitaresArgs<ExtArgs extends runtime.
   where?: Prisma.MilitarWhereInput
 }
 
+/**
+ * SubunidadeCountOutputType without action
+ */
+export type SubunidadeCountOutputTypeCountArranchamentosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ArranchamentoWhereInput
+}
+
+/**
+ * SubunidadeCountOutputType without action
+ */
+export type SubunidadeCountOutputTypeCountEscalasServicoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EscalaServicoWhereInput
+}
+
 
 export type SubunidadeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -510,6 +694,8 @@ export type SubunidadeSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   createdAt?: boolean
   updatedAt?: boolean
   militares?: boolean | Prisma.Subunidade$militaresArgs<ExtArgs>
+  arranchamentos?: boolean | Prisma.Subunidade$arranchamentosArgs<ExtArgs>
+  escalasServico?: boolean | Prisma.Subunidade$escalasServicoArgs<ExtArgs>
   _count?: boolean | Prisma.SubunidadeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["subunidade"]>
 
@@ -527,6 +713,8 @@ export type SubunidadeSelectScalar = {
 export type SubunidadeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "sigla" | "nome" | "ativa" | "createdAt" | "updatedAt", ExtArgs["result"]["subunidade"]>
 export type SubunidadeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   militares?: boolean | Prisma.Subunidade$militaresArgs<ExtArgs>
+  arranchamentos?: boolean | Prisma.Subunidade$arranchamentosArgs<ExtArgs>
+  escalasServico?: boolean | Prisma.Subunidade$escalasServicoArgs<ExtArgs>
   _count?: boolean | Prisma.SubunidadeCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -534,6 +722,8 @@ export type $SubunidadePayload<ExtArgs extends runtime.Types.Extensions.Internal
   name: "Subunidade"
   objects: {
     militares: Prisma.$MilitarPayload<ExtArgs>[]
+    arranchamentos: Prisma.$ArranchamentoPayload<ExtArgs>[]
+    escalasServico: Prisma.$EscalaServicoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -883,6 +1073,8 @@ readonly fields: SubunidadeFieldRefs;
 export interface Prisma__SubunidadeClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   militares<T extends Prisma.Subunidade$militaresArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Subunidade$militaresArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MilitarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  arranchamentos<T extends Prisma.Subunidade$arranchamentosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Subunidade$arranchamentosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArranchamentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  escalasServico<T extends Prisma.Subunidade$escalasServicoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Subunidade$escalasServicoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EscalaServicoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1287,6 +1479,54 @@ export type Subunidade$militaresArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.MilitarScalarFieldEnum | Prisma.MilitarScalarFieldEnum[]
+}
+
+/**
+ * Subunidade.arranchamentos
+ */
+export type Subunidade$arranchamentosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Arranchamento
+   */
+  select?: Prisma.ArranchamentoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Arranchamento
+   */
+  omit?: Prisma.ArranchamentoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ArranchamentoInclude<ExtArgs> | null
+  where?: Prisma.ArranchamentoWhereInput
+  orderBy?: Prisma.ArranchamentoOrderByWithRelationInput | Prisma.ArranchamentoOrderByWithRelationInput[]
+  cursor?: Prisma.ArranchamentoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ArranchamentoScalarFieldEnum | Prisma.ArranchamentoScalarFieldEnum[]
+}
+
+/**
+ * Subunidade.escalasServico
+ */
+export type Subunidade$escalasServicoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EscalaServico
+   */
+  select?: Prisma.EscalaServicoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EscalaServico
+   */
+  omit?: Prisma.EscalaServicoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EscalaServicoInclude<ExtArgs> | null
+  where?: Prisma.EscalaServicoWhereInput
+  orderBy?: Prisma.EscalaServicoOrderByWithRelationInput | Prisma.EscalaServicoOrderByWithRelationInput[]
+  cursor?: Prisma.EscalaServicoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EscalaServicoScalarFieldEnum | Prisma.EscalaServicoScalarFieldEnum[]
 }
 
 /**

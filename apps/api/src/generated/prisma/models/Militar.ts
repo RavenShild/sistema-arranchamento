@@ -254,6 +254,9 @@ export type MilitarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Militar"> | Date | string
   subunidade?: Prisma.XOR<Prisma.SubunidadeScalarRelationFilter, Prisma.SubunidadeWhereInput>
   usuario?: Prisma.XOR<Prisma.UsuarioNullableScalarRelationFilter, Prisma.UsuarioWhereInput> | null
+  ferias?: Prisma.FeriasMilitarListRelationFilter
+  arranchamentos?: Prisma.ArranchamentoListRelationFilter
+  escalasServico?: Prisma.EscalaServicoListRelationFilter
 }
 
 export type MilitarOrderByWithRelationInput = {
@@ -268,6 +271,9 @@ export type MilitarOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   subunidade?: Prisma.SubunidadeOrderByWithRelationInput
   usuario?: Prisma.UsuarioOrderByWithRelationInput
+  ferias?: Prisma.FeriasMilitarOrderByRelationAggregateInput
+  arranchamentos?: Prisma.ArranchamentoOrderByRelationAggregateInput
+  escalasServico?: Prisma.EscalaServicoOrderByRelationAggregateInput
   _relevance?: Prisma.MilitarOrderByRelevanceInput
 }
 
@@ -286,6 +292,9 @@ export type MilitarWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Militar"> | Date | string
   subunidade?: Prisma.XOR<Prisma.SubunidadeScalarRelationFilter, Prisma.SubunidadeWhereInput>
   usuario?: Prisma.XOR<Prisma.UsuarioNullableScalarRelationFilter, Prisma.UsuarioWhereInput> | null
+  ferias?: Prisma.FeriasMilitarListRelationFilter
+  arranchamentos?: Prisma.ArranchamentoListRelationFilter
+  escalasServico?: Prisma.EscalaServicoListRelationFilter
 }, "id" | "identidadeMilitar">
 
 export type MilitarOrderByWithAggregationInput = {
@@ -330,6 +339,9 @@ export type MilitarCreateInput = {
   updatedAt?: Date | string
   subunidade: Prisma.SubunidadeCreateNestedOneWithoutMilitaresInput
   usuario?: Prisma.UsuarioCreateNestedOneWithoutMilitarInput
+  ferias?: Prisma.FeriasMilitarCreateNestedManyWithoutMilitarInput
+  arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutMilitarInput
+  escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutMilitarInput
 }
 
 export type MilitarUncheckedCreateInput = {
@@ -343,6 +355,9 @@ export type MilitarUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   usuario?: Prisma.UsuarioUncheckedCreateNestedOneWithoutMilitarInput
+  ferias?: Prisma.FeriasMilitarUncheckedCreateNestedManyWithoutMilitarInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutMilitarInput
+  escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutMilitarInput
 }
 
 export type MilitarUpdateInput = {
@@ -355,6 +370,9 @@ export type MilitarUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   subunidade?: Prisma.SubunidadeUpdateOneRequiredWithoutMilitaresNestedInput
   usuario?: Prisma.UsuarioUpdateOneWithoutMilitarNestedInput
+  ferias?: Prisma.FeriasMilitarUpdateManyWithoutMilitarNestedInput
+  arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutMilitarNestedInput
+  escalasServico?: Prisma.EscalaServicoUpdateManyWithoutMilitarNestedInput
 }
 
 export type MilitarUncheckedUpdateInput = {
@@ -368,6 +386,9 @@ export type MilitarUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUncheckedUpdateOneWithoutMilitarNestedInput
+  ferias?: Prisma.FeriasMilitarUncheckedUpdateManyWithoutMilitarNestedInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutMilitarNestedInput
+  escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutMilitarNestedInput
 }
 
 export type MilitarCreateManyInput = {
@@ -531,6 +552,48 @@ export type MilitarUpdateOneRequiredWithoutUsuarioNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MilitarUpdateToOneWithWhereWithoutUsuarioInput, Prisma.MilitarUpdateWithoutUsuarioInput>, Prisma.MilitarUncheckedUpdateWithoutUsuarioInput>
 }
 
+export type MilitarCreateNestedOneWithoutArranchamentosInput = {
+  create?: Prisma.XOR<Prisma.MilitarCreateWithoutArranchamentosInput, Prisma.MilitarUncheckedCreateWithoutArranchamentosInput>
+  connectOrCreate?: Prisma.MilitarCreateOrConnectWithoutArranchamentosInput
+  connect?: Prisma.MilitarWhereUniqueInput
+}
+
+export type MilitarUpdateOneRequiredWithoutArranchamentosNestedInput = {
+  create?: Prisma.XOR<Prisma.MilitarCreateWithoutArranchamentosInput, Prisma.MilitarUncheckedCreateWithoutArranchamentosInput>
+  connectOrCreate?: Prisma.MilitarCreateOrConnectWithoutArranchamentosInput
+  upsert?: Prisma.MilitarUpsertWithoutArranchamentosInput
+  connect?: Prisma.MilitarWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MilitarUpdateToOneWithWhereWithoutArranchamentosInput, Prisma.MilitarUpdateWithoutArranchamentosInput>, Prisma.MilitarUncheckedUpdateWithoutArranchamentosInput>
+}
+
+export type MilitarCreateNestedOneWithoutEscalasServicoInput = {
+  create?: Prisma.XOR<Prisma.MilitarCreateWithoutEscalasServicoInput, Prisma.MilitarUncheckedCreateWithoutEscalasServicoInput>
+  connectOrCreate?: Prisma.MilitarCreateOrConnectWithoutEscalasServicoInput
+  connect?: Prisma.MilitarWhereUniqueInput
+}
+
+export type MilitarUpdateOneRequiredWithoutEscalasServicoNestedInput = {
+  create?: Prisma.XOR<Prisma.MilitarCreateWithoutEscalasServicoInput, Prisma.MilitarUncheckedCreateWithoutEscalasServicoInput>
+  connectOrCreate?: Prisma.MilitarCreateOrConnectWithoutEscalasServicoInput
+  upsert?: Prisma.MilitarUpsertWithoutEscalasServicoInput
+  connect?: Prisma.MilitarWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MilitarUpdateToOneWithWhereWithoutEscalasServicoInput, Prisma.MilitarUpdateWithoutEscalasServicoInput>, Prisma.MilitarUncheckedUpdateWithoutEscalasServicoInput>
+}
+
+export type MilitarCreateNestedOneWithoutFeriasInput = {
+  create?: Prisma.XOR<Prisma.MilitarCreateWithoutFeriasInput, Prisma.MilitarUncheckedCreateWithoutFeriasInput>
+  connectOrCreate?: Prisma.MilitarCreateOrConnectWithoutFeriasInput
+  connect?: Prisma.MilitarWhereUniqueInput
+}
+
+export type MilitarUpdateOneRequiredWithoutFeriasNestedInput = {
+  create?: Prisma.XOR<Prisma.MilitarCreateWithoutFeriasInput, Prisma.MilitarUncheckedCreateWithoutFeriasInput>
+  connectOrCreate?: Prisma.MilitarCreateOrConnectWithoutFeriasInput
+  upsert?: Prisma.MilitarUpsertWithoutFeriasInput
+  connect?: Prisma.MilitarWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MilitarUpdateToOneWithWhereWithoutFeriasInput, Prisma.MilitarUpdateWithoutFeriasInput>, Prisma.MilitarUncheckedUpdateWithoutFeriasInput>
+}
+
 export type MilitarCreateWithoutSubunidadeInput = {
   identidadeMilitar: string
   nomeCompleto: string
@@ -540,6 +603,9 @@ export type MilitarCreateWithoutSubunidadeInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   usuario?: Prisma.UsuarioCreateNestedOneWithoutMilitarInput
+  ferias?: Prisma.FeriasMilitarCreateNestedManyWithoutMilitarInput
+  arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutMilitarInput
+  escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutMilitarInput
 }
 
 export type MilitarUncheckedCreateWithoutSubunidadeInput = {
@@ -552,6 +618,9 @@ export type MilitarUncheckedCreateWithoutSubunidadeInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   usuario?: Prisma.UsuarioUncheckedCreateNestedOneWithoutMilitarInput
+  ferias?: Prisma.FeriasMilitarUncheckedCreateNestedManyWithoutMilitarInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutMilitarInput
+  escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutMilitarInput
 }
 
 export type MilitarCreateOrConnectWithoutSubunidadeInput = {
@@ -604,6 +673,9 @@ export type MilitarCreateWithoutUsuarioInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   subunidade: Prisma.SubunidadeCreateNestedOneWithoutMilitaresInput
+  ferias?: Prisma.FeriasMilitarCreateNestedManyWithoutMilitarInput
+  arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutMilitarInput
+  escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutMilitarInput
 }
 
 export type MilitarUncheckedCreateWithoutUsuarioInput = {
@@ -616,6 +688,9 @@ export type MilitarUncheckedCreateWithoutUsuarioInput = {
   subunidadeId: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  ferias?: Prisma.FeriasMilitarUncheckedCreateNestedManyWithoutMilitarInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutMilitarInput
+  escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutMilitarInput
 }
 
 export type MilitarCreateOrConnectWithoutUsuarioInput = {
@@ -643,6 +718,9 @@ export type MilitarUpdateWithoutUsuarioInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   subunidade?: Prisma.SubunidadeUpdateOneRequiredWithoutMilitaresNestedInput
+  ferias?: Prisma.FeriasMilitarUpdateManyWithoutMilitarNestedInput
+  arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutMilitarNestedInput
+  escalasServico?: Prisma.EscalaServicoUpdateManyWithoutMilitarNestedInput
 }
 
 export type MilitarUncheckedUpdateWithoutUsuarioInput = {
@@ -655,6 +733,231 @@ export type MilitarUncheckedUpdateWithoutUsuarioInput = {
   subunidadeId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  ferias?: Prisma.FeriasMilitarUncheckedUpdateManyWithoutMilitarNestedInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutMilitarNestedInput
+  escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutMilitarNestedInput
+}
+
+export type MilitarCreateWithoutArranchamentosInput = {
+  identidadeMilitar: string
+  nomeCompleto: string
+  nomeGuerra: string
+  postoGraduacao: string
+  situacao?: $Enums.SituacaoMilitar
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  subunidade: Prisma.SubunidadeCreateNestedOneWithoutMilitaresInput
+  usuario?: Prisma.UsuarioCreateNestedOneWithoutMilitarInput
+  ferias?: Prisma.FeriasMilitarCreateNestedManyWithoutMilitarInput
+  escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutMilitarInput
+}
+
+export type MilitarUncheckedCreateWithoutArranchamentosInput = {
+  id?: number
+  identidadeMilitar: string
+  nomeCompleto: string
+  nomeGuerra: string
+  postoGraduacao: string
+  situacao?: $Enums.SituacaoMilitar
+  subunidadeId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  usuario?: Prisma.UsuarioUncheckedCreateNestedOneWithoutMilitarInput
+  ferias?: Prisma.FeriasMilitarUncheckedCreateNestedManyWithoutMilitarInput
+  escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutMilitarInput
+}
+
+export type MilitarCreateOrConnectWithoutArranchamentosInput = {
+  where: Prisma.MilitarWhereUniqueInput
+  create: Prisma.XOR<Prisma.MilitarCreateWithoutArranchamentosInput, Prisma.MilitarUncheckedCreateWithoutArranchamentosInput>
+}
+
+export type MilitarUpsertWithoutArranchamentosInput = {
+  update: Prisma.XOR<Prisma.MilitarUpdateWithoutArranchamentosInput, Prisma.MilitarUncheckedUpdateWithoutArranchamentosInput>
+  create: Prisma.XOR<Prisma.MilitarCreateWithoutArranchamentosInput, Prisma.MilitarUncheckedCreateWithoutArranchamentosInput>
+  where?: Prisma.MilitarWhereInput
+}
+
+export type MilitarUpdateToOneWithWhereWithoutArranchamentosInput = {
+  where?: Prisma.MilitarWhereInput
+  data: Prisma.XOR<Prisma.MilitarUpdateWithoutArranchamentosInput, Prisma.MilitarUncheckedUpdateWithoutArranchamentosInput>
+}
+
+export type MilitarUpdateWithoutArranchamentosInput = {
+  identidadeMilitar?: Prisma.StringFieldUpdateOperationsInput | string
+  nomeCompleto?: Prisma.StringFieldUpdateOperationsInput | string
+  nomeGuerra?: Prisma.StringFieldUpdateOperationsInput | string
+  postoGraduacao?: Prisma.StringFieldUpdateOperationsInput | string
+  situacao?: Prisma.EnumSituacaoMilitarFieldUpdateOperationsInput | $Enums.SituacaoMilitar
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subunidade?: Prisma.SubunidadeUpdateOneRequiredWithoutMilitaresNestedInput
+  usuario?: Prisma.UsuarioUpdateOneWithoutMilitarNestedInput
+  ferias?: Prisma.FeriasMilitarUpdateManyWithoutMilitarNestedInput
+  escalasServico?: Prisma.EscalaServicoUpdateManyWithoutMilitarNestedInput
+}
+
+export type MilitarUncheckedUpdateWithoutArranchamentosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  identidadeMilitar?: Prisma.StringFieldUpdateOperationsInput | string
+  nomeCompleto?: Prisma.StringFieldUpdateOperationsInput | string
+  nomeGuerra?: Prisma.StringFieldUpdateOperationsInput | string
+  postoGraduacao?: Prisma.StringFieldUpdateOperationsInput | string
+  situacao?: Prisma.EnumSituacaoMilitarFieldUpdateOperationsInput | $Enums.SituacaoMilitar
+  subunidadeId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  usuario?: Prisma.UsuarioUncheckedUpdateOneWithoutMilitarNestedInput
+  ferias?: Prisma.FeriasMilitarUncheckedUpdateManyWithoutMilitarNestedInput
+  escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutMilitarNestedInput
+}
+
+export type MilitarCreateWithoutEscalasServicoInput = {
+  identidadeMilitar: string
+  nomeCompleto: string
+  nomeGuerra: string
+  postoGraduacao: string
+  situacao?: $Enums.SituacaoMilitar
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  subunidade: Prisma.SubunidadeCreateNestedOneWithoutMilitaresInput
+  usuario?: Prisma.UsuarioCreateNestedOneWithoutMilitarInput
+  ferias?: Prisma.FeriasMilitarCreateNestedManyWithoutMilitarInput
+  arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutMilitarInput
+}
+
+export type MilitarUncheckedCreateWithoutEscalasServicoInput = {
+  id?: number
+  identidadeMilitar: string
+  nomeCompleto: string
+  nomeGuerra: string
+  postoGraduacao: string
+  situacao?: $Enums.SituacaoMilitar
+  subunidadeId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  usuario?: Prisma.UsuarioUncheckedCreateNestedOneWithoutMilitarInput
+  ferias?: Prisma.FeriasMilitarUncheckedCreateNestedManyWithoutMilitarInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutMilitarInput
+}
+
+export type MilitarCreateOrConnectWithoutEscalasServicoInput = {
+  where: Prisma.MilitarWhereUniqueInput
+  create: Prisma.XOR<Prisma.MilitarCreateWithoutEscalasServicoInput, Prisma.MilitarUncheckedCreateWithoutEscalasServicoInput>
+}
+
+export type MilitarUpsertWithoutEscalasServicoInput = {
+  update: Prisma.XOR<Prisma.MilitarUpdateWithoutEscalasServicoInput, Prisma.MilitarUncheckedUpdateWithoutEscalasServicoInput>
+  create: Prisma.XOR<Prisma.MilitarCreateWithoutEscalasServicoInput, Prisma.MilitarUncheckedCreateWithoutEscalasServicoInput>
+  where?: Prisma.MilitarWhereInput
+}
+
+export type MilitarUpdateToOneWithWhereWithoutEscalasServicoInput = {
+  where?: Prisma.MilitarWhereInput
+  data: Prisma.XOR<Prisma.MilitarUpdateWithoutEscalasServicoInput, Prisma.MilitarUncheckedUpdateWithoutEscalasServicoInput>
+}
+
+export type MilitarUpdateWithoutEscalasServicoInput = {
+  identidadeMilitar?: Prisma.StringFieldUpdateOperationsInput | string
+  nomeCompleto?: Prisma.StringFieldUpdateOperationsInput | string
+  nomeGuerra?: Prisma.StringFieldUpdateOperationsInput | string
+  postoGraduacao?: Prisma.StringFieldUpdateOperationsInput | string
+  situacao?: Prisma.EnumSituacaoMilitarFieldUpdateOperationsInput | $Enums.SituacaoMilitar
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subunidade?: Prisma.SubunidadeUpdateOneRequiredWithoutMilitaresNestedInput
+  usuario?: Prisma.UsuarioUpdateOneWithoutMilitarNestedInput
+  ferias?: Prisma.FeriasMilitarUpdateManyWithoutMilitarNestedInput
+  arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutMilitarNestedInput
+}
+
+export type MilitarUncheckedUpdateWithoutEscalasServicoInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  identidadeMilitar?: Prisma.StringFieldUpdateOperationsInput | string
+  nomeCompleto?: Prisma.StringFieldUpdateOperationsInput | string
+  nomeGuerra?: Prisma.StringFieldUpdateOperationsInput | string
+  postoGraduacao?: Prisma.StringFieldUpdateOperationsInput | string
+  situacao?: Prisma.EnumSituacaoMilitarFieldUpdateOperationsInput | $Enums.SituacaoMilitar
+  subunidadeId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  usuario?: Prisma.UsuarioUncheckedUpdateOneWithoutMilitarNestedInput
+  ferias?: Prisma.FeriasMilitarUncheckedUpdateManyWithoutMilitarNestedInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutMilitarNestedInput
+}
+
+export type MilitarCreateWithoutFeriasInput = {
+  identidadeMilitar: string
+  nomeCompleto: string
+  nomeGuerra: string
+  postoGraduacao: string
+  situacao?: $Enums.SituacaoMilitar
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  subunidade: Prisma.SubunidadeCreateNestedOneWithoutMilitaresInput
+  usuario?: Prisma.UsuarioCreateNestedOneWithoutMilitarInput
+  arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutMilitarInput
+  escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutMilitarInput
+}
+
+export type MilitarUncheckedCreateWithoutFeriasInput = {
+  id?: number
+  identidadeMilitar: string
+  nomeCompleto: string
+  nomeGuerra: string
+  postoGraduacao: string
+  situacao?: $Enums.SituacaoMilitar
+  subunidadeId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  usuario?: Prisma.UsuarioUncheckedCreateNestedOneWithoutMilitarInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutMilitarInput
+  escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutMilitarInput
+}
+
+export type MilitarCreateOrConnectWithoutFeriasInput = {
+  where: Prisma.MilitarWhereUniqueInput
+  create: Prisma.XOR<Prisma.MilitarCreateWithoutFeriasInput, Prisma.MilitarUncheckedCreateWithoutFeriasInput>
+}
+
+export type MilitarUpsertWithoutFeriasInput = {
+  update: Prisma.XOR<Prisma.MilitarUpdateWithoutFeriasInput, Prisma.MilitarUncheckedUpdateWithoutFeriasInput>
+  create: Prisma.XOR<Prisma.MilitarCreateWithoutFeriasInput, Prisma.MilitarUncheckedCreateWithoutFeriasInput>
+  where?: Prisma.MilitarWhereInput
+}
+
+export type MilitarUpdateToOneWithWhereWithoutFeriasInput = {
+  where?: Prisma.MilitarWhereInput
+  data: Prisma.XOR<Prisma.MilitarUpdateWithoutFeriasInput, Prisma.MilitarUncheckedUpdateWithoutFeriasInput>
+}
+
+export type MilitarUpdateWithoutFeriasInput = {
+  identidadeMilitar?: Prisma.StringFieldUpdateOperationsInput | string
+  nomeCompleto?: Prisma.StringFieldUpdateOperationsInput | string
+  nomeGuerra?: Prisma.StringFieldUpdateOperationsInput | string
+  postoGraduacao?: Prisma.StringFieldUpdateOperationsInput | string
+  situacao?: Prisma.EnumSituacaoMilitarFieldUpdateOperationsInput | $Enums.SituacaoMilitar
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subunidade?: Prisma.SubunidadeUpdateOneRequiredWithoutMilitaresNestedInput
+  usuario?: Prisma.UsuarioUpdateOneWithoutMilitarNestedInput
+  arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutMilitarNestedInput
+  escalasServico?: Prisma.EscalaServicoUpdateManyWithoutMilitarNestedInput
+}
+
+export type MilitarUncheckedUpdateWithoutFeriasInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  identidadeMilitar?: Prisma.StringFieldUpdateOperationsInput | string
+  nomeCompleto?: Prisma.StringFieldUpdateOperationsInput | string
+  nomeGuerra?: Prisma.StringFieldUpdateOperationsInput | string
+  postoGraduacao?: Prisma.StringFieldUpdateOperationsInput | string
+  situacao?: Prisma.EnumSituacaoMilitarFieldUpdateOperationsInput | $Enums.SituacaoMilitar
+  subunidadeId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  usuario?: Prisma.UsuarioUncheckedUpdateOneWithoutMilitarNestedInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutMilitarNestedInput
+  escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutMilitarNestedInput
 }
 
 export type MilitarCreateManySubunidadeInput = {
@@ -677,6 +980,9 @@ export type MilitarUpdateWithoutSubunidadeInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneWithoutMilitarNestedInput
+  ferias?: Prisma.FeriasMilitarUpdateManyWithoutMilitarNestedInput
+  arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutMilitarNestedInput
+  escalasServico?: Prisma.EscalaServicoUpdateManyWithoutMilitarNestedInput
 }
 
 export type MilitarUncheckedUpdateWithoutSubunidadeInput = {
@@ -689,6 +995,9 @@ export type MilitarUncheckedUpdateWithoutSubunidadeInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUncheckedUpdateOneWithoutMilitarNestedInput
+  ferias?: Prisma.FeriasMilitarUncheckedUpdateManyWithoutMilitarNestedInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutMilitarNestedInput
+  escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutMilitarNestedInput
 }
 
 export type MilitarUncheckedUpdateManyWithoutSubunidadeInput = {
@@ -703,6 +1012,53 @@ export type MilitarUncheckedUpdateManyWithoutSubunidadeInput = {
 }
 
 
+/**
+ * Count Type MilitarCountOutputType
+ */
+
+export type MilitarCountOutputType = {
+  ferias: number
+  arranchamentos: number
+  escalasServico: number
+}
+
+export type MilitarCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  ferias?: boolean | MilitarCountOutputTypeCountFeriasArgs
+  arranchamentos?: boolean | MilitarCountOutputTypeCountArranchamentosArgs
+  escalasServico?: boolean | MilitarCountOutputTypeCountEscalasServicoArgs
+}
+
+/**
+ * MilitarCountOutputType without action
+ */
+export type MilitarCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MilitarCountOutputType
+   */
+  select?: Prisma.MilitarCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * MilitarCountOutputType without action
+ */
+export type MilitarCountOutputTypeCountFeriasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FeriasMilitarWhereInput
+}
+
+/**
+ * MilitarCountOutputType without action
+ */
+export type MilitarCountOutputTypeCountArranchamentosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ArranchamentoWhereInput
+}
+
+/**
+ * MilitarCountOutputType without action
+ */
+export type MilitarCountOutputTypeCountEscalasServicoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EscalaServicoWhereInput
+}
+
 
 export type MilitarSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -716,6 +1072,10 @@ export type MilitarSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   updatedAt?: boolean
   subunidade?: boolean | Prisma.SubunidadeDefaultArgs<ExtArgs>
   usuario?: boolean | Prisma.Militar$usuarioArgs<ExtArgs>
+  ferias?: boolean | Prisma.Militar$feriasArgs<ExtArgs>
+  arranchamentos?: boolean | Prisma.Militar$arranchamentosArgs<ExtArgs>
+  escalasServico?: boolean | Prisma.Militar$escalasServicoArgs<ExtArgs>
+  _count?: boolean | Prisma.MilitarCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["militar"]>
 
 
@@ -736,6 +1096,10 @@ export type MilitarOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type MilitarInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   subunidade?: boolean | Prisma.SubunidadeDefaultArgs<ExtArgs>
   usuario?: boolean | Prisma.Militar$usuarioArgs<ExtArgs>
+  ferias?: boolean | Prisma.Militar$feriasArgs<ExtArgs>
+  arranchamentos?: boolean | Prisma.Militar$arranchamentosArgs<ExtArgs>
+  escalasServico?: boolean | Prisma.Militar$escalasServicoArgs<ExtArgs>
+  _count?: boolean | Prisma.MilitarCountOutputTypeDefaultArgs<ExtArgs>
 }
 
 export type $MilitarPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -743,6 +1107,9 @@ export type $MilitarPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   objects: {
     subunidade: Prisma.$SubunidadePayload<ExtArgs>
     usuario: Prisma.$UsuarioPayload<ExtArgs> | null
+    ferias: Prisma.$FeriasMilitarPayload<ExtArgs>[]
+    arranchamentos: Prisma.$ArranchamentoPayload<ExtArgs>[]
+    escalasServico: Prisma.$EscalaServicoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1096,6 +1463,9 @@ export interface Prisma__MilitarClient<T, Null = never, ExtArgs extends runtime.
   readonly [Symbol.toStringTag]: "PrismaPromise"
   subunidade<T extends Prisma.SubunidadeDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SubunidadeDefaultArgs<ExtArgs>>): Prisma.Prisma__SubunidadeClient<runtime.Types.Result.GetResult<Prisma.$SubunidadePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   usuario<T extends Prisma.Militar$usuarioArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Militar$usuarioArgs<ExtArgs>>): Prisma.Prisma__UsuarioClient<runtime.Types.Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  ferias<T extends Prisma.Militar$feriasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Militar$feriasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FeriasMilitarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  arranchamentos<T extends Prisma.Militar$arranchamentosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Militar$arranchamentosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArranchamentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  escalasServico<T extends Prisma.Militar$escalasServicoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Militar$escalasServicoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EscalaServicoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1498,6 +1868,78 @@ export type Militar$usuarioArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   include?: Prisma.UsuarioInclude<ExtArgs> | null
   where?: Prisma.UsuarioWhereInput
+}
+
+/**
+ * Militar.ferias
+ */
+export type Militar$feriasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FeriasMilitar
+   */
+  select?: Prisma.FeriasMilitarSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the FeriasMilitar
+   */
+  omit?: Prisma.FeriasMilitarOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeriasMilitarInclude<ExtArgs> | null
+  where?: Prisma.FeriasMilitarWhereInput
+  orderBy?: Prisma.FeriasMilitarOrderByWithRelationInput | Prisma.FeriasMilitarOrderByWithRelationInput[]
+  cursor?: Prisma.FeriasMilitarWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FeriasMilitarScalarFieldEnum | Prisma.FeriasMilitarScalarFieldEnum[]
+}
+
+/**
+ * Militar.arranchamentos
+ */
+export type Militar$arranchamentosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Arranchamento
+   */
+  select?: Prisma.ArranchamentoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Arranchamento
+   */
+  omit?: Prisma.ArranchamentoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ArranchamentoInclude<ExtArgs> | null
+  where?: Prisma.ArranchamentoWhereInput
+  orderBy?: Prisma.ArranchamentoOrderByWithRelationInput | Prisma.ArranchamentoOrderByWithRelationInput[]
+  cursor?: Prisma.ArranchamentoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ArranchamentoScalarFieldEnum | Prisma.ArranchamentoScalarFieldEnum[]
+}
+
+/**
+ * Militar.escalasServico
+ */
+export type Militar$escalasServicoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EscalaServico
+   */
+  select?: Prisma.EscalaServicoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EscalaServico
+   */
+  omit?: Prisma.EscalaServicoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EscalaServicoInclude<ExtArgs> | null
+  where?: Prisma.EscalaServicoWhereInput
+  orderBy?: Prisma.EscalaServicoOrderByWithRelationInput | Prisma.EscalaServicoOrderByWithRelationInput[]
+  cursor?: Prisma.EscalaServicoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EscalaServicoScalarFieldEnum | Prisma.EscalaServicoScalarFieldEnum[]
 }
 
 /**

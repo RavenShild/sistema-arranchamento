@@ -58,7 +58,12 @@ export const ModelName = {
   Permissao: 'Permissao',
   UsuarioPerfil: 'UsuarioPerfil',
   PerfilPermissao: 'PerfilPermissao',
-  Sessao: 'Sessao'
+  Sessao: 'Sessao',
+  PeriodoArranchamento: 'PeriodoArranchamento',
+  Arranchamento: 'Arranchamento',
+  EscalaServico: 'EscalaServico',
+  FeriasMilitar: 'FeriasMilitar',
+  Feriado: 'Feriado'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -168,6 +173,71 @@ export const SessaoScalarFieldEnum = {
 export type SessaoScalarFieldEnum = (typeof SessaoScalarFieldEnum)[keyof typeof SessaoScalarFieldEnum]
 
 
+export const PeriodoArranchamentoScalarFieldEnum = {
+  id: 'id',
+  dataInicio: 'dataInicio',
+  dataFim: 'dataFim',
+  status: 'status',
+  abertoPorId: 'abertoPorId',
+  fechadoPorId: 'fechadoPorId',
+  abertoEm: 'abertoEm',
+  fechadoEm: 'fechadoEm'
+} as const
+
+export type PeriodoArranchamentoScalarFieldEnum = (typeof PeriodoArranchamentoScalarFieldEnum)[keyof typeof PeriodoArranchamentoScalarFieldEnum]
+
+
+export const ArranchamentoScalarFieldEnum = {
+  id: 'id',
+  periodoId: 'periodoId',
+  militarId: 'militarId',
+  subunidadeId: 'subunidadeId',
+  data: 'data',
+  refeicao: 'refeicao',
+  createdAt: 'createdAt'
+} as const
+
+export type ArranchamentoScalarFieldEnum = (typeof ArranchamentoScalarFieldEnum)[keyof typeof ArranchamentoScalarFieldEnum]
+
+
+export const EscalaServicoScalarFieldEnum = {
+  id: 'id',
+  periodoId: 'periodoId',
+  militarId: 'militarId',
+  subunidadeId: 'subunidadeId',
+  data: 'data',
+  cadastradoPorId: 'cadastradoPorId',
+  createdAt: 'createdAt'
+} as const
+
+export type EscalaServicoScalarFieldEnum = (typeof EscalaServicoScalarFieldEnum)[keyof typeof EscalaServicoScalarFieldEnum]
+
+
+export const FeriasMilitarScalarFieldEnum = {
+  id: 'id',
+  militarId: 'militarId',
+  dataInicio: 'dataInicio',
+  dataFim: 'dataFim',
+  laranjeira: 'laranjeira',
+  cadastradoPorId: 'cadastradoPorId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FeriasMilitarScalarFieldEnum = (typeof FeriasMilitarScalarFieldEnum)[keyof typeof FeriasMilitarScalarFieldEnum]
+
+
+export const FeriadoScalarFieldEnum = {
+  id: 'id',
+  data: 'data',
+  descricao: 'descricao',
+  cadastradoPorId: 'cadastradoPorId',
+  createdAt: 'createdAt'
+} as const
+
+export type FeriadoScalarFieldEnum = (typeof FeriadoScalarFieldEnum)[keyof typeof FeriadoScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -233,4 +303,11 @@ export const SessaoOrderByRelevanceFieldEnum = {
 } as const
 
 export type SessaoOrderByRelevanceFieldEnum = (typeof SessaoOrderByRelevanceFieldEnum)[keyof typeof SessaoOrderByRelevanceFieldEnum]
+
+
+export const FeriadoOrderByRelevanceFieldEnum = {
+  descricao: 'descricao'
+} as const
+
+export type FeriadoOrderByRelevanceFieldEnum = (typeof FeriadoOrderByRelevanceFieldEnum)[keyof typeof FeriadoOrderByRelevanceFieldEnum]
 

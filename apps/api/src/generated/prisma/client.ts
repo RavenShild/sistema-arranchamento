@@ -81,3 +81,28 @@ export type PerfilPermissao = Prisma.PerfilPermissaoModel
  * 
  */
 export type Sessao = Prisma.SessaoModel
+/**
+ * Model PeriodoArranchamento
+ * 
+ */
+export type PeriodoArranchamento = Prisma.PeriodoArranchamentoModel
+/**
+ * Model Arranchamento
+ * 
+ */
+export type Arranchamento = Prisma.ArranchamentoModel
+/**
+ * Model EscalaServico
+ * 
+ */
+export type EscalaServico = Prisma.EscalaServicoModel
+/**
+ * Model FeriasMilitar
+ * 
+ */
+export type FeriasMilitar = Prisma.FeriasMilitarModel
+/**
+ * Model Feriado
+ * 
+ */
+export type Feriado = Prisma.FeriadoModel

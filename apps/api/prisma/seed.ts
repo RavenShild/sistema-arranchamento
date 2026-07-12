@@ -60,6 +60,22 @@ const permissoes = [
     descricao: 'Consultar todos os arranchamentos',
   },
   {
+    codigo: 'arranchamento:periodo:gerenciar',
+    descricao: 'Abrir e fechar períodos de arranchamento',
+  },
+  {
+    codigo: 'escala:servico:gerenciar',
+    descricao: 'Gerenciar a escala da guarnição de serviço',
+  },
+  {
+    codigo: 'ferias:gerenciar',
+    descricao: 'Cadastrar e alterar períodos de férias',
+  },
+  {
+    codigo: 'feriado:gerenciar',
+    descricao: 'Gerenciar feriados e datas especiais',
+  },
+  {
     codigo: 'militar:subunidade:ler',
     descricao: 'Consultar militares da subunidade',
   },
@@ -109,6 +125,9 @@ const perfis = [
       'arranchamento:proprio:criar',
       'arranchamento:proprio:cancelar',
       'arranchamento:subunidade:gerenciar',
+      'arranchamento:periodo:gerenciar',
+      'escala:servico:gerenciar',
+      'feriado:gerenciar',
       'militar:subunidade:ler',
       'relatorio:subunidade:ler',
     ],
@@ -134,6 +153,7 @@ const perfis = [
       'refeicao:ler',
       'militar:subunidade:ler',
       'militar:subunidade:gerenciar',
+      'ferias:gerenciar',
       'relatorio:subunidade:ler',
     ],
   },

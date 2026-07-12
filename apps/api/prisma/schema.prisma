@@ -14,6 +14,18 @@ enum SituacaoMilitar {
   RESERVA
 }
 
+enum TipoRefeicao {
+  CAFE
+  ALMOCO
+  JANTA
+  CEIA
+}
+
+enum StatusPeriodoArranchamento {
+  ABERTO
+  FECHADO
+}
+
 enum CodigoPerfil {
   MILITAR
   FURRIEL
@@ -30,7 +42,9 @@ model Subunidade {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  militares Militar[]
+  militares      Militar[]
+  arranchamentos Arranchamento[]
+  escalasServico EscalaServico[]
 
   @@map("subunidades")
 }
@@ -48,6 +62,10 @@ model Militar {
 
   subunidade Subunidade @relation(fields: [subunidadeId], references: [id])
   usuario    Usuario?
+
+  ferias         FeriasMilitar[]
+  arranchamentos Arranchamento[]
+  escalasServico EscalaServico[]
 
   @@index([subunidadeId])
   @@map("militares")
@@ -67,6 +85,12 @@ model Usuario {
   militar Militar         @relation(fields: [militarId], references: [id])
   perfis  UsuarioPerfil[]
   sessoes Sessao[]
+
+  periodosAbertos     PeriodoArranchamento[] @relation("PeriodoAbertoPor")
+  periodosFechados    PeriodoArranchamento[] @relation("PeriodoFechadoPor")
+  feriasCadastradas   FeriasMilitar[]        @relation("FeriasCadastradasPor")
+  escalasCadastradas  EscalaServico[]        @relation("EscalaCadastradaPor")
+  feriadosCadastrados Feriado[]              @relation("FeriadoCadastradoPor")
 
   @@map("usuarios")
 }
@@ -130,4 +154,92 @@ model Sessao {
   @@index([usuarioId])
   @@index([expiresAt])
   @@map("sessoes")
+}
+
+model PeriodoArranchamento {
+  id           Int                        @id @default(autoincrement())
+  dataInicio   DateTime                   @unique @map("data_inicio") @db.Date
+  dataFim      DateTime                   @unique @map("data_fim") @db.Date
+  status       StatusPeriodoArranchamento @default(ABERTO)
+  abertoPorId  Int                        @map("aberto_por_id")
+  fechadoPorId Int?                       @map("fechado_por_id")
+  abertoEm     DateTime                   @default(now()) @map("aberto_em")
+  fechadoEm    DateTime?                  @map("fechado_em")
+
+  abertoPor  Usuario  @relation("PeriodoAbertoPor", fields: [abertoPorId], references: [id])
+  fechadoPor Usuario? @relation("PeriodoFechadoPor", fields: [fechadoPorId], references: [id])
+
+  arranchamentos Arranchamento[]
+  escalasServico EscalaServico[]
+
+  @@index([status])
+  @@map("periodos_arranchamento")
+}
+
+model Arranchamento {
+  id           Int          @id @default(autoincrement())
+  periodoId    Int          @map("periodo_id")
+  militarId    Int          @map("militar_id")
+  subunidadeId Int          @map("subunidade_id")
+  data         DateTime     @db.Date
+  refeicao     TipoRefeicao
+  createdAt    DateTime     @default(now()) @map("created_at")
+
+  periodo    PeriodoArranchamento @relation(fields: [periodoId], references: [id])
+  militar    Militar              @relation(fields: [militarId], references: [id])
+  subunidade Subunidade           @relation(fields: [subunidadeId], references: [id])
+
+  @@unique([militarId, data, refeicao])
+  @@index([periodoId, data, refeicao])
+  @@index([subunidadeId])
+  @@map("arranchamentos")
+}
+
+model EscalaServico {
+  id              Int      @id @default(autoincrement())
+  periodoId       Int      @map("periodo_id")
+  militarId       Int      @map("militar_id")
+  subunidadeId    Int      @map("subunidade_id")
+  data            DateTime @db.Date
+  cadastradoPorId Int      @map("cadastrado_por_id")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  periodo       PeriodoArranchamento @relation(fields: [periodoId], references: [id])
+  militar       Militar              @relation(fields: [militarId], references: [id])
+  subunidade    Subunidade           @relation(fields: [subunidadeId], references: [id])
+  cadastradoPor Usuario              @relation("EscalaCadastradaPor", fields: [cadastradoPorId], references: [id])
+
+  @@unique([militarId, data])
+  @@index([periodoId, data])
+  @@index([subunidadeId])
+  @@map("escalas_servico")
+}
+
+model FeriasMilitar {
+  id              Int      @id @default(autoincrement())
+  militarId       Int      @map("militar_id")
+  dataInicio      DateTime @map("data_inicio") @db.Date
+  dataFim         DateTime @map("data_fim") @db.Date
+  laranjeira      Boolean  @default(false)
+  cadastradoPorId Int      @map("cadastrado_por_id")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  militar       Militar @relation(fields: [militarId], references: [id])
+  cadastradoPor Usuario @relation("FeriasCadastradasPor", fields: [cadastradoPorId], references: [id])
+
+  @@index([militarId, dataInicio, dataFim])
+  @@map("ferias_militares")
+}
+
+model Feriado {
+  id              Int      @id @default(autoincrement())
+  data            DateTime @unique @db.Date
+  descricao       String   @db.VarChar(120)
+  cadastradoPorId Int      @map("cadastrado_por_id")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  cadastradoPor Usuario @relation("FeriadoCadastradoPor", fields: [cadastradoPorId], references: [id])
+
+  @@map("feriados")
 }
