@@ -1,5 +1,5 @@
-import { useAuth } from '../auth/auth.context'
 import { Link } from 'react-router'
+import { useAuth } from '../auth/auth.context'
 
 export function DashboardPage() {
   const { usuario, logout } = useAuth()
@@ -8,15 +8,25 @@ export function DashboardPage() {
     return null
   }
 
+  const podeGerenciarMilitares =
+    usuario.permissoes.includes('militar:gerenciar')
+
   return (
     <main className="dashboard">
       <header className="dashboard-header">
         <div>
           <p className="eyebrow">Sistema de Arranchamento</p>
-          <h1>Olá, {usuario.postoGraduacao} {usuario.nomeGuerra}</h1>
+          <h1>
+            Olá, {usuario.postoGraduacao}{' '}
+            {usuario.nomeGuerra}
+          </h1>
         </div>
 
-        <button type="button" className="secondary" onClick={() => void logout()}>
+        <button
+          type="button"
+          className="secondary"
+          onClick={() => void logout()}
+        >
           Sair
         </button>
       </header>
@@ -52,25 +62,44 @@ export function DashboardPage() {
           </div>
         </dl>
       </section>
-          {usuario.permissoes.includes('militar:gerenciar') && (
-      <section className="user-card module-card">
-        <div>
-          <p className="eyebrow">Administração</p>
-          <h2>Subunidades</h2>
-          <p>
-            Cadastre e gerencie as subunidades da OM.
-          </p>
+
+      {podeGerenciarMilitares && (
+        <div className="module-grid">
+          <section className="user-card module-card">
+            <div>
+              <p className="eyebrow">Administração</p>
+              <h2>Subunidades</h2>
+              <p>
+                Cadastre e gerencie as subunidades da OM.
+              </p>
+            </div>
+
+            <Link
+              className="primary-link"
+              to="/admin/subunidades"
+            >
+              Acessar
+            </Link>
+          </section>
+
+          <section className="user-card module-card">
+            <div>
+              <p className="eyebrow">Administração</p>
+              <h2>Militares</h2>
+              <p>
+                Cadastre e mantenha os dados dos militares.
+              </p>
+            </div>
+
+            <Link
+              className="primary-link"
+              to="/admin/militares"
+            >
+              Acessar
+            </Link>
+          </section>
         </div>
-
-        <Link
-          className="primary-link"
-          to="/admin/subunidades"
-        >
-          Acessar
-        </Link>
-      </section>
-    )}
+      )}
     </main>
-
   )
 }

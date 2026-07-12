@@ -7,6 +7,7 @@ import './App.css'
 import { useAuth } from './auth/auth.context'
 import { DashboardPage } from './pages/DashboardPage'
 import { LoginPage } from './pages/LoginPage'
+import { MilitaresPage } from './pages/MilitaresPage'
 import { SubunidadesPage } from './pages/SubunidadesPage'
 import { ProtectedRoute } from './routes/ProtectedRoute'
 
@@ -44,6 +45,10 @@ function App() {
           <Route
             path="/admin/subunidades"
             element={<SubunidadesPage />}
+          />
+          <Route
+            path="/admin/militares"
+            element={<MilitaresPage />}
           />
         </Route>
       </Route>

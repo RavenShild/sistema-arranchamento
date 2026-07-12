@@ -375,3 +375,122 @@
     grid-template-columns: 1fr;
   }
 }
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.module-grid .module-card {
+  margin-top: 0;
+}
+
+.military-grid {
+  grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+  max-width: 1400px;
+}
+
+.management-form select,
+.filter-form input,
+.filter-form select {
+  min-width: 0;
+  padding: 11px 13px;
+  border: 1px solid #cbd3cc;
+  border-radius: 9px;
+  color: inherit;
+  background: #ffffff;
+  outline: none;
+}
+
+.management-form select:focus,
+.filter-form input:focus,
+.filter-form select:focus {
+  border-color: #376a42;
+  box-shadow: 0 0 0 3px rgba(55, 106, 66, 0.15);
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.form-actions button {
+  flex: 1;
+}
+
+.management-form .secondary,
+.filter-form .secondary {
+  border: 1px solid #cbd3cc;
+  color: #294f32;
+  background: #ffffff;
+}
+
+.filter-form {
+  display: grid;
+  grid-template-columns: minmax(190px, 1fr) auto auto auto auto;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.filter-form button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 9px;
+  color: #ffffff;
+  background: #294f32;
+  font-weight: 700;
+}
+
+.management-table td small {
+  display: block;
+  margin-top: 4px;
+  color: #68716a;
+}
+
+.status.ativo {
+  color: #235b2c;
+  background: #e1f2e4;
+}
+
+.status.afastado {
+  color: #76550b;
+  background: #fff1c9;
+}
+
+.status.transferido,
+.status.reserva {
+  color: #515b64;
+  background: #e9edf0;
+}
+
+@media (max-width: 1050px) {
+  .filter-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filter-form input {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .module-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .filter-form {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-form input {
+    grid-column: auto;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}
