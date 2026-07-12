@@ -242,3 +242,136 @@
     flex-direction: column;
   }
 }
+
+.management-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-description {
+  color: #68716a;
+}
+
+.management-form {
+  display: grid;
+  gap: 16px;
+}
+
+.management-form label {
+  display: grid;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.management-form input {
+  padding: 11px 13px;
+  border: 1px solid #cbd3cc;
+  border-radius: 9px;
+  outline: none;
+}
+
+.management-form input:focus {
+  border-color: #376a42;
+  box-shadow: 0 0 0 3px rgba(55, 106, 66, 0.15);
+}
+
+.management-form button {
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  color: #ffffff;
+  background: #294f32;
+  font-weight: 700;
+}
+
+.success-message {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 9px;
+  color: #235b2c;
+  background: #e7f6e9;
+}
+
+.user-card .error-message {
+  margin-top: 16px;
+}
+
+.list-card {
+  min-width: 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.management-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.management-table th,
+.management-table td {
+  padding: 13px 12px;
+  border-bottom: 1px solid #e3e8e4;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.management-table th {
+  color: #68716a;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.status {
+  display: inline-flex;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status.active {
+  color: #235b2c;
+  background: #e1f2e4;
+}
+
+.status.inactive {
+  color: #6f3d3d;
+  background: #f5e5e5;
+}
+
+.table-action {
+  padding: 7px 10px;
+  border: 1px solid #cbd3cc;
+  border-radius: 7px;
+  color: #294f32;
+  background: #ffffff;
+  font-weight: 700;
+}
+
+.empty-state {
+  padding: 32px;
+  border: 1px dashed #cbd3cc;
+  border-radius: 10px;
+  color: #68716a;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .management-grid {
+    grid-template-columns: 1fr;
+  }
+}
