@@ -106,3 +106,8 @@ export type FeriasMilitar = Prisma.FeriasMilitarModel
  * 
  */
 export type Feriado = Prisma.FeriadoModel
+/**
+ * Model ConsolidadoRefeicao
+ * 
+ */
+export type ConsolidadoRefeicao = Prisma.ConsolidadoRefeicaoModel

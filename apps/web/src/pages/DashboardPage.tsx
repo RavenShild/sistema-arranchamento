@@ -20,6 +20,9 @@ export function DashboardPage() {
   )
   const podeRealizarArranchamento =
     usuario.permissoes.includes('refeicao:ler')
+  const podeConsultarRelatorios =
+    usuario.permissoes.includes('relatorio:global:ler') ||
+    usuario.permissoes.includes('relatorio:subunidade:ler')
 
   return (
     <main className="dashboard">
@@ -77,7 +80,8 @@ export function DashboardPage() {
         podeGerenciarMilitares ||
         podeGerenciarFerias ||
         podeGerenciarPeriodos ||
-        podeGerenciarEscala) && (
+        podeGerenciarEscala ||
+        podeConsultarRelatorios) && (
         <div className="module-grid">
           {podeRealizarArranchamento && (
             <section className="user-card module-card">
@@ -190,6 +194,26 @@ export function DashboardPage() {
               <Link
                 className="primary-link"
                 to="/arranchamento/gu-servico"
+              >
+                Acessar
+              </Link>
+            </section>
+          )}
+
+          {podeConsultarRelatorios && (
+            <section className="user-card module-card">
+              <div>
+                <p className="eyebrow">Aprovisionamento</p>
+                <h2>Relatórios</h2>
+                <p>
+                  Consulte o vale diário, os totais por refeição e
+                  a relação nominal dos militares.
+                </p>
+              </div>
+
+              <Link
+                className="primary-link"
+                to="/arranchamento/relatorios"
               >
                 Acessar
               </Link>

@@ -11,7 +11,7 @@ import { subunidadeRouter } from './modules/subunidades/subunidade.routes.js'
 import { periodoRouter } from './modules/periodos/periodo.routes.js'
 import { escalaRouter } from './modules/escalas/escala.routes.js'
 import { arranchamentoRouter } from './modules/arranchamentos/arranchamento.route.js'
-
+import { relatorioRouter } from './modules/relatorios/relatorio.routes.js'
 
 export const app = express()
 
@@ -36,6 +36,7 @@ app.use('/admin', adminRouter)
 app.use('/periodos', periodoRouter)
 app.use('/escalas', escalaRouter)
 app.use('/arranchamentos', arranchamentoRouter)
+app.use('/relatorios', relatorioRouter)
 
 app.get('/health/database', async (_request, response) => {
   try {

@@ -63,7 +63,8 @@ export const ModelName = {
   Arranchamento: 'Arranchamento',
   EscalaServico: 'EscalaServico',
   FeriasMilitar: 'FeriasMilitar',
-  Feriado: 'Feriado'
+  Feriado: 'Feriado',
+  ConsolidadoRefeicao: 'ConsolidadoRefeicao'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -236,6 +237,21 @@ export const FeriadoScalarFieldEnum = {
 } as const
 
 export type FeriadoScalarFieldEnum = (typeof FeriadoScalarFieldEnum)[keyof typeof FeriadoScalarFieldEnum]
+
+
+export const ConsolidadoRefeicaoScalarFieldEnum = {
+  id: 'id',
+  periodoId: 'periodoId',
+  subunidadeId: 'subunidadeId',
+  data: 'data',
+  refeicao: 'refeicao',
+  quantidade: 'quantidade',
+  quantidadeIndividual: 'quantidadeIndividual',
+  quantidadeGu: 'quantidadeGu',
+  createdAt: 'createdAt'
+} as const
+
+export type ConsolidadoRefeicaoScalarFieldEnum = (typeof ConsolidadoRefeicaoScalarFieldEnum)[keyof typeof ConsolidadoRefeicaoScalarFieldEnum]
 
 
 export const SortOrder = {

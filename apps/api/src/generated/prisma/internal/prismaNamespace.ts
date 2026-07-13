@@ -396,7 +396,8 @@ export const ModelName = {
   Arranchamento: 'Arranchamento',
   EscalaServico: 'EscalaServico',
   FeriasMilitar: 'FeriasMilitar',
-  Feriado: 'Feriado'
+  Feriado: 'Feriado',
+  ConsolidadoRefeicao: 'ConsolidadoRefeicao'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -412,7 +413,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "subunidade" | "militar" | "usuario" | "perfil" | "permissao" | "usuarioPerfil" | "perfilPermissao" | "sessao" | "periodoArranchamento" | "arranchamento" | "escalaServico" | "feriasMilitar" | "feriado"
+    modelProps: "subunidade" | "militar" | "usuario" | "perfil" | "permissao" | "usuarioPerfil" | "perfilPermissao" | "sessao" | "periodoArranchamento" | "arranchamento" | "escalaServico" | "feriasMilitar" | "feriado" | "consolidadoRefeicao"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1274,6 +1275,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ConsolidadoRefeicao: {
+      payload: Prisma.$ConsolidadoRefeicaoPayload<ExtArgs>
+      fields: Prisma.ConsolidadoRefeicaoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ConsolidadoRefeicaoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsolidadoRefeicaoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ConsolidadoRefeicaoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsolidadoRefeicaoPayload>
+        }
+        findFirst: {
+          args: Prisma.ConsolidadoRefeicaoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsolidadoRefeicaoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ConsolidadoRefeicaoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsolidadoRefeicaoPayload>
+        }
+        findMany: {
+          args: Prisma.ConsolidadoRefeicaoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsolidadoRefeicaoPayload>[]
+        }
+        create: {
+          args: Prisma.ConsolidadoRefeicaoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsolidadoRefeicaoPayload>
+        }
+        createMany: {
+          args: Prisma.ConsolidadoRefeicaoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.ConsolidadoRefeicaoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsolidadoRefeicaoPayload>
+        }
+        update: {
+          args: Prisma.ConsolidadoRefeicaoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsolidadoRefeicaoPayload>
+        }
+        deleteMany: {
+          args: Prisma.ConsolidadoRefeicaoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ConsolidadoRefeicaoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.ConsolidadoRefeicaoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConsolidadoRefeicaoPayload>
+        }
+        aggregate: {
+          args: Prisma.ConsolidadoRefeicaoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateConsolidadoRefeicao>
+        }
+        groupBy: {
+          args: Prisma.ConsolidadoRefeicaoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConsolidadoRefeicaoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ConsolidadoRefeicaoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConsolidadoRefeicaoCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1467,6 +1534,21 @@ export const FeriadoScalarFieldEnum = {
 } as const
 
 export type FeriadoScalarFieldEnum = (typeof FeriadoScalarFieldEnum)[keyof typeof FeriadoScalarFieldEnum]
+
+
+export const ConsolidadoRefeicaoScalarFieldEnum = {
+  id: 'id',
+  periodoId: 'periodoId',
+  subunidadeId: 'subunidadeId',
+  data: 'data',
+  refeicao: 'refeicao',
+  quantidade: 'quantidade',
+  quantidadeIndividual: 'quantidadeIndividual',
+  quantidadeGu: 'quantidadeGu',
+  createdAt: 'createdAt'
+} as const
+
+export type ConsolidadoRefeicaoScalarFieldEnum = (typeof ConsolidadoRefeicaoScalarFieldEnum)[keyof typeof ConsolidadoRefeicaoScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1734,6 +1816,7 @@ export type GlobalOmitConfig = {
   escalaServico?: Prisma.EscalaServicoOmit
   feriasMilitar?: Prisma.FeriasMilitarOmit
   feriado?: Prisma.FeriadoOmit
+  consolidadoRefeicao?: Prisma.ConsolidadoRefeicaoOmit
 }
 
 /* Types for Logging */

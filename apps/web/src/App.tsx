@@ -12,6 +12,7 @@ import { LoginPage } from './pages/LoginPage'
 import { MeuArranchamentoPage } from './pages/MeuArranchamentoPage'
 import { MilitaresPage } from './pages/MilitaresPage'
 import { PeriodosPage } from './pages/PeriodosPage'
+import { RelatoriosPage } from './pages/RelatorioPage'
 import { SubunidadesPage } from './pages/SubunidadesPage'
 import { ProtectedRoute } from './routes/ProtectedRoute'
 
@@ -99,6 +100,11 @@ function App() {
             element={<EscalaServicoPage />}
           />
         </Route>
+
+        <Route
+          path="/arranchamento/relatorios"
+          element={<RelatoriosPage />}
+        />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

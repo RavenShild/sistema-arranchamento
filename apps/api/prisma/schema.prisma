@@ -45,6 +45,7 @@ model Subunidade {
   militares      Militar[]
   arranchamentos Arranchamento[]
   escalasServico EscalaServico[]
+  consolidados   ConsolidadoRefeicao[]
 
   @@map("subunidades")
 }
@@ -171,6 +172,7 @@ model PeriodoArranchamento {
 
   arranchamentos Arranchamento[]
   escalasServico EscalaServico[]
+  consolidados   ConsolidadoRefeicao[]
 
   @@index([status])
   @@map("periodos_arranchamento")
@@ -242,4 +244,24 @@ model Feriado {
   cadastradoPor Usuario @relation("FeriadoCadastradoPor", fields: [cadastradoPorId], references: [id])
 
   @@map("feriados")
+}
+
+model ConsolidadoRefeicao {
+  id                   Int          @id @default(autoincrement())
+  periodoId            Int          @map("periodo_id")
+  subunidadeId         Int          @map("subunidade_id")
+  data                 DateTime     @db.Date
+  refeicao             TipoRefeicao
+  quantidade           Int
+  quantidadeIndividual Int          @map("quantidade_individual")
+  quantidadeGu         Int          @map("quantidade_gu")
+  createdAt            DateTime     @default(now()) @map("created_at")
+
+  periodo    PeriodoArranchamento @relation(fields: [periodoId], references: [id])
+  subunidade Subunidade           @relation(fields: [subunidadeId], references: [id])
+
+  @@unique([periodoId, subunidadeId, data, refeicao])
+  @@index([periodoId, data, refeicao])
+  @@index([subunidadeId])
+  @@map("consolidados_refeicoes")
 }

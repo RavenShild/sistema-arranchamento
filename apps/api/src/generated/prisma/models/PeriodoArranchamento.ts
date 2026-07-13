@@ -252,6 +252,7 @@ export type PeriodoArranchamentoWhereInput = {
   fechadoPor?: Prisma.XOR<Prisma.UsuarioNullableScalarRelationFilter, Prisma.UsuarioWhereInput> | null
   arranchamentos?: Prisma.ArranchamentoListRelationFilter
   escalasServico?: Prisma.EscalaServicoListRelationFilter
+  consolidados?: Prisma.ConsolidadoRefeicaoListRelationFilter
 }
 
 export type PeriodoArranchamentoOrderByWithRelationInput = {
@@ -267,6 +268,7 @@ export type PeriodoArranchamentoOrderByWithRelationInput = {
   fechadoPor?: Prisma.UsuarioOrderByWithRelationInput
   arranchamentos?: Prisma.ArranchamentoOrderByRelationAggregateInput
   escalasServico?: Prisma.EscalaServicoOrderByRelationAggregateInput
+  consolidados?: Prisma.ConsolidadoRefeicaoOrderByRelationAggregateInput
 }
 
 export type PeriodoArranchamentoWhereUniqueInput = Prisma.AtLeast<{
@@ -285,6 +287,7 @@ export type PeriodoArranchamentoWhereUniqueInput = Prisma.AtLeast<{
   fechadoPor?: Prisma.XOR<Prisma.UsuarioNullableScalarRelationFilter, Prisma.UsuarioWhereInput> | null
   arranchamentos?: Prisma.ArranchamentoListRelationFilter
   escalasServico?: Prisma.EscalaServicoListRelationFilter
+  consolidados?: Prisma.ConsolidadoRefeicaoListRelationFilter
 }, "id" | "dataInicio" | "dataFim">
 
 export type PeriodoArranchamentoOrderByWithAggregationInput = {
@@ -327,6 +330,7 @@ export type PeriodoArranchamentoCreateInput = {
   fechadoPor?: Prisma.UsuarioCreateNestedOneWithoutPeriodosFechadosInput
   arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutPeriodoInput
   escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutPeriodoInput
+  consolidados?: Prisma.ConsolidadoRefeicaoCreateNestedManyWithoutPeriodoInput
 }
 
 export type PeriodoArranchamentoUncheckedCreateInput = {
@@ -340,6 +344,7 @@ export type PeriodoArranchamentoUncheckedCreateInput = {
   fechadoEm?: Date | string | null
   arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutPeriodoInput
   escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutPeriodoInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedCreateNestedManyWithoutPeriodoInput
 }
 
 export type PeriodoArranchamentoUpdateInput = {
@@ -352,6 +357,7 @@ export type PeriodoArranchamentoUpdateInput = {
   fechadoPor?: Prisma.UsuarioUpdateOneWithoutPeriodosFechadosNestedInput
   arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutPeriodoNestedInput
   escalasServico?: Prisma.EscalaServicoUpdateManyWithoutPeriodoNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUpdateManyWithoutPeriodoNestedInput
 }
 
 export type PeriodoArranchamentoUncheckedUpdateInput = {
@@ -365,6 +371,7 @@ export type PeriodoArranchamentoUncheckedUpdateInput = {
   fechadoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutPeriodoNestedInput
   escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutPeriodoNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedUpdateManyWithoutPeriodoNestedInput
 }
 
 export type PeriodoArranchamentoCreateManyInput = {
@@ -581,6 +588,20 @@ export type PeriodoArranchamentoUpdateOneRequiredWithoutEscalasServicoNestedInpu
   update?: Prisma.XOR<Prisma.XOR<Prisma.PeriodoArranchamentoUpdateToOneWithWhereWithoutEscalasServicoInput, Prisma.PeriodoArranchamentoUpdateWithoutEscalasServicoInput>, Prisma.PeriodoArranchamentoUncheckedUpdateWithoutEscalasServicoInput>
 }
 
+export type PeriodoArranchamentoCreateNestedOneWithoutConsolidadosInput = {
+  create?: Prisma.XOR<Prisma.PeriodoArranchamentoCreateWithoutConsolidadosInput, Prisma.PeriodoArranchamentoUncheckedCreateWithoutConsolidadosInput>
+  connectOrCreate?: Prisma.PeriodoArranchamentoCreateOrConnectWithoutConsolidadosInput
+  connect?: Prisma.PeriodoArranchamentoWhereUniqueInput
+}
+
+export type PeriodoArranchamentoUpdateOneRequiredWithoutConsolidadosNestedInput = {
+  create?: Prisma.XOR<Prisma.PeriodoArranchamentoCreateWithoutConsolidadosInput, Prisma.PeriodoArranchamentoUncheckedCreateWithoutConsolidadosInput>
+  connectOrCreate?: Prisma.PeriodoArranchamentoCreateOrConnectWithoutConsolidadosInput
+  upsert?: Prisma.PeriodoArranchamentoUpsertWithoutConsolidadosInput
+  connect?: Prisma.PeriodoArranchamentoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PeriodoArranchamentoUpdateToOneWithWhereWithoutConsolidadosInput, Prisma.PeriodoArranchamentoUpdateWithoutConsolidadosInput>, Prisma.PeriodoArranchamentoUncheckedUpdateWithoutConsolidadosInput>
+}
+
 export type PeriodoArranchamentoCreateWithoutAbertoPorInput = {
   dataInicio: Date | string
   dataFim: Date | string
@@ -590,6 +611,7 @@ export type PeriodoArranchamentoCreateWithoutAbertoPorInput = {
   fechadoPor?: Prisma.UsuarioCreateNestedOneWithoutPeriodosFechadosInput
   arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutPeriodoInput
   escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutPeriodoInput
+  consolidados?: Prisma.ConsolidadoRefeicaoCreateNestedManyWithoutPeriodoInput
 }
 
 export type PeriodoArranchamentoUncheckedCreateWithoutAbertoPorInput = {
@@ -602,6 +624,7 @@ export type PeriodoArranchamentoUncheckedCreateWithoutAbertoPorInput = {
   fechadoEm?: Date | string | null
   arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutPeriodoInput
   escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutPeriodoInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedCreateNestedManyWithoutPeriodoInput
 }
 
 export type PeriodoArranchamentoCreateOrConnectWithoutAbertoPorInput = {
@@ -623,6 +646,7 @@ export type PeriodoArranchamentoCreateWithoutFechadoPorInput = {
   abertoPor: Prisma.UsuarioCreateNestedOneWithoutPeriodosAbertosInput
   arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutPeriodoInput
   escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutPeriodoInput
+  consolidados?: Prisma.ConsolidadoRefeicaoCreateNestedManyWithoutPeriodoInput
 }
 
 export type PeriodoArranchamentoUncheckedCreateWithoutFechadoPorInput = {
@@ -635,6 +659,7 @@ export type PeriodoArranchamentoUncheckedCreateWithoutFechadoPorInput = {
   fechadoEm?: Date | string | null
   arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutPeriodoInput
   escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutPeriodoInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedCreateNestedManyWithoutPeriodoInput
 }
 
 export type PeriodoArranchamentoCreateOrConnectWithoutFechadoPorInput = {
@@ -702,6 +727,7 @@ export type PeriodoArranchamentoCreateWithoutArranchamentosInput = {
   abertoPor: Prisma.UsuarioCreateNestedOneWithoutPeriodosAbertosInput
   fechadoPor?: Prisma.UsuarioCreateNestedOneWithoutPeriodosFechadosInput
   escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutPeriodoInput
+  consolidados?: Prisma.ConsolidadoRefeicaoCreateNestedManyWithoutPeriodoInput
 }
 
 export type PeriodoArranchamentoUncheckedCreateWithoutArranchamentosInput = {
@@ -714,6 +740,7 @@ export type PeriodoArranchamentoUncheckedCreateWithoutArranchamentosInput = {
   abertoEm?: Date | string
   fechadoEm?: Date | string | null
   escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutPeriodoInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedCreateNestedManyWithoutPeriodoInput
 }
 
 export type PeriodoArranchamentoCreateOrConnectWithoutArranchamentosInput = {
@@ -741,6 +768,7 @@ export type PeriodoArranchamentoUpdateWithoutArranchamentosInput = {
   abertoPor?: Prisma.UsuarioUpdateOneRequiredWithoutPeriodosAbertosNestedInput
   fechadoPor?: Prisma.UsuarioUpdateOneWithoutPeriodosFechadosNestedInput
   escalasServico?: Prisma.EscalaServicoUpdateManyWithoutPeriodoNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUpdateManyWithoutPeriodoNestedInput
 }
 
 export type PeriodoArranchamentoUncheckedUpdateWithoutArranchamentosInput = {
@@ -753,6 +781,7 @@ export type PeriodoArranchamentoUncheckedUpdateWithoutArranchamentosInput = {
   abertoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechadoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutPeriodoNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedUpdateManyWithoutPeriodoNestedInput
 }
 
 export type PeriodoArranchamentoCreateWithoutEscalasServicoInput = {
@@ -764,6 +793,7 @@ export type PeriodoArranchamentoCreateWithoutEscalasServicoInput = {
   abertoPor: Prisma.UsuarioCreateNestedOneWithoutPeriodosAbertosInput
   fechadoPor?: Prisma.UsuarioCreateNestedOneWithoutPeriodosFechadosInput
   arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutPeriodoInput
+  consolidados?: Prisma.ConsolidadoRefeicaoCreateNestedManyWithoutPeriodoInput
 }
 
 export type PeriodoArranchamentoUncheckedCreateWithoutEscalasServicoInput = {
@@ -776,6 +806,7 @@ export type PeriodoArranchamentoUncheckedCreateWithoutEscalasServicoInput = {
   abertoEm?: Date | string
   fechadoEm?: Date | string | null
   arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutPeriodoInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedCreateNestedManyWithoutPeriodoInput
 }
 
 export type PeriodoArranchamentoCreateOrConnectWithoutEscalasServicoInput = {
@@ -803,6 +834,7 @@ export type PeriodoArranchamentoUpdateWithoutEscalasServicoInput = {
   abertoPor?: Prisma.UsuarioUpdateOneRequiredWithoutPeriodosAbertosNestedInput
   fechadoPor?: Prisma.UsuarioUpdateOneWithoutPeriodosFechadosNestedInput
   arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutPeriodoNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUpdateManyWithoutPeriodoNestedInput
 }
 
 export type PeriodoArranchamentoUncheckedUpdateWithoutEscalasServicoInput = {
@@ -815,6 +847,73 @@ export type PeriodoArranchamentoUncheckedUpdateWithoutEscalasServicoInput = {
   abertoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechadoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutPeriodoNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedUpdateManyWithoutPeriodoNestedInput
+}
+
+export type PeriodoArranchamentoCreateWithoutConsolidadosInput = {
+  dataInicio: Date | string
+  dataFim: Date | string
+  status?: $Enums.StatusPeriodoArranchamento
+  abertoEm?: Date | string
+  fechadoEm?: Date | string | null
+  abertoPor: Prisma.UsuarioCreateNestedOneWithoutPeriodosAbertosInput
+  fechadoPor?: Prisma.UsuarioCreateNestedOneWithoutPeriodosFechadosInput
+  arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutPeriodoInput
+  escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutPeriodoInput
+}
+
+export type PeriodoArranchamentoUncheckedCreateWithoutConsolidadosInput = {
+  id?: number
+  dataInicio: Date | string
+  dataFim: Date | string
+  status?: $Enums.StatusPeriodoArranchamento
+  abertoPorId: number
+  fechadoPorId?: number | null
+  abertoEm?: Date | string
+  fechadoEm?: Date | string | null
+  arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutPeriodoInput
+  escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutPeriodoInput
+}
+
+export type PeriodoArranchamentoCreateOrConnectWithoutConsolidadosInput = {
+  where: Prisma.PeriodoArranchamentoWhereUniqueInput
+  create: Prisma.XOR<Prisma.PeriodoArranchamentoCreateWithoutConsolidadosInput, Prisma.PeriodoArranchamentoUncheckedCreateWithoutConsolidadosInput>
+}
+
+export type PeriodoArranchamentoUpsertWithoutConsolidadosInput = {
+  update: Prisma.XOR<Prisma.PeriodoArranchamentoUpdateWithoutConsolidadosInput, Prisma.PeriodoArranchamentoUncheckedUpdateWithoutConsolidadosInput>
+  create: Prisma.XOR<Prisma.PeriodoArranchamentoCreateWithoutConsolidadosInput, Prisma.PeriodoArranchamentoUncheckedCreateWithoutConsolidadosInput>
+  where?: Prisma.PeriodoArranchamentoWhereInput
+}
+
+export type PeriodoArranchamentoUpdateToOneWithWhereWithoutConsolidadosInput = {
+  where?: Prisma.PeriodoArranchamentoWhereInput
+  data: Prisma.XOR<Prisma.PeriodoArranchamentoUpdateWithoutConsolidadosInput, Prisma.PeriodoArranchamentoUncheckedUpdateWithoutConsolidadosInput>
+}
+
+export type PeriodoArranchamentoUpdateWithoutConsolidadosInput = {
+  dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumStatusPeriodoArranchamentoFieldUpdateOperationsInput | $Enums.StatusPeriodoArranchamento
+  abertoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechadoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  abertoPor?: Prisma.UsuarioUpdateOneRequiredWithoutPeriodosAbertosNestedInput
+  fechadoPor?: Prisma.UsuarioUpdateOneWithoutPeriodosFechadosNestedInput
+  arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutPeriodoNestedInput
+  escalasServico?: Prisma.EscalaServicoUpdateManyWithoutPeriodoNestedInput
+}
+
+export type PeriodoArranchamentoUncheckedUpdateWithoutConsolidadosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  dataInicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dataFim?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumStatusPeriodoArranchamentoFieldUpdateOperationsInput | $Enums.StatusPeriodoArranchamento
+  abertoPorId?: Prisma.IntFieldUpdateOperationsInput | number
+  fechadoPorId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  abertoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechadoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutPeriodoNestedInput
+  escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutPeriodoNestedInput
 }
 
 export type PeriodoArranchamentoCreateManyAbertoPorInput = {
@@ -846,6 +945,7 @@ export type PeriodoArranchamentoUpdateWithoutAbertoPorInput = {
   fechadoPor?: Prisma.UsuarioUpdateOneWithoutPeriodosFechadosNestedInput
   arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutPeriodoNestedInput
   escalasServico?: Prisma.EscalaServicoUpdateManyWithoutPeriodoNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUpdateManyWithoutPeriodoNestedInput
 }
 
 export type PeriodoArranchamentoUncheckedUpdateWithoutAbertoPorInput = {
@@ -858,6 +958,7 @@ export type PeriodoArranchamentoUncheckedUpdateWithoutAbertoPorInput = {
   fechadoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutPeriodoNestedInput
   escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutPeriodoNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedUpdateManyWithoutPeriodoNestedInput
 }
 
 export type PeriodoArranchamentoUncheckedUpdateManyWithoutAbertoPorInput = {
@@ -879,6 +980,7 @@ export type PeriodoArranchamentoUpdateWithoutFechadoPorInput = {
   abertoPor?: Prisma.UsuarioUpdateOneRequiredWithoutPeriodosAbertosNestedInput
   arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutPeriodoNestedInput
   escalasServico?: Prisma.EscalaServicoUpdateManyWithoutPeriodoNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUpdateManyWithoutPeriodoNestedInput
 }
 
 export type PeriodoArranchamentoUncheckedUpdateWithoutFechadoPorInput = {
@@ -891,6 +993,7 @@ export type PeriodoArranchamentoUncheckedUpdateWithoutFechadoPorInput = {
   fechadoEm?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutPeriodoNestedInput
   escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutPeriodoNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedUpdateManyWithoutPeriodoNestedInput
 }
 
 export type PeriodoArranchamentoUncheckedUpdateManyWithoutFechadoPorInput = {
@@ -911,11 +1014,13 @@ export type PeriodoArranchamentoUncheckedUpdateManyWithoutFechadoPorInput = {
 export type PeriodoArranchamentoCountOutputType = {
   arranchamentos: number
   escalasServico: number
+  consolidados: number
 }
 
 export type PeriodoArranchamentoCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   arranchamentos?: boolean | PeriodoArranchamentoCountOutputTypeCountArranchamentosArgs
   escalasServico?: boolean | PeriodoArranchamentoCountOutputTypeCountEscalasServicoArgs
+  consolidados?: boolean | PeriodoArranchamentoCountOutputTypeCountConsolidadosArgs
 }
 
 /**
@@ -942,6 +1047,13 @@ export type PeriodoArranchamentoCountOutputTypeCountEscalasServicoArgs<ExtArgs e
   where?: Prisma.EscalaServicoWhereInput
 }
 
+/**
+ * PeriodoArranchamentoCountOutputType without action
+ */
+export type PeriodoArranchamentoCountOutputTypeCountConsolidadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ConsolidadoRefeicaoWhereInput
+}
+
 
 export type PeriodoArranchamentoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -956,6 +1068,7 @@ export type PeriodoArranchamentoSelect<ExtArgs extends runtime.Types.Extensions.
   fechadoPor?: boolean | Prisma.PeriodoArranchamento$fechadoPorArgs<ExtArgs>
   arranchamentos?: boolean | Prisma.PeriodoArranchamento$arranchamentosArgs<ExtArgs>
   escalasServico?: boolean | Prisma.PeriodoArranchamento$escalasServicoArgs<ExtArgs>
+  consolidados?: boolean | Prisma.PeriodoArranchamento$consolidadosArgs<ExtArgs>
   _count?: boolean | Prisma.PeriodoArranchamentoCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["periodoArranchamento"]>
 
@@ -978,6 +1091,7 @@ export type PeriodoArranchamentoInclude<ExtArgs extends runtime.Types.Extensions
   fechadoPor?: boolean | Prisma.PeriodoArranchamento$fechadoPorArgs<ExtArgs>
   arranchamentos?: boolean | Prisma.PeriodoArranchamento$arranchamentosArgs<ExtArgs>
   escalasServico?: boolean | Prisma.PeriodoArranchamento$escalasServicoArgs<ExtArgs>
+  consolidados?: boolean | Prisma.PeriodoArranchamento$consolidadosArgs<ExtArgs>
   _count?: boolean | Prisma.PeriodoArranchamentoCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -988,6 +1102,7 @@ export type $PeriodoArranchamentoPayload<ExtArgs extends runtime.Types.Extension
     fechadoPor: Prisma.$UsuarioPayload<ExtArgs> | null
     arranchamentos: Prisma.$ArranchamentoPayload<ExtArgs>[]
     escalasServico: Prisma.$EscalaServicoPayload<ExtArgs>[]
+    consolidados: Prisma.$ConsolidadoRefeicaoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1342,6 +1457,7 @@ export interface Prisma__PeriodoArranchamentoClient<T, Null = never, ExtArgs ext
   fechadoPor<T extends Prisma.PeriodoArranchamento$fechadoPorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeriodoArranchamento$fechadoPorArgs<ExtArgs>>): Prisma.Prisma__UsuarioClient<runtime.Types.Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   arranchamentos<T extends Prisma.PeriodoArranchamento$arranchamentosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeriodoArranchamento$arranchamentosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArranchamentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   escalasServico<T extends Prisma.PeriodoArranchamento$escalasServicoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeriodoArranchamento$escalasServicoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EscalaServicoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  consolidados<T extends Prisma.PeriodoArranchamento$consolidadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeriodoArranchamento$consolidadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConsolidadoRefeicaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1791,6 +1907,30 @@ export type PeriodoArranchamento$escalasServicoArgs<ExtArgs extends runtime.Type
   take?: number
   skip?: number
   distinct?: Prisma.EscalaServicoScalarFieldEnum | Prisma.EscalaServicoScalarFieldEnum[]
+}
+
+/**
+ * PeriodoArranchamento.consolidados
+ */
+export type PeriodoArranchamento$consolidadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ConsolidadoRefeicao
+   */
+  select?: Prisma.ConsolidadoRefeicaoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ConsolidadoRefeicao
+   */
+  omit?: Prisma.ConsolidadoRefeicaoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ConsolidadoRefeicaoInclude<ExtArgs> | null
+  where?: Prisma.ConsolidadoRefeicaoWhereInput
+  orderBy?: Prisma.ConsolidadoRefeicaoOrderByWithRelationInput | Prisma.ConsolidadoRefeicaoOrderByWithRelationInput[]
+  cursor?: Prisma.ConsolidadoRefeicaoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ConsolidadoRefeicaoScalarFieldEnum | Prisma.ConsolidadoRefeicaoScalarFieldEnum[]
 }
 
 /**

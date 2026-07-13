@@ -227,6 +227,7 @@ export type SubunidadeWhereInput = {
   militares?: Prisma.MilitarListRelationFilter
   arranchamentos?: Prisma.ArranchamentoListRelationFilter
   escalasServico?: Prisma.EscalaServicoListRelationFilter
+  consolidados?: Prisma.ConsolidadoRefeicaoListRelationFilter
 }
 
 export type SubunidadeOrderByWithRelationInput = {
@@ -239,6 +240,7 @@ export type SubunidadeOrderByWithRelationInput = {
   militares?: Prisma.MilitarOrderByRelationAggregateInput
   arranchamentos?: Prisma.ArranchamentoOrderByRelationAggregateInput
   escalasServico?: Prisma.EscalaServicoOrderByRelationAggregateInput
+  consolidados?: Prisma.ConsolidadoRefeicaoOrderByRelationAggregateInput
   _relevance?: Prisma.SubunidadeOrderByRelevanceInput
 }
 
@@ -255,6 +257,7 @@ export type SubunidadeWhereUniqueInput = Prisma.AtLeast<{
   militares?: Prisma.MilitarListRelationFilter
   arranchamentos?: Prisma.ArranchamentoListRelationFilter
   escalasServico?: Prisma.EscalaServicoListRelationFilter
+  consolidados?: Prisma.ConsolidadoRefeicaoListRelationFilter
 }, "id" | "sigla">
 
 export type SubunidadeOrderByWithAggregationInput = {
@@ -292,6 +295,7 @@ export type SubunidadeCreateInput = {
   militares?: Prisma.MilitarCreateNestedManyWithoutSubunidadeInput
   arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutSubunidadeInput
   escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutSubunidadeInput
+  consolidados?: Prisma.ConsolidadoRefeicaoCreateNestedManyWithoutSubunidadeInput
 }
 
 export type SubunidadeUncheckedCreateInput = {
@@ -304,6 +308,7 @@ export type SubunidadeUncheckedCreateInput = {
   militares?: Prisma.MilitarUncheckedCreateNestedManyWithoutSubunidadeInput
   arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutSubunidadeInput
   escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutSubunidadeInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedCreateNestedManyWithoutSubunidadeInput
 }
 
 export type SubunidadeUpdateInput = {
@@ -315,6 +320,7 @@ export type SubunidadeUpdateInput = {
   militares?: Prisma.MilitarUpdateManyWithoutSubunidadeNestedInput
   arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutSubunidadeNestedInput
   escalasServico?: Prisma.EscalaServicoUpdateManyWithoutSubunidadeNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUpdateManyWithoutSubunidadeNestedInput
 }
 
 export type SubunidadeUncheckedUpdateInput = {
@@ -327,6 +333,7 @@ export type SubunidadeUncheckedUpdateInput = {
   militares?: Prisma.MilitarUncheckedUpdateManyWithoutSubunidadeNestedInput
   arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutSubunidadeNestedInput
   escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutSubunidadeNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedUpdateManyWithoutSubunidadeNestedInput
 }
 
 export type SubunidadeCreateManyInput = {
@@ -463,6 +470,20 @@ export type SubunidadeUpdateOneRequiredWithoutEscalasServicoNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SubunidadeUpdateToOneWithWhereWithoutEscalasServicoInput, Prisma.SubunidadeUpdateWithoutEscalasServicoInput>, Prisma.SubunidadeUncheckedUpdateWithoutEscalasServicoInput>
 }
 
+export type SubunidadeCreateNestedOneWithoutConsolidadosInput = {
+  create?: Prisma.XOR<Prisma.SubunidadeCreateWithoutConsolidadosInput, Prisma.SubunidadeUncheckedCreateWithoutConsolidadosInput>
+  connectOrCreate?: Prisma.SubunidadeCreateOrConnectWithoutConsolidadosInput
+  connect?: Prisma.SubunidadeWhereUniqueInput
+}
+
+export type SubunidadeUpdateOneRequiredWithoutConsolidadosNestedInput = {
+  create?: Prisma.XOR<Prisma.SubunidadeCreateWithoutConsolidadosInput, Prisma.SubunidadeUncheckedCreateWithoutConsolidadosInput>
+  connectOrCreate?: Prisma.SubunidadeCreateOrConnectWithoutConsolidadosInput
+  upsert?: Prisma.SubunidadeUpsertWithoutConsolidadosInput
+  connect?: Prisma.SubunidadeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SubunidadeUpdateToOneWithWhereWithoutConsolidadosInput, Prisma.SubunidadeUpdateWithoutConsolidadosInput>, Prisma.SubunidadeUncheckedUpdateWithoutConsolidadosInput>
+}
+
 export type SubunidadeCreateWithoutMilitaresInput = {
   sigla: string
   nome: string
@@ -471,6 +492,7 @@ export type SubunidadeCreateWithoutMilitaresInput = {
   updatedAt?: Date | string
   arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutSubunidadeInput
   escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutSubunidadeInput
+  consolidados?: Prisma.ConsolidadoRefeicaoCreateNestedManyWithoutSubunidadeInput
 }
 
 export type SubunidadeUncheckedCreateWithoutMilitaresInput = {
@@ -482,6 +504,7 @@ export type SubunidadeUncheckedCreateWithoutMilitaresInput = {
   updatedAt?: Date | string
   arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutSubunidadeInput
   escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutSubunidadeInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedCreateNestedManyWithoutSubunidadeInput
 }
 
 export type SubunidadeCreateOrConnectWithoutMilitaresInput = {
@@ -508,6 +531,7 @@ export type SubunidadeUpdateWithoutMilitaresInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutSubunidadeNestedInput
   escalasServico?: Prisma.EscalaServicoUpdateManyWithoutSubunidadeNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUpdateManyWithoutSubunidadeNestedInput
 }
 
 export type SubunidadeUncheckedUpdateWithoutMilitaresInput = {
@@ -519,6 +543,7 @@ export type SubunidadeUncheckedUpdateWithoutMilitaresInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutSubunidadeNestedInput
   escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutSubunidadeNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedUpdateManyWithoutSubunidadeNestedInput
 }
 
 export type SubunidadeCreateWithoutArranchamentosInput = {
@@ -529,6 +554,7 @@ export type SubunidadeCreateWithoutArranchamentosInput = {
   updatedAt?: Date | string
   militares?: Prisma.MilitarCreateNestedManyWithoutSubunidadeInput
   escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutSubunidadeInput
+  consolidados?: Prisma.ConsolidadoRefeicaoCreateNestedManyWithoutSubunidadeInput
 }
 
 export type SubunidadeUncheckedCreateWithoutArranchamentosInput = {
@@ -540,6 +566,7 @@ export type SubunidadeUncheckedCreateWithoutArranchamentosInput = {
   updatedAt?: Date | string
   militares?: Prisma.MilitarUncheckedCreateNestedManyWithoutSubunidadeInput
   escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutSubunidadeInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedCreateNestedManyWithoutSubunidadeInput
 }
 
 export type SubunidadeCreateOrConnectWithoutArranchamentosInput = {
@@ -566,6 +593,7 @@ export type SubunidadeUpdateWithoutArranchamentosInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   militares?: Prisma.MilitarUpdateManyWithoutSubunidadeNestedInput
   escalasServico?: Prisma.EscalaServicoUpdateManyWithoutSubunidadeNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUpdateManyWithoutSubunidadeNestedInput
 }
 
 export type SubunidadeUncheckedUpdateWithoutArranchamentosInput = {
@@ -577,6 +605,7 @@ export type SubunidadeUncheckedUpdateWithoutArranchamentosInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   militares?: Prisma.MilitarUncheckedUpdateManyWithoutSubunidadeNestedInput
   escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutSubunidadeNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedUpdateManyWithoutSubunidadeNestedInput
 }
 
 export type SubunidadeCreateWithoutEscalasServicoInput = {
@@ -587,6 +616,7 @@ export type SubunidadeCreateWithoutEscalasServicoInput = {
   updatedAt?: Date | string
   militares?: Prisma.MilitarCreateNestedManyWithoutSubunidadeInput
   arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutSubunidadeInput
+  consolidados?: Prisma.ConsolidadoRefeicaoCreateNestedManyWithoutSubunidadeInput
 }
 
 export type SubunidadeUncheckedCreateWithoutEscalasServicoInput = {
@@ -598,6 +628,7 @@ export type SubunidadeUncheckedCreateWithoutEscalasServicoInput = {
   updatedAt?: Date | string
   militares?: Prisma.MilitarUncheckedCreateNestedManyWithoutSubunidadeInput
   arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutSubunidadeInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedCreateNestedManyWithoutSubunidadeInput
 }
 
 export type SubunidadeCreateOrConnectWithoutEscalasServicoInput = {
@@ -624,6 +655,7 @@ export type SubunidadeUpdateWithoutEscalasServicoInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   militares?: Prisma.MilitarUpdateManyWithoutSubunidadeNestedInput
   arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutSubunidadeNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUpdateManyWithoutSubunidadeNestedInput
 }
 
 export type SubunidadeUncheckedUpdateWithoutEscalasServicoInput = {
@@ -635,6 +667,69 @@ export type SubunidadeUncheckedUpdateWithoutEscalasServicoInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   militares?: Prisma.MilitarUncheckedUpdateManyWithoutSubunidadeNestedInput
   arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutSubunidadeNestedInput
+  consolidados?: Prisma.ConsolidadoRefeicaoUncheckedUpdateManyWithoutSubunidadeNestedInput
+}
+
+export type SubunidadeCreateWithoutConsolidadosInput = {
+  sigla: string
+  nome: string
+  ativa?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  militares?: Prisma.MilitarCreateNestedManyWithoutSubunidadeInput
+  arranchamentos?: Prisma.ArranchamentoCreateNestedManyWithoutSubunidadeInput
+  escalasServico?: Prisma.EscalaServicoCreateNestedManyWithoutSubunidadeInput
+}
+
+export type SubunidadeUncheckedCreateWithoutConsolidadosInput = {
+  id?: number
+  sigla: string
+  nome: string
+  ativa?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  militares?: Prisma.MilitarUncheckedCreateNestedManyWithoutSubunidadeInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedCreateNestedManyWithoutSubunidadeInput
+  escalasServico?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutSubunidadeInput
+}
+
+export type SubunidadeCreateOrConnectWithoutConsolidadosInput = {
+  where: Prisma.SubunidadeWhereUniqueInput
+  create: Prisma.XOR<Prisma.SubunidadeCreateWithoutConsolidadosInput, Prisma.SubunidadeUncheckedCreateWithoutConsolidadosInput>
+}
+
+export type SubunidadeUpsertWithoutConsolidadosInput = {
+  update: Prisma.XOR<Prisma.SubunidadeUpdateWithoutConsolidadosInput, Prisma.SubunidadeUncheckedUpdateWithoutConsolidadosInput>
+  create: Prisma.XOR<Prisma.SubunidadeCreateWithoutConsolidadosInput, Prisma.SubunidadeUncheckedCreateWithoutConsolidadosInput>
+  where?: Prisma.SubunidadeWhereInput
+}
+
+export type SubunidadeUpdateToOneWithWhereWithoutConsolidadosInput = {
+  where?: Prisma.SubunidadeWhereInput
+  data: Prisma.XOR<Prisma.SubunidadeUpdateWithoutConsolidadosInput, Prisma.SubunidadeUncheckedUpdateWithoutConsolidadosInput>
+}
+
+export type SubunidadeUpdateWithoutConsolidadosInput = {
+  sigla?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  ativa?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  militares?: Prisma.MilitarUpdateManyWithoutSubunidadeNestedInput
+  arranchamentos?: Prisma.ArranchamentoUpdateManyWithoutSubunidadeNestedInput
+  escalasServico?: Prisma.EscalaServicoUpdateManyWithoutSubunidadeNestedInput
+}
+
+export type SubunidadeUncheckedUpdateWithoutConsolidadosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  sigla?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  ativa?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  militares?: Prisma.MilitarUncheckedUpdateManyWithoutSubunidadeNestedInput
+  arranchamentos?: Prisma.ArranchamentoUncheckedUpdateManyWithoutSubunidadeNestedInput
+  escalasServico?: Prisma.EscalaServicoUncheckedUpdateManyWithoutSubunidadeNestedInput
 }
 
 
@@ -646,12 +741,14 @@ export type SubunidadeCountOutputType = {
   militares: number
   arranchamentos: number
   escalasServico: number
+  consolidados: number
 }
 
 export type SubunidadeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   militares?: boolean | SubunidadeCountOutputTypeCountMilitaresArgs
   arranchamentos?: boolean | SubunidadeCountOutputTypeCountArranchamentosArgs
   escalasServico?: boolean | SubunidadeCountOutputTypeCountEscalasServicoArgs
+  consolidados?: boolean | SubunidadeCountOutputTypeCountConsolidadosArgs
 }
 
 /**
@@ -685,6 +782,13 @@ export type SubunidadeCountOutputTypeCountEscalasServicoArgs<ExtArgs extends run
   where?: Prisma.EscalaServicoWhereInput
 }
 
+/**
+ * SubunidadeCountOutputType without action
+ */
+export type SubunidadeCountOutputTypeCountConsolidadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ConsolidadoRefeicaoWhereInput
+}
+
 
 export type SubunidadeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -696,6 +800,7 @@ export type SubunidadeSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   militares?: boolean | Prisma.Subunidade$militaresArgs<ExtArgs>
   arranchamentos?: boolean | Prisma.Subunidade$arranchamentosArgs<ExtArgs>
   escalasServico?: boolean | Prisma.Subunidade$escalasServicoArgs<ExtArgs>
+  consolidados?: boolean | Prisma.Subunidade$consolidadosArgs<ExtArgs>
   _count?: boolean | Prisma.SubunidadeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["subunidade"]>
 
@@ -715,6 +820,7 @@ export type SubunidadeInclude<ExtArgs extends runtime.Types.Extensions.InternalA
   militares?: boolean | Prisma.Subunidade$militaresArgs<ExtArgs>
   arranchamentos?: boolean | Prisma.Subunidade$arranchamentosArgs<ExtArgs>
   escalasServico?: boolean | Prisma.Subunidade$escalasServicoArgs<ExtArgs>
+  consolidados?: boolean | Prisma.Subunidade$consolidadosArgs<ExtArgs>
   _count?: boolean | Prisma.SubunidadeCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -724,6 +830,7 @@ export type $SubunidadePayload<ExtArgs extends runtime.Types.Extensions.Internal
     militares: Prisma.$MilitarPayload<ExtArgs>[]
     arranchamentos: Prisma.$ArranchamentoPayload<ExtArgs>[]
     escalasServico: Prisma.$EscalaServicoPayload<ExtArgs>[]
+    consolidados: Prisma.$ConsolidadoRefeicaoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1075,6 +1182,7 @@ export interface Prisma__SubunidadeClient<T, Null = never, ExtArgs extends runti
   militares<T extends Prisma.Subunidade$militaresArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Subunidade$militaresArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MilitarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   arranchamentos<T extends Prisma.Subunidade$arranchamentosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Subunidade$arranchamentosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArranchamentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   escalasServico<T extends Prisma.Subunidade$escalasServicoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Subunidade$escalasServicoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EscalaServicoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  consolidados<T extends Prisma.Subunidade$consolidadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Subunidade$consolidadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConsolidadoRefeicaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1527,6 +1635,30 @@ export type Subunidade$escalasServicoArgs<ExtArgs extends runtime.Types.Extensio
   take?: number
   skip?: number
   distinct?: Prisma.EscalaServicoScalarFieldEnum | Prisma.EscalaServicoScalarFieldEnum[]
+}
+
+/**
+ * Subunidade.consolidados
+ */
+export type Subunidade$consolidadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ConsolidadoRefeicao
+   */
+  select?: Prisma.ConsolidadoRefeicaoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ConsolidadoRefeicao
+   */
+  omit?: Prisma.ConsolidadoRefeicaoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ConsolidadoRefeicaoInclude<ExtArgs> | null
+  where?: Prisma.ConsolidadoRefeicaoWhereInput
+  orderBy?: Prisma.ConsolidadoRefeicaoOrderByWithRelationInput | Prisma.ConsolidadoRefeicaoOrderByWithRelationInput[]
+  cursor?: Prisma.ConsolidadoRefeicaoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ConsolidadoRefeicaoScalarFieldEnum | Prisma.ConsolidadoRefeicaoScalarFieldEnum[]
 }
 
 /**
