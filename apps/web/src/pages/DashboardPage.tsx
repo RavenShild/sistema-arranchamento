@@ -23,6 +23,8 @@ export function DashboardPage() {
   const podeConsultarRelatorios =
     usuario.permissoes.includes('relatorio:global:ler') ||
     usuario.permissoes.includes('relatorio:subunidade:ler')
+  const podeGerenciarUsuarios =
+    usuario.permissoes.includes('usuario:gerenciar')
 
   return (
     <main className="dashboard">
@@ -81,7 +83,8 @@ export function DashboardPage() {
         podeGerenciarFerias ||
         podeGerenciarPeriodos ||
         podeGerenciarEscala ||
-        podeConsultarRelatorios) && (
+        podeConsultarRelatorios ||
+        podeGerenciarUsuarios) && (
         <div className="module-grid">
           {podeRealizarArranchamento && (
             <section className="user-card module-card">
@@ -214,6 +217,26 @@ export function DashboardPage() {
               <Link
                 className="primary-link"
                 to="/arranchamento/relatorios"
+              >
+                Acessar
+              </Link>
+            </section>
+          )}
+
+          {podeGerenciarUsuarios && (
+            <section className="user-card module-card">
+              <div>
+                <p className="eyebrow">Administração</p>
+                <h2>Usuários e acessos</h2>
+                <p>
+                  Crie contas, atribua perfis e gerencie o acesso
+                  ao sistema.
+                </p>
+              </div>
+
+              <Link
+                className="primary-link"
+                to="/admin/usuarios"
               >
                 Acessar
               </Link>

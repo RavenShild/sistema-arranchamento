@@ -14,6 +14,7 @@ import { MilitaresPage } from './pages/MilitaresPage'
 import { PeriodosPage } from './pages/PeriodosPage'
 import { RelatoriosPage } from './pages/RelatorioPage'
 import { SubunidadesPage } from './pages/SubunidadesPage'
+import { UsuariosPage } from './pages/UsuariosPage'
 import { ProtectedRoute } from './routes/ProtectedRoute'
 
 function App() {
@@ -105,6 +106,17 @@ function App() {
           path="/arranchamento/relatorios"
           element={<RelatoriosPage />}
         />
+
+        <Route
+          element={
+            <ProtectedRoute permissao="usuario:gerenciar" />
+          }
+        >
+          <Route
+            path="/admin/usuarios"
+            element={<UsuariosPage />}
+          />
+        </Route>
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
