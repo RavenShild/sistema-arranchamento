@@ -15,6 +15,9 @@ export function DashboardPage() {
   const podeGerenciarPeriodos = usuario.permissoes.includes(
     'arranchamento:periodo:gerenciar',
   )
+  const podeGerenciarEscala = usuario.permissoes.includes(
+    'escala:servico:gerenciar',
+  )
 
   return (
     <main className="dashboard">
@@ -70,7 +73,8 @@ export function DashboardPage() {
 
       {(podeGerenciarMilitares ||
         podeGerenciarFerias ||
-        podeGerenciarPeriodos) && (
+        podeGerenciarPeriodos ||
+        podeGerenciarEscala) && (
         <div className="module-grid">
           {podeGerenciarMilitares && (
             <>
@@ -143,6 +147,26 @@ export function DashboardPage() {
               <Link
                 className="primary-link"
                 to="/arranchamento/periodos"
+              >
+                Acessar
+              </Link>
+            </section>
+          )}
+
+          {podeGerenciarEscala && (
+            <section className="user-card module-card">
+              <div>
+                <p className="eyebrow">Arranchamento</p>
+                <h2>GU de serviço</h2>
+                <p>
+                  Cadastre a guarnição e as quatro refeições do
+                  serviço.
+                </p>
+              </div>
+
+              <Link
+                className="primary-link"
+                to="/arranchamento/gu-servico"
               >
                 Acessar
               </Link>

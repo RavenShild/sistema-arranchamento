@@ -701,3 +701,156 @@
     flex-direction: column;
   }
 }
+
+.empty-period-card {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.duty-form-card {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  max-width: 1400px;
+  margin: 0 auto 20px;
+}
+
+.duty-form-card > div {
+  max-width: 430px;
+}
+
+.duty-form {
+  display: grid;
+  grid-template-columns: minmax(210px, auto) minmax(260px, 1fr) auto;
+  align-items: end;
+  gap: 12px;
+  flex: 1;
+}
+
+.duty-form label {
+  display: grid;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.duty-form select {
+  min-width: 0;
+  padding: 11px 13px;
+  border: 1px solid #cbd3cc;
+  border-radius: 9px;
+  background: #ffffff;
+}
+
+.duty-form button {
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  color: #ffffff;
+  background: #294f32;
+  font-weight: 700;
+}
+
+.duty-days-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.duty-day-card header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.duty-count {
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: #294f32;
+  background: #e7efe8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.empty-duty-day {
+  padding: 24px;
+  border: 1px dashed #cbd3cc;
+  border-radius: 9px;
+  color: #68716a;
+  text-align: center;
+}
+
+.duty-list {
+  display: grid;
+  gap: 10px;
+}
+
+.duty-member {
+  display: grid;
+  grid-template-columns: minmax(170px, 1fr) auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid #e3e8e4;
+  border-radius: 9px;
+}
+
+.duty-member > div:first-child {
+  display: grid;
+  gap: 3px;
+}
+
+.duty-member > div:first-child span {
+  color: #68716a;
+  font-size: 13px;
+}
+
+.meal-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.meal-badges span {
+  padding: 4px 7px;
+  border-radius: 999px;
+  color: #235b2c;
+  background: #e1f2e4;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .duty-form-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .duty-form {
+    grid-template-columns: 1fr 1fr auto;
+  }
+
+  .duty-days-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .duty-form {
+    grid-template-columns: 1fr;
+  }
+
+  .duty-member {
+    grid-template-columns: 1fr;
+  }
+
+  .meal-badges {
+    justify-content: flex-start;
+  }
+}

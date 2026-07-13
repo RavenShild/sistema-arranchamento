@@ -6,6 +6,7 @@ import {
 import './App.css'
 import { useAuth } from './auth/auth.context'
 import { DashboardPage } from './pages/DashboardPage'
+import { EscalaServicoPage } from './pages/EscalaServicoPage'
 import { FeriasPage } from './pages/FeriasPage'
 import { LoginPage } from './pages/LoginPage'
 import { MilitaresPage } from './pages/MilitaresPage'
@@ -73,6 +74,17 @@ function App() {
           <Route
             path="/arranchamento/periodos"
             element={<PeriodosPage />}
+          />
+        </Route>
+
+        <Route
+          element={
+            <ProtectedRoute permissao="escala:servico:gerenciar" />
+          }
+        >
+          <Route
+            path="/arranchamento/gu-servico"
+            element={<EscalaServicoPage />}
           />
         </Route>
       </Route>
