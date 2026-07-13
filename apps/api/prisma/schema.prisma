@@ -87,11 +87,12 @@ model Usuario {
   perfis  UsuarioPerfil[]
   sessoes Sessao[]
 
-  periodosAbertos     PeriodoArranchamento[] @relation("PeriodoAbertoPor")
-  periodosFechados    PeriodoArranchamento[] @relation("PeriodoFechadoPor")
-  feriasCadastradas   FeriasMilitar[]        @relation("FeriasCadastradasPor")
-  escalasCadastradas  EscalaServico[]        @relation("EscalaCadastradaPor")
-  feriadosCadastrados Feriado[]              @relation("FeriadoCadastradoPor")
+  periodosAbertos            PeriodoArranchamento[] @relation("PeriodoAbertoPor")
+  periodosFechados           PeriodoArranchamento[] @relation("PeriodoFechadoPor")
+  feriasCadastradas          FeriasMilitar[]        @relation("FeriasCadastradasPor")
+  escalasCadastradas         EscalaServico[]        @relation("EscalaCadastradaPor")
+  feriadosCadastrados        Feriado[]              @relation("FeriadoCadastradoPor")
+  configuracoesOmAtualizadas ConfiguracaoOm[]       @relation("ConfiguracaoOmAtualizadaPor")
 
   @@map("usuarios")
 }
@@ -264,4 +265,19 @@ model ConsolidadoRefeicao {
   @@index([periodoId, data, refeicao])
   @@index([subunidadeId])
   @@map("consolidados_refeicoes")
+}
+
+model ConfiguracaoOm {
+  id              Int      @id
+  nome            String   @db.VarChar(160)
+  sigla           String   @db.VarChar(30)
+  postoComandante String   @map("posto_comandante") @db.VarChar(50)
+  nomeComandante  String   @map("nome_comandante") @db.VarChar(160)
+  atualizadoPorId Int      @map("atualizado_por_id")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  atualizadoPor Usuario @relation("ConfiguracaoOmAtualizadaPor", fields: [atualizadoPorId], references: [id])
+
+  @@map("configuracao_om")
 }

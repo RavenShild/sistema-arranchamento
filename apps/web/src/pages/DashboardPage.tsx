@@ -247,23 +247,43 @@ export function DashboardPage() {
           )}
 
           {podeGerenciarUsuarios && (
-            <section className="user-card module-card">
-              <div>
-                <p className="eyebrow">Administração</p>
-                <h2>Usuários e acessos</h2>
-                <p>
-                  Crie contas, atribua perfis e gerencie o acesso
-                  ao sistema.
-                </p>
-              </div>
+            <>
+              <section className="user-card module-card">
+                <div>
+                  <p className="eyebrow">Administração</p>
+                  <h2>Usuários e acessos</h2>
+                  <p>
+                    Crie contas, atribua perfis e gerencie o acesso
+                    ao sistema.
+                  </p>
+                </div>
 
-              <Link
-                className="primary-link"
-                to="/admin/usuarios"
-              >
-                Acessar
-              </Link>
-            </section>
+                <Link
+                  className="primary-link"
+                  to="/admin/usuarios"
+                >
+                  Acessar
+                </Link>
+              </section>
+
+              <section className="user-card module-card">
+                <div>
+                  <p className="eyebrow">Administração</p>
+                  <h2>Configurações da OM</h2>
+                  <p>
+                    Defina a identificação da OM e os dados do
+                    Comandante usados nos relatórios.
+                  </p>
+                </div>
+
+                <Link
+                  className="primary-link"
+                  to="/admin/configuracao-om"
+                >
+                  Acessar
+                </Link>
+              </section>
+            </>
           )}
 
           <section className="user-card module-card">

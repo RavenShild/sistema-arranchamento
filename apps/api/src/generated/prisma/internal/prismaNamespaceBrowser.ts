@@ -64,7 +64,8 @@ export const ModelName = {
   EscalaServico: 'EscalaServico',
   FeriasMilitar: 'FeriasMilitar',
   Feriado: 'Feriado',
-  ConsolidadoRefeicao: 'ConsolidadoRefeicao'
+  ConsolidadoRefeicao: 'ConsolidadoRefeicao',
+  ConfiguracaoOm: 'ConfiguracaoOm'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -254,6 +255,20 @@ export const ConsolidadoRefeicaoScalarFieldEnum = {
 export type ConsolidadoRefeicaoScalarFieldEnum = (typeof ConsolidadoRefeicaoScalarFieldEnum)[keyof typeof ConsolidadoRefeicaoScalarFieldEnum]
 
 
+export const ConfiguracaoOmScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome',
+  sigla: 'sigla',
+  postoComandante: 'postoComandante',
+  nomeComandante: 'nomeComandante',
+  atualizadoPorId: 'atualizadoPorId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ConfiguracaoOmScalarFieldEnum = (typeof ConfiguracaoOmScalarFieldEnum)[keyof typeof ConfiguracaoOmScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -326,4 +341,14 @@ export const FeriadoOrderByRelevanceFieldEnum = {
 } as const
 
 export type FeriadoOrderByRelevanceFieldEnum = (typeof FeriadoOrderByRelevanceFieldEnum)[keyof typeof FeriadoOrderByRelevanceFieldEnum]
+
+
+export const ConfiguracaoOmOrderByRelevanceFieldEnum = {
+  nome: 'nome',
+  sigla: 'sigla',
+  postoComandante: 'postoComandante',
+  nomeComandante: 'nomeComandante'
+} as const
+
+export type ConfiguracaoOmOrderByRelevanceFieldEnum = (typeof ConfiguracaoOmOrderByRelevanceFieldEnum)[keyof typeof ConfiguracaoOmOrderByRelevanceFieldEnum]
 

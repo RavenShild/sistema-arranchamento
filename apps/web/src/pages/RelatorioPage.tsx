@@ -86,6 +86,17 @@ type SubunidadesResponse = {
   escopo: Escopo
 }
 
+type ConfiguracaoOm = {
+  nome: string
+  sigla: string
+  postoComandante: string
+  nomeComandante: string
+}
+
+type ConfiguracaoOmResponse = {
+  configuracao: ConfiguracaoOm | null
+}
+
 const grupos: Array<{ circulo: Circulo; titulo: string }> = [
   {
     circulo: 'OFICIAIS',
@@ -180,6 +191,8 @@ export function RelatoriosPage() {
   const [relatorio, setRelatorio] = useState<RelatorioDiario | null>(
     null,
   )
+  const [configuracaoOm, setConfiguracaoOm] =
+    useState<ConfiguracaoOm | null>(null)
   const [carregandoOpcoes, setCarregandoOpcoes] = useState(true)
   const [gerando, setGerando] = useState(false)
   const [erro, setErro] = useState('')
@@ -199,32 +212,40 @@ export function RelatoriosPage() {
     Promise.all([
       http.get<PeriodosResponse>('/relatorios/periodos'),
       http.get<SubunidadesResponse>('/relatorios/subunidades'),
+      http.get<ConfiguracaoOmResponse>('/configuracao-om'),
     ])
-      .then(([periodosResponse, subunidadesResponse]) => {
-        if (!ativo) {
-          return
-        }
+      .then(
+        ([
+          periodosResponse,
+          subunidadesResponse,
+          configuracaoResponse,
+        ]) => {
+          if (!ativo) {
+            return
+          }
 
-        const periodosRecebidos = periodosResponse.data.periodos
-        const subunidadesRecebidas =
-          subunidadesResponse.data.subunidades
+          const periodosRecebidos = periodosResponse.data.periodos
+          const subunidadesRecebidas =
+            subunidadesResponse.data.subunidades
 
-        setPeriodos(periodosRecebidos)
-        setSubunidades(subunidadesRecebidas)
-        setEscopo(periodosResponse.data.escopo)
+          setPeriodos(periodosRecebidos)
+          setSubunidades(subunidadesRecebidas)
+          setEscopo(periodosResponse.data.escopo)
+          setConfiguracaoOm(configuracaoResponse.data.configuracao)
 
-        if (periodosRecebidos[0]) {
-          setPeriodoId(String(periodosRecebidos[0].id))
-          setData(dataParaInput(periodosRecebidos[0].dataInicio))
-        }
+          if (periodosRecebidos[0]) {
+            setPeriodoId(String(periodosRecebidos[0].id))
+            setData(dataParaInput(periodosRecebidos[0].dataInicio))
+          }
 
-        if (
-          subunidadesResponse.data.escopo === 'SUBUNIDADE' &&
-          subunidadesRecebidas[0]
-        ) {
-          setSubunidadeId(String(subunidadesRecebidas[0].id))
-        }
-      })
+          if (
+            subunidadesResponse.data.escopo === 'SUBUNIDADE' &&
+            subunidadesRecebidas[0]
+          ) {
+            setSubunidadeId(String(subunidadesRecebidas[0].id))
+          }
+        },
+      )
       .catch((error: unknown) => {
         if (ativo) {
           setErro(obterMensagemErro(error))
@@ -314,11 +335,10 @@ export function RelatoriosPage() {
     }
   }
 
-  const nomeOm =
-    import.meta.env.VITE_NOME_OM?.trim() ||
-    'ORGANIZAÇÃO MILITAR'
-  const comandanteOm =
-    import.meta.env.VITE_COMANDANTE_OM?.trim() || ''
+  const nomeOm = configuracaoOm?.nome || 'ORGANIZAÇÃO MILITAR'
+  const comandanteOm = configuracaoOm
+    ? `${configuracaoOm.postoComandante} ${configuracaoOm.nomeComandante}`
+    : ''
   const furriel = relatorio?.periodo.fechadoPor?.militar
 
   return (
@@ -457,7 +477,9 @@ export function RelatoriosPage() {
                 <span>
                   {subunidadeSelecionada
                     ? `${subunidadeSelecionada.sigla} - ${subunidadeSelecionada.nome}`
-                    : 'Consolidado da Organização Militar'}
+                    : configuracaoOm?.sigla
+                      ? `${configuracaoOm.sigla} — Consolidado da Organização Militar`
+                      : 'Consolidado da Organização Militar'}
                 </span>
               </div>
 

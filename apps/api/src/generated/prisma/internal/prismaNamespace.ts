@@ -397,7 +397,8 @@ export const ModelName = {
   EscalaServico: 'EscalaServico',
   FeriasMilitar: 'FeriasMilitar',
   Feriado: 'Feriado',
-  ConsolidadoRefeicao: 'ConsolidadoRefeicao'
+  ConsolidadoRefeicao: 'ConsolidadoRefeicao',
+  ConfiguracaoOm: 'ConfiguracaoOm'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -413,7 +414,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "subunidade" | "militar" | "usuario" | "perfil" | "permissao" | "usuarioPerfil" | "perfilPermissao" | "sessao" | "periodoArranchamento" | "arranchamento" | "escalaServico" | "feriasMilitar" | "feriado" | "consolidadoRefeicao"
+    modelProps: "subunidade" | "militar" | "usuario" | "perfil" | "permissao" | "usuarioPerfil" | "perfilPermissao" | "sessao" | "periodoArranchamento" | "arranchamento" | "escalaServico" | "feriasMilitar" | "feriado" | "consolidadoRefeicao" | "configuracaoOm"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1341,6 +1342,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ConfiguracaoOm: {
+      payload: Prisma.$ConfiguracaoOmPayload<ExtArgs>
+      fields: Prisma.ConfiguracaoOmFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ConfiguracaoOmFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfiguracaoOmPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ConfiguracaoOmFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfiguracaoOmPayload>
+        }
+        findFirst: {
+          args: Prisma.ConfiguracaoOmFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfiguracaoOmPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ConfiguracaoOmFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfiguracaoOmPayload>
+        }
+        findMany: {
+          args: Prisma.ConfiguracaoOmFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfiguracaoOmPayload>[]
+        }
+        create: {
+          args: Prisma.ConfiguracaoOmCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfiguracaoOmPayload>
+        }
+        createMany: {
+          args: Prisma.ConfiguracaoOmCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.ConfiguracaoOmDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfiguracaoOmPayload>
+        }
+        update: {
+          args: Prisma.ConfiguracaoOmUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfiguracaoOmPayload>
+        }
+        deleteMany: {
+          args: Prisma.ConfiguracaoOmDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ConfiguracaoOmUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.ConfiguracaoOmUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConfiguracaoOmPayload>
+        }
+        aggregate: {
+          args: Prisma.ConfiguracaoOmAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateConfiguracaoOm>
+        }
+        groupBy: {
+          args: Prisma.ConfiguracaoOmGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConfiguracaoOmGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ConfiguracaoOmCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConfiguracaoOmCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1551,6 +1618,20 @@ export const ConsolidadoRefeicaoScalarFieldEnum = {
 export type ConsolidadoRefeicaoScalarFieldEnum = (typeof ConsolidadoRefeicaoScalarFieldEnum)[keyof typeof ConsolidadoRefeicaoScalarFieldEnum]
 
 
+export const ConfiguracaoOmScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome',
+  sigla: 'sigla',
+  postoComandante: 'postoComandante',
+  nomeComandante: 'nomeComandante',
+  atualizadoPorId: 'atualizadoPorId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ConfiguracaoOmScalarFieldEnum = (typeof ConfiguracaoOmScalarFieldEnum)[keyof typeof ConfiguracaoOmScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1623,6 +1704,16 @@ export const FeriadoOrderByRelevanceFieldEnum = {
 } as const
 
 export type FeriadoOrderByRelevanceFieldEnum = (typeof FeriadoOrderByRelevanceFieldEnum)[keyof typeof FeriadoOrderByRelevanceFieldEnum]
+
+
+export const ConfiguracaoOmOrderByRelevanceFieldEnum = {
+  nome: 'nome',
+  sigla: 'sigla',
+  postoComandante: 'postoComandante',
+  nomeComandante: 'nomeComandante'
+} as const
+
+export type ConfiguracaoOmOrderByRelevanceFieldEnum = (typeof ConfiguracaoOmOrderByRelevanceFieldEnum)[keyof typeof ConfiguracaoOmOrderByRelevanceFieldEnum]
 
 
 
@@ -1817,6 +1908,7 @@ export type GlobalOmitConfig = {
   feriasMilitar?: Prisma.FeriasMilitarOmit
   feriado?: Prisma.FeriadoOmit
   consolidadoRefeicao?: Prisma.ConsolidadoRefeicaoOmit
+  configuracaoOm?: Prisma.ConfiguracaoOmOmit
 }
 
 /* Types for Logging */

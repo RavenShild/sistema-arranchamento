@@ -87,3 +87,8 @@ export type Feriado = Prisma.FeriadoModel
  * 
  */
 export type ConsolidadoRefeicao = Prisma.ConsolidadoRefeicaoModel
+/**
+ * Model ConfiguracaoOm
+ * 
+ */
+export type ConfiguracaoOm = Prisma.ConfiguracaoOmModel
