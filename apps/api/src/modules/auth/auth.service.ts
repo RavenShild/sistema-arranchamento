@@ -41,16 +41,9 @@ export async function realizarLogin(
   const usuario = await prisma.usuario.findFirst({
     where: {
       ativo: true,
-      OR: [
-        {
-          email: login,
-        },
-        {
-          militar: {
-            identidadeMilitar: login,
-          },
-        },
-      ],
+      militar: {
+        identidadeMilitar: login,
+      },
     },
     include: {
       militar: {

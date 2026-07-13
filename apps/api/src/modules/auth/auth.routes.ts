@@ -51,7 +51,7 @@ authRouter.post('/login', loginLimiter, async (request, response) => {
 
     if (!resultado) {
       return response.status(401).json({
-        erro: 'Identidade, e-mail ou senha inválidos.',
+        erro: 'Identidade militar ou senha inválidos.',
       })
     }
 
@@ -171,9 +171,16 @@ authRouter.patch(
     const validacao = alterarSenhaSchema.safeParse(request.body)
 
     if (!validacao.success) {
+      const detalhes = validacao.error.flatten().fieldErrors
+      const primeiroErro =
+        detalhes.senhaAtual?.[0] ??
+        detalhes.novaSenha?.[0] ??
+        detalhes.confirmacaoSenha?.[0] ??
+        'Dados inválidos.'
+
       return response.status(400).json({
-        erro: 'Dados inválidos.',
-        detalhes: validacao.error.flatten().fieldErrors,
+        erro: primeiroErro,
+        detalhes,
       })
     }
 
