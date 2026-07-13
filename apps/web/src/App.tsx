@@ -9,6 +9,7 @@ import { DashboardPage } from './pages/DashboardPage'
 import { EscalaServicoPage } from './pages/EscalaServicoPage'
 import { FeriasPage } from './pages/FeriasPage'
 import { LoginPage } from './pages/LoginPage'
+import { MeuArranchamentoPage } from './pages/MeuArranchamentoPage'
 import { MilitaresPage } from './pages/MilitaresPage'
 import { PeriodosPage } from './pages/PeriodosPage'
 import { SubunidadesPage } from './pages/SubunidadesPage'
@@ -39,6 +40,17 @@ function App() {
 
       <Route element={<ProtectedRoute />}>
         <Route path="/" element={<DashboardPage />} />
+
+        <Route
+          element={
+            <ProtectedRoute permissao="refeicao:ler" />
+          }
+        >
+          <Route
+            path="/arranchamento/meu"
+            element={<MeuArranchamentoPage />}
+          />
+        </Route>
 
         <Route
           element={

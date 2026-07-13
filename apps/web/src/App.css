@@ -854,3 +854,160 @@
     justify-content: flex-start;
   }
 }
+
+.ranch-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto 20px;
+}
+
+.ranch-save-area {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+}
+
+.ranch-save-area span {
+  color: #68716a;
+  font-size: 13px;
+}
+
+.ranch-save-area button {
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  color: #ffffff;
+  background: #294f32;
+  font-weight: 700;
+}
+
+.ranch-save-area button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.ranch-days-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.ranch-day-card {
+  min-width: 0;
+}
+
+.ranch-day-card header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ranch-day-card.duty {
+  border: 1px solid #9dc6a5;
+  background: #f5fbf6;
+}
+
+.ranch-day-card.blocked {
+  background: #f7f7f7;
+  opacity: 0.85;
+}
+
+.date-alert,
+.orange-alert {
+  margin-bottom: 14px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.date-alert {
+  color: #76550b;
+  background: #fff1c9;
+}
+
+.orange-alert {
+  color: #8a4a13;
+  background: #ffead7;
+}
+
+.meal-options {
+  display: grid;
+  gap: 8px;
+}
+
+.meal-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 12px;
+  border: 1px solid #dce3dd;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.15s ease;
+}
+
+.meal-option:hover {
+  border-color: #8bac91;
+}
+
+.meal-option.selected {
+  border-color: #4f8058;
+  color: #235b2c;
+  background: #e7f6e9;
+}
+
+.meal-option input {
+  width: 17px;
+  height: 17px;
+}
+
+.automatic-meals p {
+  margin-top: 0;
+  color: #68716a;
+  font-size: 13px;
+}
+
+.blocked-day-message {
+  padding: 24px 10px;
+  color: #68716a;
+  text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .ranch-days-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .ranch-days-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .ranch-summary {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .ranch-save-area {
+    justify-items: stretch;
+  }
+
+  .ranch-save-area span {
+    text-align: center;
+  }
+
+  .ranch-days-grid {
+    grid-template-columns: 1fr;
+  }
+}
