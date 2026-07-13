@@ -9,6 +9,7 @@ import { DashboardPage } from './pages/DashboardPage'
 import { FeriasPage } from './pages/FeriasPage'
 import { LoginPage } from './pages/LoginPage'
 import { MilitaresPage } from './pages/MilitaresPage'
+import { PeriodosPage } from './pages/PeriodosPage'
 import { SubunidadesPage } from './pages/SubunidadesPage'
 import { ProtectedRoute } from './routes/ProtectedRoute'
 
@@ -61,6 +62,17 @@ function App() {
           <Route
             path="/efetivo/ferias"
             element={<FeriasPage />}
+          />
+        </Route>
+
+        <Route
+          element={
+            <ProtectedRoute permissao="arranchamento:periodo:gerenciar" />
+          }
+        >
+          <Route
+            path="/arranchamento/periodos"
+            element={<PeriodosPage />}
           />
         </Route>
       </Route>

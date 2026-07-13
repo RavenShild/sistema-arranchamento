@@ -12,6 +12,9 @@ export function DashboardPage() {
     usuario.permissoes.includes('militar:gerenciar')
   const podeGerenciarFerias =
     usuario.permissoes.includes('ferias:gerenciar')
+  const podeGerenciarPeriodos = usuario.permissoes.includes(
+    'arranchamento:periodo:gerenciar',
+  )
 
   return (
     <main className="dashboard">
@@ -65,7 +68,9 @@ export function DashboardPage() {
         </dl>
       </section>
 
-      {(podeGerenciarMilitares || podeGerenciarFerias) && (
+      {(podeGerenciarMilitares ||
+        podeGerenciarFerias ||
+        podeGerenciarPeriodos) && (
         <div className="module-grid">
           {podeGerenciarMilitares && (
             <>
@@ -119,6 +124,25 @@ export function DashboardPage() {
               <Link
                 className="primary-link"
                 to="/efetivo/ferias"
+              >
+                Acessar
+              </Link>
+            </section>
+          )}
+
+          {podeGerenciarPeriodos && (
+            <section className="user-card module-card">
+              <div>
+                <p className="eyebrow">Arranchamento</p>
+                <h2>Períodos semanais</h2>
+                <p>
+                  Abra e feche os ciclos de quinta a quarta-feira.
+                </p>
+              </div>
+
+              <Link
+                className="primary-link"
+                to="/arranchamento/periodos"
               >
                 Acessar
               </Link>

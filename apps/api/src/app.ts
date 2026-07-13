@@ -8,6 +8,7 @@ import { authRouter } from './modules/auth/auth.routes.js'
 import { feriasRouter } from './modules/ferias/ferias.routes.js'
 import { militarRouter } from './modules/militares/militar.routes.js'
 import { subunidadeRouter } from './modules/subunidades/subunidade.routes.js'
+import { periodoRouter } from './modules/periodos/periodo.routes.js'
 
 export const app = express()
 
@@ -29,6 +30,7 @@ app.use('/subunidades', subunidadeRouter)
 app.use('/militares', militarRouter)
 app.use('/ferias', feriasRouter)
 app.use('/admin', adminRouter)
+app.use('/periodos', periodoRouter)
 
 app.get('/health/database', async (_request, response) => {
   try {
