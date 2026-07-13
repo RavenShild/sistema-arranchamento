@@ -100,12 +100,50 @@ export function AuthProvider({
     }
   }
 
+  async function alterarSenha(
+    senhaAtual: string,
+    novaSenha: string,
+    confirmacaoSenha: string,
+  ) {
+    try {
+      await http.patch('/auth/password', {
+        senhaAtual,
+        novaSenha,
+        confirmacaoSenha,
+      })
+
+      setUsuario((usuarioAtual) =>
+        usuarioAtual
+          ? {
+              ...usuarioAtual,
+              primeiroAcesso: false,
+            }
+          : null,
+      )
+    } catch (error) {
+      if (axios.isAxiosError<{ erro?: string }>(error)) {
+        throw new Error(
+          error.response?.data.erro ??
+            'Não foi possível alterar a senha.',
+          {
+            cause: error,
+          },
+        )
+      }
+
+      throw new Error('Não foi possível alterar a senha.', {
+        cause: error,
+      })
+    }
+  }
+
   return (
     <AuthContext.Provider
       value={{
         usuario,
         carregando,
         login,
+        alterarSenha,
         logout,
       }}
     >

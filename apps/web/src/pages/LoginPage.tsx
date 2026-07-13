@@ -38,18 +38,20 @@ export function LoginPage() {
             <p className="eyebrow">Acesso restrito</p>
             <h1>Sistema de Arranchamento</h1>
             <p className="description">
-              Entre com sua identidade militar ou e-mail.
+              Entre com sua identidade militar e senha.
             </p>
           </div>
         </div>
 
         <form onSubmit={handleSubmit} className="login-form">
           <label>
-            Identidade ou e-mail
+            Identidade militar
             <input
               value={identidade}
               onChange={(event) => setIdentidade(event.target.value)}
               autoComplete="username"
+              inputMode="text"
+              maxLength={30}
               autoFocus
               required
             />

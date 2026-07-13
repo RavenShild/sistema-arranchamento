@@ -25,6 +25,8 @@ export function DashboardPage() {
     usuario.permissoes.includes('relatorio:subunidade:ler')
   const podeGerenciarUsuarios =
     usuario.permissoes.includes('usuario:gerenciar')
+  const podeGerenciarFeriados =
+    usuario.permissoes.includes('feriado:gerenciar')
 
   return (
     <main className="dashboard">
@@ -84,7 +86,8 @@ export function DashboardPage() {
         podeGerenciarPeriodos ||
         podeGerenciarEscala ||
         podeConsultarRelatorios ||
-        podeGerenciarUsuarios) && (
+        podeGerenciarUsuarios ||
+        podeGerenciarFeriados) && (
         <div className="module-grid">
           {podeRealizarArranchamento && (
             <section className="user-card module-card">
@@ -203,6 +206,26 @@ export function DashboardPage() {
             </section>
           )}
 
+          {podeGerenciarFeriados && (
+            <section className="user-card module-card">
+              <div>
+                <p className="eyebrow">Calendário operacional</p>
+                <h2>Feriados</h2>
+                <p>
+                  Cadastre as datas que exigem atenção no
+                  arranchamento.
+                </p>
+              </div>
+
+              <Link
+                className="primary-link"
+                to="/arranchamento/feriados"
+              >
+                Acessar
+              </Link>
+            </section>
+          )}
+
           {podeConsultarRelatorios && (
             <section className="user-card module-card">
               <div>
@@ -242,6 +265,23 @@ export function DashboardPage() {
               </Link>
             </section>
           )}
+
+          <section className="user-card module-card">
+            <div>
+              <p className="eyebrow">Segurança</p>
+              <h2>Alterar senha</h2>
+              <p>
+                Atualize sua senha pessoal de acesso ao sistema.
+              </p>
+            </div>
+
+            <Link
+              className="primary-link"
+              to="/alterar-senha"
+            >
+              Acessar
+            </Link>
+          </section>
         </div>
       )}
     </main>

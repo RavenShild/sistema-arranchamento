@@ -5,8 +5,10 @@ import {
 } from 'react-router'
 import './App.css'
 import { useAuth } from './auth/auth.context'
+import { AlterarSenhaPage } from './pages/AlterarSenhaPage'
 import { DashboardPage } from './pages/DashboardPage'
 import { EscalaServicoPage } from './pages/EscalaServicoPage'
+import { FeriadosPage } from './pages/FeriadoPage'
 import { FeriasPage } from './pages/FeriasPage'
 import { LoginPage } from './pages/LoginPage'
 import { MeuArranchamentoPage } from './pages/MeuArranchamentoPage'
@@ -35,10 +37,30 @@ function App() {
         path="/login"
         element={
           usuario
-            ? <Navigate to="/" replace />
+            ? (
+                <Navigate
+                  to={
+                    usuario.primeiroAcesso
+                      ? '/alterar-senha'
+                      : '/'
+                  }
+                  replace
+                />
+              )
             : <LoginPage />
         }
       />
+
+      <Route
+        element={
+          <ProtectedRoute permitirPrimeiroAcesso />
+        }
+      >
+        <Route
+          path="/alterar-senha"
+          element={<AlterarSenhaPage />}
+        />
+      </Route>
 
       <Route element={<ProtectedRoute />}>
         <Route path="/" element={<DashboardPage />} />
@@ -99,6 +121,17 @@ function App() {
           <Route
             path="/arranchamento/gu-servico"
             element={<EscalaServicoPage />}
+          />
+        </Route>
+
+        <Route
+          element={
+            <ProtectedRoute permissao="feriado:gerenciar" />
+          }
+        >
+          <Route
+            path="/arranchamento/feriados"
+            element={<FeriadosPage />}
           />
         </Route>
 

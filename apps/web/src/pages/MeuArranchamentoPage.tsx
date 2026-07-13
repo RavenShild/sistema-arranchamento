@@ -396,7 +396,7 @@ export function MeuArranchamentoPage() {
                   {(fimDeSemana || feriado) && !guServico && (
                     <div className="date-alert">
                       {feriado
-                        ? `Feriado: ${feriado.descricao}`
+                        ? `Sem Expediente: ${feriado.descricao}`
                         : 'Atenção: esta data é fim de semana.'}
                     </div>
                   )}

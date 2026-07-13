@@ -13,6 +13,8 @@ import { escalaRouter } from './modules/escalas/escala.routes.js'
 import { arranchamentoRouter } from './modules/arranchamentos/arranchamento.route.js'
 import { relatorioRouter } from './modules/relatorios/relatorio.routes.js'
 import { usuarioRouter } from './modules/usuarios/usuario.routes.js'
+import { feriadoRouter } from './modules/feriados/feriado.routes.js'
+
 
 export const app = express()
 
@@ -39,6 +41,7 @@ app.use('/escalas', escalaRouter)
 app.use('/arranchamentos', arranchamentoRouter)
 app.use('/relatorios', relatorioRouter)
 app.use('/usuarios', usuarioRouter)
+app.use('/feriados', feriadoRouter)
 
 app.get('/health/database', async (_request, response) => {
   try {

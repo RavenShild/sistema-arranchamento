@@ -8,6 +8,11 @@ export type AuthContextValue = {
   usuario: Usuario | null
   carregando: boolean
   login: (identidade: string, senha: string) => Promise<void>
+  alterarSenha: (
+    senhaAtual: string,
+    novaSenha: string,
+    confirmacaoSenha: string,
+  ) => Promise<void>
   logout: () => Promise<void>
 }
 

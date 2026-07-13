@@ -250,9 +250,7 @@ export function UsuariosPage() {
 
       setCredencial({
         nome: `${response.data.usuario.militar.postoGraduacao} ${response.data.usuario.militar.nomeGuerra}`,
-        login:
-          response.data.usuario.email ||
-          response.data.usuario.militar.identidadeMilitar,
+        login: response.data.usuario.militar.identidadeMilitar,
         senha: response.data.senhaTemporaria,
       })
       setMilitarId('')
@@ -367,7 +365,7 @@ export function UsuariosPage() {
 
       setCredencial({
         nome: `${usuario.militar.postoGraduacao} ${usuario.militar.nomeGuerra}`,
-        login: usuario.email || usuario.militar.identidadeMilitar,
+        login: usuario.militar.identidadeMilitar,
         senha: response.data.senhaTemporaria,
       })
       setMensagem('Senha redefinida com sucesso.')
