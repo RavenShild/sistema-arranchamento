@@ -6,6 +6,7 @@ import {
 import './App.css'
 import { useAuth } from './auth/auth.context'
 import { AlterarSenhaPage } from './pages/AlterarSenhaPage'
+import { AuditoriaPage } from './pages/AuditoriaPage'
 import { ConfiguracaoOmPage } from './pages/ConfiguracaoOmPage'
 import { DashboardPage } from './pages/DashboardPage'
 import { EscalaServicoPage } from './pages/EscalaServicoPage'
@@ -146,6 +147,10 @@ function App() {
             <ProtectedRoute permissao="usuario:gerenciar" />
           }
         >
+          <Route
+            path="/admin/auditoria"
+            element={<AuditoriaPage />}
+          />
           <Route
             path="/admin/configuracao-om"
             element={<ConfiguracaoOmPage />}

@@ -93,6 +93,7 @@ model Usuario {
   escalasCadastradas         EscalaServico[]        @relation("EscalaCadastradaPor")
   feriadosCadastrados        Feriado[]              @relation("FeriadoCadastradoPor")
   configuracoesOmAtualizadas ConfiguracaoOm[]       @relation("ConfiguracaoOmAtualizadaPor")
+  auditorias                 Auditoria[]
 
   @@map("usuarios")
 }
@@ -280,4 +281,26 @@ model ConfiguracaoOm {
   atualizadoPor Usuario @relation("ConfiguracaoOmAtualizadaPor", fields: [atualizadoPorId], references: [id])
 
   @@map("configuracao_om")
+}
+
+model Auditoria {
+  id         Int      @id @default(autoincrement())
+  usuarioId  Int?     @map("usuario_id")
+  acao       String   @db.VarChar(20)
+  recurso    String   @db.VarChar(80)
+  recursoId  String?  @map("recurso_id") @db.VarChar(80)
+  metodo     String   @db.VarChar(10)
+  rota       String   @db.VarChar(255)
+  statusHttp Int      @map("status_http")
+  dados      Json?
+  ip         String?  @db.VarChar(45)
+  userAgent  String?  @map("user_agent") @db.VarChar(500)
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  usuario Usuario? @relation(fields: [usuarioId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+  @@index([usuarioId, createdAt])
+  @@index([recurso, createdAt])
+  @@map("auditorias")
 }

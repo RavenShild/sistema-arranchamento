@@ -283,6 +283,24 @@ export function DashboardPage() {
                   Acessar
                 </Link>
               </section>
+
+              <section className="user-card module-card">
+                <div>
+                  <p className="eyebrow">Administração e segurança</p>
+                  <h2>Auditoria</h2>
+                  <p>
+                    Consulte quem realizou alterações e operações
+                    administrativas no sistema.
+                  </p>
+                </div>
+
+                <Link
+                  className="primary-link"
+                  to="/admin/auditoria"
+                >
+                  Acessar
+                </Link>
+              </section>
             </>
           )}
 

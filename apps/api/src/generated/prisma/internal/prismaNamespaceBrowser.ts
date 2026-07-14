@@ -65,7 +65,8 @@ export const ModelName = {
   FeriasMilitar: 'FeriasMilitar',
   Feriado: 'Feriado',
   ConsolidadoRefeicao: 'ConsolidadoRefeicao',
-  ConfiguracaoOm: 'ConfiguracaoOm'
+  ConfiguracaoOm: 'ConfiguracaoOm',
+  Auditoria: 'Auditoria'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -269,12 +270,38 @@ export const ConfiguracaoOmScalarFieldEnum = {
 export type ConfiguracaoOmScalarFieldEnum = (typeof ConfiguracaoOmScalarFieldEnum)[keyof typeof ConfiguracaoOmScalarFieldEnum]
 
 
+export const AuditoriaScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  acao: 'acao',
+  recurso: 'recurso',
+  recursoId: 'recursoId',
+  metodo: 'metodo',
+  rota: 'rota',
+  statusHttp: 'statusHttp',
+  dados: 'dados',
+  ip: 'ip',
+  userAgent: 'userAgent',
+  createdAt: 'createdAt'
+} as const
+
+export type AuditoriaScalarFieldEnum = (typeof AuditoriaScalarFieldEnum)[keyof typeof AuditoriaScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const SubunidadeOrderByRelevanceFieldEnum = {
@@ -351,4 +378,34 @@ export const ConfiguracaoOmOrderByRelevanceFieldEnum = {
 } as const
 
 export type ConfiguracaoOmOrderByRelevanceFieldEnum = (typeof ConfiguracaoOmOrderByRelevanceFieldEnum)[keyof typeof ConfiguracaoOmOrderByRelevanceFieldEnum]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const AuditoriaOrderByRelevanceFieldEnum = {
+  acao: 'acao',
+  recurso: 'recurso',
+  recursoId: 'recursoId',
+  metodo: 'metodo',
+  rota: 'rota',
+  ip: 'ip',
+  userAgent: 'userAgent'
+} as const
+
+export type AuditoriaOrderByRelevanceFieldEnum = (typeof AuditoriaOrderByRelevanceFieldEnum)[keyof typeof AuditoriaOrderByRelevanceFieldEnum]
 

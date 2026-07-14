@@ -3,7 +3,9 @@ import cors from 'cors'
 import express from 'express'
 import helmet from 'helmet'
 import { prisma } from './lib/prisma.js'
+import { auditMutations } from './middlewares/audit-mutations.js'
 import { adminRouter } from './modules/admin/admin.routes.js'
+import { auditoriaRouter } from './modules/auditoria/auditoria.routes.js'
 import { authRouter } from './modules/auth/auth.routes.js'
 import { configuracaoOmRouter } from './modules/configuracao.om/configuracao-om.routes.js'
 import { feriasRouter } from './modules/ferias/ferias.routes.js'
@@ -32,7 +34,9 @@ app.use(
 )
 
 app.use(express.json({ limit: '1mb' }))
+app.use(auditMutations)
 app.use('/auth', authRouter)
+app.use('/auditorias', auditoriaRouter)
 app.use('/configuracao-om', configuracaoOmRouter)
 app.use('/subunidades', subunidadeRouter)
 app.use('/militares', militarRouter)

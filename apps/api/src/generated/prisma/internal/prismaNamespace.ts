@@ -398,7 +398,8 @@ export const ModelName = {
   FeriasMilitar: 'FeriasMilitar',
   Feriado: 'Feriado',
   ConsolidadoRefeicao: 'ConsolidadoRefeicao',
-  ConfiguracaoOm: 'ConfiguracaoOm'
+  ConfiguracaoOm: 'ConfiguracaoOm',
+  Auditoria: 'Auditoria'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -414,7 +415,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "subunidade" | "militar" | "usuario" | "perfil" | "permissao" | "usuarioPerfil" | "perfilPermissao" | "sessao" | "periodoArranchamento" | "arranchamento" | "escalaServico" | "feriasMilitar" | "feriado" | "consolidadoRefeicao" | "configuracaoOm"
+    modelProps: "subunidade" | "militar" | "usuario" | "perfil" | "permissao" | "usuarioPerfil" | "perfilPermissao" | "sessao" | "periodoArranchamento" | "arranchamento" | "escalaServico" | "feriasMilitar" | "feriado" | "consolidadoRefeicao" | "configuracaoOm" | "auditoria"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1408,6 +1409,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Auditoria: {
+      payload: Prisma.$AuditoriaPayload<ExtArgs>
+      fields: Prisma.AuditoriaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AuditoriaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AuditoriaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>
+        }
+        findFirst: {
+          args: Prisma.AuditoriaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AuditoriaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>
+        }
+        findMany: {
+          args: Prisma.AuditoriaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>[]
+        }
+        create: {
+          args: Prisma.AuditoriaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>
+        }
+        createMany: {
+          args: Prisma.AuditoriaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.AuditoriaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>
+        }
+        update: {
+          args: Prisma.AuditoriaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>
+        }
+        deleteMany: {
+          args: Prisma.AuditoriaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AuditoriaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.AuditoriaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>
+        }
+        aggregate: {
+          args: Prisma.AuditoriaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAuditoria>
+        }
+        groupBy: {
+          args: Prisma.AuditoriaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AuditoriaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AuditoriaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AuditoriaCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1632,12 +1699,38 @@ export const ConfiguracaoOmScalarFieldEnum = {
 export type ConfiguracaoOmScalarFieldEnum = (typeof ConfiguracaoOmScalarFieldEnum)[keyof typeof ConfiguracaoOmScalarFieldEnum]
 
 
+export const AuditoriaScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  acao: 'acao',
+  recurso: 'recurso',
+  recursoId: 'recursoId',
+  metodo: 'metodo',
+  rota: 'rota',
+  statusHttp: 'statusHttp',
+  dados: 'dados',
+  ip: 'ip',
+  userAgent: 'userAgent',
+  createdAt: 'createdAt'
+} as const
+
+export type AuditoriaScalarFieldEnum = (typeof AuditoriaScalarFieldEnum)[keyof typeof AuditoriaScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const SubunidadeOrderByRelevanceFieldEnum = {
@@ -1716,6 +1809,36 @@ export const ConfiguracaoOmOrderByRelevanceFieldEnum = {
 export type ConfiguracaoOmOrderByRelevanceFieldEnum = (typeof ConfiguracaoOmOrderByRelevanceFieldEnum)[keyof typeof ConfiguracaoOmOrderByRelevanceFieldEnum]
 
 
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const AuditoriaOrderByRelevanceFieldEnum = {
+  acao: 'acao',
+  recurso: 'recurso',
+  recursoId: 'recursoId',
+  metodo: 'metodo',
+  rota: 'rota',
+  ip: 'ip',
+  userAgent: 'userAgent'
+} as const
+
+export type AuditoriaOrderByRelevanceFieldEnum = (typeof AuditoriaOrderByRelevanceFieldEnum)[keyof typeof AuditoriaOrderByRelevanceFieldEnum]
+
+
 
 /**
  * Field references
@@ -1775,6 +1898,20 @@ export type EnumStatusPeriodoArranchamentoFieldRefInput<$PrismaModel> = FieldRef
  * Reference to a field of type 'TipoRefeicao'
  */
 export type EnumTipoRefeicaoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipoRefeicao'>
+    
+
+
+/**
+ * Reference to a field of type 'Json'
+ */
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+/**
+ * Reference to a field of type 'QueryMode'
+ */
+export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -1909,6 +2046,7 @@ export type GlobalOmitConfig = {
   feriado?: Prisma.FeriadoOmit
   consolidadoRefeicao?: Prisma.ConsolidadoRefeicaoOmit
   configuracaoOm?: Prisma.ConfiguracaoOmOmit
+  auditoria?: Prisma.AuditoriaOmit
 }
 
 /* Types for Logging */

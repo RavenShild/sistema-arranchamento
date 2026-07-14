@@ -116,3 +116,8 @@ export type ConsolidadoRefeicao = Prisma.ConsolidadoRefeicaoModel
  * 
  */
 export type ConfiguracaoOm = Prisma.ConfiguracaoOmModel
+/**
+ * Model Auditoria
+ * 
+ */
+export type Auditoria = Prisma.AuditoriaModel

@@ -261,6 +261,7 @@ export type UsuarioWhereInput = {
   escalasCadastradas?: Prisma.EscalaServicoListRelationFilter
   feriadosCadastrados?: Prisma.FeriadoListRelationFilter
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmListRelationFilter
+  auditorias?: Prisma.AuditoriaListRelationFilter
 }
 
 export type UsuarioOrderByWithRelationInput = {
@@ -282,6 +283,7 @@ export type UsuarioOrderByWithRelationInput = {
   escalasCadastradas?: Prisma.EscalaServicoOrderByRelationAggregateInput
   feriadosCadastrados?: Prisma.FeriadoOrderByRelationAggregateInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmOrderByRelationAggregateInput
+  auditorias?: Prisma.AuditoriaOrderByRelationAggregateInput
   _relevance?: Prisma.UsuarioOrderByRelevanceInput
 }
 
@@ -307,6 +309,7 @@ export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
   escalasCadastradas?: Prisma.EscalaServicoListRelationFilter
   feriadosCadastrados?: Prisma.FeriadoListRelationFilter
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmListRelationFilter
+  auditorias?: Prisma.AuditoriaListRelationFilter
 }, "id" | "militarId" | "email">
 
 export type UsuarioOrderByWithAggregationInput = {
@@ -358,6 +361,7 @@ export type UsuarioCreateInput = {
   escalasCadastradas?: Prisma.EscalaServicoCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateInput = {
@@ -378,6 +382,7 @@ export type UsuarioUncheckedCreateInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUpdateInput = {
@@ -397,6 +402,7 @@ export type UsuarioUpdateInput = {
   escalasCadastradas?: Prisma.EscalaServicoUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateInput = {
@@ -417,6 +423,7 @@ export type UsuarioUncheckedUpdateInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateManyInput = {
@@ -669,6 +676,22 @@ export type UsuarioUpdateOneRequiredWithoutConfiguracoesOmAtualizadasNestedInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutConfiguracoesOmAtualizadasInput, Prisma.UsuarioUpdateWithoutConfiguracoesOmAtualizadasInput>, Prisma.UsuarioUncheckedUpdateWithoutConfiguracoesOmAtualizadasInput>
 }
 
+export type UsuarioCreateNestedOneWithoutAuditoriasInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutAuditoriasInput, Prisma.UsuarioUncheckedCreateWithoutAuditoriasInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutAuditoriasInput
+  connect?: Prisma.UsuarioWhereUniqueInput
+}
+
+export type UsuarioUpdateOneWithoutAuditoriasNestedInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutAuditoriasInput, Prisma.UsuarioUncheckedCreateWithoutAuditoriasInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutAuditoriasInput
+  upsert?: Prisma.UsuarioUpsertWithoutAuditoriasInput
+  disconnect?: Prisma.UsuarioWhereInput | boolean
+  delete?: Prisma.UsuarioWhereInput | boolean
+  connect?: Prisma.UsuarioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutAuditoriasInput, Prisma.UsuarioUpdateWithoutAuditoriasInput>, Prisma.UsuarioUncheckedUpdateWithoutAuditoriasInput>
+}
+
 export type UsuarioCreateWithoutMilitarInput = {
   email?: string | null
   senhaHash: string
@@ -685,6 +708,7 @@ export type UsuarioCreateWithoutMilitarInput = {
   escalasCadastradas?: Prisma.EscalaServicoCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutMilitarInput = {
@@ -704,6 +728,7 @@ export type UsuarioUncheckedCreateWithoutMilitarInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutMilitarInput = {
@@ -738,6 +763,7 @@ export type UsuarioUpdateWithoutMilitarInput = {
   escalasCadastradas?: Prisma.EscalaServicoUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutMilitarInput = {
@@ -757,6 +783,7 @@ export type UsuarioUncheckedUpdateWithoutMilitarInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutPerfisInput = {
@@ -775,6 +802,7 @@ export type UsuarioCreateWithoutPerfisInput = {
   escalasCadastradas?: Prisma.EscalaServicoCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutPerfisInput = {
@@ -794,6 +822,7 @@ export type UsuarioUncheckedCreateWithoutPerfisInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutPerfisInput = {
@@ -828,6 +857,7 @@ export type UsuarioUpdateWithoutPerfisInput = {
   escalasCadastradas?: Prisma.EscalaServicoUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutPerfisInput = {
@@ -847,6 +877,7 @@ export type UsuarioUncheckedUpdateWithoutPerfisInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutSessoesInput = {
@@ -865,6 +896,7 @@ export type UsuarioCreateWithoutSessoesInput = {
   escalasCadastradas?: Prisma.EscalaServicoCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutSessoesInput = {
@@ -884,6 +916,7 @@ export type UsuarioUncheckedCreateWithoutSessoesInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutSessoesInput = {
@@ -918,6 +951,7 @@ export type UsuarioUpdateWithoutSessoesInput = {
   escalasCadastradas?: Prisma.EscalaServicoUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutSessoesInput = {
@@ -937,6 +971,7 @@ export type UsuarioUncheckedUpdateWithoutSessoesInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutPeriodosAbertosInput = {
@@ -955,6 +990,7 @@ export type UsuarioCreateWithoutPeriodosAbertosInput = {
   escalasCadastradas?: Prisma.EscalaServicoCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutPeriodosAbertosInput = {
@@ -974,6 +1010,7 @@ export type UsuarioUncheckedCreateWithoutPeriodosAbertosInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutPeriodosAbertosInput = {
@@ -997,6 +1034,7 @@ export type UsuarioCreateWithoutPeriodosFechadosInput = {
   escalasCadastradas?: Prisma.EscalaServicoCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutPeriodosFechadosInput = {
@@ -1016,6 +1054,7 @@ export type UsuarioUncheckedCreateWithoutPeriodosFechadosInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutPeriodosFechadosInput = {
@@ -1050,6 +1089,7 @@ export type UsuarioUpdateWithoutPeriodosAbertosInput = {
   escalasCadastradas?: Prisma.EscalaServicoUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutPeriodosAbertosInput = {
@@ -1069,6 +1109,7 @@ export type UsuarioUncheckedUpdateWithoutPeriodosAbertosInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUpsertWithoutPeriodosFechadosInput = {
@@ -1098,6 +1139,7 @@ export type UsuarioUpdateWithoutPeriodosFechadosInput = {
   escalasCadastradas?: Prisma.EscalaServicoUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutPeriodosFechadosInput = {
@@ -1117,6 +1159,7 @@ export type UsuarioUncheckedUpdateWithoutPeriodosFechadosInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutEscalasCadastradasInput = {
@@ -1135,6 +1178,7 @@ export type UsuarioCreateWithoutEscalasCadastradasInput = {
   feriasCadastradas?: Prisma.FeriasMilitarCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutEscalasCadastradasInput = {
@@ -1154,6 +1198,7 @@ export type UsuarioUncheckedCreateWithoutEscalasCadastradasInput = {
   feriasCadastradas?: Prisma.FeriasMilitarUncheckedCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutEscalasCadastradasInput = {
@@ -1188,6 +1233,7 @@ export type UsuarioUpdateWithoutEscalasCadastradasInput = {
   feriasCadastradas?: Prisma.FeriasMilitarUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutEscalasCadastradasInput = {
@@ -1207,6 +1253,7 @@ export type UsuarioUncheckedUpdateWithoutEscalasCadastradasInput = {
   feriasCadastradas?: Prisma.FeriasMilitarUncheckedUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutFeriasCadastradasInput = {
@@ -1225,6 +1272,7 @@ export type UsuarioCreateWithoutFeriasCadastradasInput = {
   escalasCadastradas?: Prisma.EscalaServicoCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutFeriasCadastradasInput = {
@@ -1244,6 +1292,7 @@ export type UsuarioUncheckedCreateWithoutFeriasCadastradasInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutFeriasCadastradasInput = {
@@ -1278,6 +1327,7 @@ export type UsuarioUpdateWithoutFeriasCadastradasInput = {
   escalasCadastradas?: Prisma.EscalaServicoUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutFeriasCadastradasInput = {
@@ -1297,6 +1347,7 @@ export type UsuarioUncheckedUpdateWithoutFeriasCadastradasInput = {
   escalasCadastradas?: Prisma.EscalaServicoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutFeriadosCadastradosInput = {
@@ -1315,6 +1366,7 @@ export type UsuarioCreateWithoutFeriadosCadastradosInput = {
   feriasCadastradas?: Prisma.FeriasMilitarCreateNestedManyWithoutCadastradoPorInput
   escalasCadastradas?: Prisma.EscalaServicoCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutFeriadosCadastradosInput = {
@@ -1334,6 +1386,7 @@ export type UsuarioUncheckedCreateWithoutFeriadosCadastradosInput = {
   feriasCadastradas?: Prisma.FeriasMilitarUncheckedCreateNestedManyWithoutCadastradoPorInput
   escalasCadastradas?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutCadastradoPorInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedCreateNestedManyWithoutAtualizadoPorInput
+  auditorias?: Prisma.AuditoriaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutFeriadosCadastradosInput = {
@@ -1368,6 +1421,7 @@ export type UsuarioUpdateWithoutFeriadosCadastradosInput = {
   feriasCadastradas?: Prisma.FeriasMilitarUpdateManyWithoutCadastradoPorNestedInput
   escalasCadastradas?: Prisma.EscalaServicoUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutFeriadosCadastradosInput = {
@@ -1387,6 +1441,7 @@ export type UsuarioUncheckedUpdateWithoutFeriadosCadastradosInput = {
   feriasCadastradas?: Prisma.FeriasMilitarUncheckedUpdateManyWithoutCadastradoPorNestedInput
   escalasCadastradas?: Prisma.EscalaServicoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedUpdateManyWithoutAtualizadoPorNestedInput
+  auditorias?: Prisma.AuditoriaUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutConfiguracoesOmAtualizadasInput = {
@@ -1405,6 +1460,7 @@ export type UsuarioCreateWithoutConfiguracoesOmAtualizadasInput = {
   feriasCadastradas?: Prisma.FeriasMilitarCreateNestedManyWithoutCadastradoPorInput
   escalasCadastradas?: Prisma.EscalaServicoCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoCreateNestedManyWithoutCadastradoPorInput
+  auditorias?: Prisma.AuditoriaCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutConfiguracoesOmAtualizadasInput = {
@@ -1424,6 +1480,7 @@ export type UsuarioUncheckedCreateWithoutConfiguracoesOmAtualizadasInput = {
   feriasCadastradas?: Prisma.FeriasMilitarUncheckedCreateNestedManyWithoutCadastradoPorInput
   escalasCadastradas?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutCadastradoPorInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedCreateNestedManyWithoutCadastradoPorInput
+  auditorias?: Prisma.AuditoriaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutConfiguracoesOmAtualizadasInput = {
@@ -1458,6 +1515,7 @@ export type UsuarioUpdateWithoutConfiguracoesOmAtualizadasInput = {
   feriasCadastradas?: Prisma.FeriasMilitarUpdateManyWithoutCadastradoPorNestedInput
   escalasCadastradas?: Prisma.EscalaServicoUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUpdateManyWithoutCadastradoPorNestedInput
+  auditorias?: Prisma.AuditoriaUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutConfiguracoesOmAtualizadasInput = {
@@ -1477,6 +1535,101 @@ export type UsuarioUncheckedUpdateWithoutConfiguracoesOmAtualizadasInput = {
   feriasCadastradas?: Prisma.FeriasMilitarUncheckedUpdateManyWithoutCadastradoPorNestedInput
   escalasCadastradas?: Prisma.EscalaServicoUncheckedUpdateManyWithoutCadastradoPorNestedInput
   feriadosCadastrados?: Prisma.FeriadoUncheckedUpdateManyWithoutCadastradoPorNestedInput
+  auditorias?: Prisma.AuditoriaUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UsuarioCreateWithoutAuditoriasInput = {
+  email?: string | null
+  senhaHash: string
+  ativo?: boolean
+  primeiroAcesso?: boolean
+  ultimoLogin?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  militar: Prisma.MilitarCreateNestedOneWithoutUsuarioInput
+  perfis?: Prisma.UsuarioPerfilCreateNestedManyWithoutUsuarioInput
+  sessoes?: Prisma.SessaoCreateNestedManyWithoutUsuarioInput
+  periodosAbertos?: Prisma.PeriodoArranchamentoCreateNestedManyWithoutAbertoPorInput
+  periodosFechados?: Prisma.PeriodoArranchamentoCreateNestedManyWithoutFechadoPorInput
+  feriasCadastradas?: Prisma.FeriasMilitarCreateNestedManyWithoutCadastradoPorInput
+  escalasCadastradas?: Prisma.EscalaServicoCreateNestedManyWithoutCadastradoPorInput
+  feriadosCadastrados?: Prisma.FeriadoCreateNestedManyWithoutCadastradoPorInput
+  configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmCreateNestedManyWithoutAtualizadoPorInput
+}
+
+export type UsuarioUncheckedCreateWithoutAuditoriasInput = {
+  id?: number
+  militarId: number
+  email?: string | null
+  senhaHash: string
+  ativo?: boolean
+  primeiroAcesso?: boolean
+  ultimoLogin?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  perfis?: Prisma.UsuarioPerfilUncheckedCreateNestedManyWithoutUsuarioInput
+  sessoes?: Prisma.SessaoUncheckedCreateNestedManyWithoutUsuarioInput
+  periodosAbertos?: Prisma.PeriodoArranchamentoUncheckedCreateNestedManyWithoutAbertoPorInput
+  periodosFechados?: Prisma.PeriodoArranchamentoUncheckedCreateNestedManyWithoutFechadoPorInput
+  feriasCadastradas?: Prisma.FeriasMilitarUncheckedCreateNestedManyWithoutCadastradoPorInput
+  escalasCadastradas?: Prisma.EscalaServicoUncheckedCreateNestedManyWithoutCadastradoPorInput
+  feriadosCadastrados?: Prisma.FeriadoUncheckedCreateNestedManyWithoutCadastradoPorInput
+  configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedCreateNestedManyWithoutAtualizadoPorInput
+}
+
+export type UsuarioCreateOrConnectWithoutAuditoriasInput = {
+  where: Prisma.UsuarioWhereUniqueInput
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutAuditoriasInput, Prisma.UsuarioUncheckedCreateWithoutAuditoriasInput>
+}
+
+export type UsuarioUpsertWithoutAuditoriasInput = {
+  update: Prisma.XOR<Prisma.UsuarioUpdateWithoutAuditoriasInput, Prisma.UsuarioUncheckedUpdateWithoutAuditoriasInput>
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutAuditoriasInput, Prisma.UsuarioUncheckedCreateWithoutAuditoriasInput>
+  where?: Prisma.UsuarioWhereInput
+}
+
+export type UsuarioUpdateToOneWithWhereWithoutAuditoriasInput = {
+  where?: Prisma.UsuarioWhereInput
+  data: Prisma.XOR<Prisma.UsuarioUpdateWithoutAuditoriasInput, Prisma.UsuarioUncheckedUpdateWithoutAuditoriasInput>
+}
+
+export type UsuarioUpdateWithoutAuditoriasInput = {
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  senhaHash?: Prisma.StringFieldUpdateOperationsInput | string
+  ativo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primeiroAcesso?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ultimoLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  militar?: Prisma.MilitarUpdateOneRequiredWithoutUsuarioNestedInput
+  perfis?: Prisma.UsuarioPerfilUpdateManyWithoutUsuarioNestedInput
+  sessoes?: Prisma.SessaoUpdateManyWithoutUsuarioNestedInput
+  periodosAbertos?: Prisma.PeriodoArranchamentoUpdateManyWithoutAbertoPorNestedInput
+  periodosFechados?: Prisma.PeriodoArranchamentoUpdateManyWithoutFechadoPorNestedInput
+  feriasCadastradas?: Prisma.FeriasMilitarUpdateManyWithoutCadastradoPorNestedInput
+  escalasCadastradas?: Prisma.EscalaServicoUpdateManyWithoutCadastradoPorNestedInput
+  feriadosCadastrados?: Prisma.FeriadoUpdateManyWithoutCadastradoPorNestedInput
+  configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUpdateManyWithoutAtualizadoPorNestedInput
+}
+
+export type UsuarioUncheckedUpdateWithoutAuditoriasInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  militarId?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  senhaHash?: Prisma.StringFieldUpdateOperationsInput | string
+  ativo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primeiroAcesso?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ultimoLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  perfis?: Prisma.UsuarioPerfilUncheckedUpdateManyWithoutUsuarioNestedInput
+  sessoes?: Prisma.SessaoUncheckedUpdateManyWithoutUsuarioNestedInput
+  periodosAbertos?: Prisma.PeriodoArranchamentoUncheckedUpdateManyWithoutAbertoPorNestedInput
+  periodosFechados?: Prisma.PeriodoArranchamentoUncheckedUpdateManyWithoutFechadoPorNestedInput
+  feriasCadastradas?: Prisma.FeriasMilitarUncheckedUpdateManyWithoutCadastradoPorNestedInput
+  escalasCadastradas?: Prisma.EscalaServicoUncheckedUpdateManyWithoutCadastradoPorNestedInput
+  feriadosCadastrados?: Prisma.FeriadoUncheckedUpdateManyWithoutCadastradoPorNestedInput
+  configuracoesOmAtualizadas?: Prisma.ConfiguracaoOmUncheckedUpdateManyWithoutAtualizadoPorNestedInput
 }
 
 
@@ -1493,6 +1646,7 @@ export type UsuarioCountOutputType = {
   escalasCadastradas: number
   feriadosCadastrados: number
   configuracoesOmAtualizadas: number
+  auditorias: number
 }
 
 export type UsuarioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1504,6 +1658,7 @@ export type UsuarioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   escalasCadastradas?: boolean | UsuarioCountOutputTypeCountEscalasCadastradasArgs
   feriadosCadastrados?: boolean | UsuarioCountOutputTypeCountFeriadosCadastradosArgs
   configuracoesOmAtualizadas?: boolean | UsuarioCountOutputTypeCountConfiguracoesOmAtualizadasArgs
+  auditorias?: boolean | UsuarioCountOutputTypeCountAuditoriasArgs
 }
 
 /**
@@ -1572,6 +1727,13 @@ export type UsuarioCountOutputTypeCountConfiguracoesOmAtualizadasArgs<ExtArgs ex
   where?: Prisma.ConfiguracaoOmWhereInput
 }
 
+/**
+ * UsuarioCountOutputType without action
+ */
+export type UsuarioCountOutputTypeCountAuditoriasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AuditoriaWhereInput
+}
+
 
 export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1592,6 +1754,7 @@ export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   escalasCadastradas?: boolean | Prisma.Usuario$escalasCadastradasArgs<ExtArgs>
   feriadosCadastrados?: boolean | Prisma.Usuario$feriadosCadastradosArgs<ExtArgs>
   configuracoesOmAtualizadas?: boolean | Prisma.Usuario$configuracoesOmAtualizadasArgs<ExtArgs>
+  auditorias?: boolean | Prisma.Usuario$auditoriasArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["usuario"]>
 
@@ -1620,6 +1783,7 @@ export type UsuarioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   escalasCadastradas?: boolean | Prisma.Usuario$escalasCadastradasArgs<ExtArgs>
   feriadosCadastrados?: boolean | Prisma.Usuario$feriadosCadastradosArgs<ExtArgs>
   configuracoesOmAtualizadas?: boolean | Prisma.Usuario$configuracoesOmAtualizadasArgs<ExtArgs>
+  auditorias?: boolean | Prisma.Usuario$auditoriasArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1635,6 +1799,7 @@ export type $UsuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     escalasCadastradas: Prisma.$EscalaServicoPayload<ExtArgs>[]
     feriadosCadastrados: Prisma.$FeriadoPayload<ExtArgs>[]
     configuracoesOmAtualizadas: Prisma.$ConfiguracaoOmPayload<ExtArgs>[]
+    auditorias: Prisma.$AuditoriaPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1995,6 +2160,7 @@ export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends runtime.
   escalasCadastradas<T extends Prisma.Usuario$escalasCadastradasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$escalasCadastradasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EscalaServicoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   feriadosCadastrados<T extends Prisma.Usuario$feriadosCadastradosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$feriadosCadastradosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FeriadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   configuracoesOmAtualizadas<T extends Prisma.Usuario$configuracoesOmAtualizadasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$configuracoesOmAtualizadasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConfiguracaoOmPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  auditorias<T extends Prisma.Usuario$auditoriasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$auditoriasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditoriaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2570,6 +2736,30 @@ export type Usuario$configuracoesOmAtualizadasArgs<ExtArgs extends runtime.Types
   take?: number
   skip?: number
   distinct?: Prisma.ConfiguracaoOmScalarFieldEnum | Prisma.ConfiguracaoOmScalarFieldEnum[]
+}
+
+/**
+ * Usuario.auditorias
+ */
+export type Usuario$auditoriasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Auditoria
+   */
+  select?: Prisma.AuditoriaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Auditoria
+   */
+  omit?: Prisma.AuditoriaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuditoriaInclude<ExtArgs> | null
+  where?: Prisma.AuditoriaWhereInput
+  orderBy?: Prisma.AuditoriaOrderByWithRelationInput | Prisma.AuditoriaOrderByWithRelationInput[]
+  cursor?: Prisma.AuditoriaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AuditoriaScalarFieldEnum | Prisma.AuditoriaScalarFieldEnum[]
 }
 
 /**
